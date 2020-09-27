@@ -1,7 +1,7 @@
 ## Mode d'emploi pour lancer l'application
 
  * Se trouver dans le dossier **frontend** qui contient **app.json**
- * Lancer la commande : **npm install**
+ * Lancer la commande : **npm install** (Permet de mettre toutes les dépendances au propre)
  * Pour finir run : **npm start**
 
 ### Tips lors de la modif ou de l'import d'un module :
