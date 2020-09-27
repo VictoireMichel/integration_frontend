@@ -1,14 +1,12 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
-class Accueil extends React.Component {
+class Notifications extends React.Component {
 
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.text_menu}>Bienvenue sur I-Grow !</Text>
-                <Text style={styles.text_infos}>(Listes avec toutes les plantes)</Text>
-
+                <Text style={styles.text_menu}>Mes notifications</Text>
             </View>
         )
     }
@@ -20,13 +18,17 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+
     },
     text_menu: {
-        fontSize: 25
+        fontSize: 25,
+        color: 'red'
     },
-    text_infos:{
-        fontSize: 15
-    }
 })
 
-export default Accueil
+export default Notifications
+
+/*background: #F1F2B5;
+background: -webkit-linear-gradient(to right, #135058, #F1F2B5);
+background: linear-gradient(to right, #135058, #F1F2B5);
+*/
