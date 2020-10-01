@@ -6,7 +6,7 @@ class Accueil extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.text_menu}>Bienvenue sur I-Grow !</Text>
+                <Text style={styles.text_menu}>Bienvenue sur E-Grow !</Text>
                 <Text style={styles.text_infos}>(Listes avec toutes les plantes)</Text>
 
             </View>
