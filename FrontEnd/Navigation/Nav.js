@@ -6,15 +6,15 @@ import Accueil from "../Components/Accueil";
 import MyPlants from "../Components/MyPlants";
 import Notifications from "../Components/Notifications";
 
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import {faHome, faSeedling, faBell} from '@fortawesome/free-solid-svg-icons'
+
 const TabNavigator = createBottomTabNavigator({
     Acceuil: {
         screen: Accueil,
         navigationOptions: {
             tabBarIcon: () => {
-                return <Image
-                    source={require('../assets/Images/home.png')}
-                    style={styles.icon}
-                />
+                return <FontAwesomeIcon icon={ faHome } />
             }
         }
     },
@@ -22,10 +22,8 @@ const TabNavigator = createBottomTabNavigator({
         screen: MyPlants,
         navigationOptions: {
             tabBarIcon: () => {
-                return <Image
-                    source={require('../assets/Images/myPlant.png')}
-                    style={styles.icon}
-                />
+                return <FontAwesomeIcon icon={ faSeedling } />
+
             }
         }
     },
@@ -33,10 +31,8 @@ const TabNavigator = createBottomTabNavigator({
         screen: Notifications,
         navigationOptions: {
             tabBarIcon: () => {
-                return <Image
-                    source={require('../assets/Images/notif.png')}
-                    style={styles.icon}
-                />
+                return <FontAwesomeIcon icon={ faBell } />
+
             }
         }
     }
