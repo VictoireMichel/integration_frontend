@@ -25,23 +25,28 @@ class Header extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#6A9113',
-        height:70,
+        backgroundColor: "rgba(39,185,120,1)",
+        height: 80,
         flexDirection: 'row',
         paddingTop: 30
     },
     container_title: {
         flex: 1,
         alignItems:'center',
-
     },
-    conatainer_icon: {
-      flex: 1,
-        justifyContent:'flex-end'
+    container_icon: {
+        alignItems:'flex-end',
+        paddingRight: 10
     },
     title_text: {
-        fontSize: 25,
-        color: 'white',
+       // fontFamily: "allerta-stencil-regular",
+        color: "#121212",
+        height: 45,
+        width: 175,
+        fontSize: 28,
+        textAlign: "center",
+        letterSpacing: 1.15,
+
     },
     favorite_image: {
         color:'white',

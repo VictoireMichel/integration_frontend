@@ -1,14 +1,59 @@
 import React from 'react'
-import { StyleSheet, Text, View, ImageBackground } from 'react-native'
+import { StyleSheet, Text, View, ImageBackground, TextInput, TouchableOpacity, ScrollView } from 'react-native'
 
+
+
+/*
+*
+* Ici la fonction est bien hardcodé, ce n'est qu'un test
+*
+*
+* */
 class MyPlants extends React.Component {
 
     render() {
         return (
             <View style={styles.container}>
 
-                <Text style={styles.text_menu}>Voici mes plantes</Text>
-                <Text style={styles.text_infos}>(Listes mes plantes qui poussent)</Text>
+                    <TextInput
+                        placeholder="Rechercher..."
+                        style={styles.rechercher}
+                    ></TextInput>
+
+
+
+                <ScrollView style={styles.scrollView_container}>
+                    <TouchableOpacity style={styles.listItem_container}>
+                        <Text style={styles.listItem_text}>Persil</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.listItem_container}>
+                        <Text style={styles.listItem_text}>Persil</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.listItem_container}>
+                        <Text style={styles.listItem_text}>Persil</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.listItem_container}>
+                        <Text style={styles.listItem_text}>Persil</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.listItem_container}>
+                        <Text style={styles.listItem_text}>Persil</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.listItem_container}>
+                        <Text style={styles.listItem_text}>Persil</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.listItem_container}>
+                        <Text style={styles.listItem_text}>Persil</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.listItem_container}>
+                        <Text style={styles.listItem_text}>Persil</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.listItem_container}>
+                        <Text style={styles.listItem_text}>Persil</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.listItem_container}>
+                        <Text style={styles.listItem_text}>Persil</Text>
+                    </TouchableOpacity>
+                </ScrollView>
 
             </View>
         )
@@ -17,20 +62,40 @@ class MyPlants extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: 'rgb(255,255,255)',
+
+    },
+    rechercher: {
+        marginRight: 'auto',
+        marginLeft: 'auto',
+        marginTop: 20,
+        marginBottom: 20,
         alignItems: 'center',
-        justifyContent: 'center',
+        color: "#121212",
+        height: 37,
+        width: 307,
+        borderWidth: 1,
+        borderColor: "#000000",
+        borderRadius: 8,
+        textAlign: "center",
+        fontSize: 18
     },
-    rect: {
-        flex: 1
+    scrollView_container: {
+        marginRight: 'auto',
+        marginLeft: 'auto',
+        marginBottom: 50,
     },
-    rect_imageStyle: {},
-    text_menu: {
-        fontSize: 25
+    listItem_container: {
+        width: 290,
+        height: 90,
+        borderWidth: 1,
+        borderRadius: 8,
+        backgroundColor: "rgba(51,153,102,1)",
+        marginBottom: 10,
     },
-    text_infos:{
-        fontSize: 15
+    listItem_text: {
+        color: "#121212",
+        marginTop: 39,
+        marginLeft: 137
     }
 })
 

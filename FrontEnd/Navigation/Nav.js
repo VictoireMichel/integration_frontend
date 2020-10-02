@@ -7,7 +7,7 @@ import MyPlants from "../Components/MyPlants";
 import Notifications from "../Components/Notifications";
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import {faHome, faSeedling, faBell} from '@fortawesome/free-solid-svg-icons'
+import {faHome, faSeedling, faBell, faListUl} from '@fortawesome/free-solid-svg-icons'
 
 const TabNavigator = createBottomTabNavigator({
     Acceuil: {
@@ -22,7 +22,7 @@ const TabNavigator = createBottomTabNavigator({
         screen: MyPlants,
         navigationOptions: {
             tabBarIcon: () => {
-                return <FontAwesomeIcon icon={ faSeedling } />
+                return <FontAwesomeIcon icon={ faListUl } />
 
             }
         }
