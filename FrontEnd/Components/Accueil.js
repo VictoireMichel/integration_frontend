@@ -15,6 +15,7 @@ class Accueil extends React.Component {
 
         render()
         {
+            console.log(this.props.navigation)
             return (
                 <View style={styles.container}>
                     <ImageBackground source={require("../assets/Images/herbe.png")} resizeMode="contain"
@@ -23,7 +24,7 @@ class Accueil extends React.Component {
                     <Button
                         color="#D0D0DC"
                         title="Press me"
-                        onPress={() => this.props.navigation.navigate("MyPlants") + console.log("hola")} // pour le moment route vers le mauvais component
+                        onPress={() => this.props.navigation.navigate("MyPlantInfo") + console.log("hola")} // pour le moment route vers le mauvais component
                     />
 
                     <TouchableOpacity

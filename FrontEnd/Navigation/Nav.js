@@ -15,11 +15,11 @@ import {createStackNavigator} from 'react-navigation-stack';
 //import NavigationContainer from "@react-navigation/native/lib/typescript/src/NavigationContainer";
 
 
-const SearchStackNavigator = createStackNavigator({
+const AcceuilStackNavigator = createStackNavigator({
     Acceuil: {
         screen: Accueil,
         navigationOptions: {
-            title: 'Rechercher'
+            title: 'Ma Plante'
         }
     },
     MyPlantInfo:{
@@ -29,7 +29,7 @@ const SearchStackNavigator = createStackNavigator({
 
 const TabNavigator = createBottomTabNavigator({
     Acceuil: {
-        screen: SearchStackNavigator,
+        screen: AcceuilStackNavigator,
         navigationOptions: {
             tabBarIcon: () => {
                 return <FontAwesomeIcon icon={ faSeedling } />
