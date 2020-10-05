@@ -2,12 +2,18 @@ import React from 'react';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import {createAppContainer} from 'react-navigation';
 import {Image, StyleSheet} from "react-native";
+
 import Accueil from "../Components/Accueil";
 import MyPlants from "../Components/MyPlants";
 import Notifications from "../Components/Notifications";
+import MyPlantInfo from "../Components/MyPlantInfo"
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import {faHome, faSeedling, faBell, faListUl} from '@fortawesome/free-solid-svg-icons'
+
+//import {createStackNavigator} from "react-navigation-stack";
+//import NavigationContainer from "@react-navigation/native/lib/typescript/src/NavigationContainer";
+
 
 const TabNavigator = createBottomTabNavigator({
     Acceuil: {
@@ -50,4 +56,6 @@ const styles = StyleSheet.create({
         height: 30
     }
 })
+
+
 export default createAppContainer(TabNavigator)

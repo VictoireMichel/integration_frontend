@@ -39,8 +39,8 @@ const styles = StyleSheet.create({
         paddingRight: 10
     },
     title_text: {
-       // fontFamily: "allerta-stencil-regular",
-        color: "#121212",
+        //fontFamily: "allerta-stencil-regular",
+        color: "#FFFFFF",
         height: 45,
         width: 175,
         fontSize: 28,

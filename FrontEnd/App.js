@@ -5,13 +5,21 @@ import Accueil from './Components/Accueil'
 import Nav from "./Navigation/Nav";
 import Header from "./Components/Header";
 
+import MyPlantInfo from "./Components/MyPlantInfo";
+import MyPlants from "./Components/MyPlants";
+
+
+
+
 export default function App() {
   return (
+
       <>
         <Header/>
         <Nav/>
 
       </>
+
   );
 }
 
