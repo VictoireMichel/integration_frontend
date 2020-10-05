@@ -1,12 +1,13 @@
 import React from 'react'
-import { StyleSheet, Text, View, ImageBackground, TextInput, TouchableOpacity, ScrollView } from 'react-native'
+import { Text, View } from 'react-native'
+import {StyleSheet} from "react-native";
 
 class MyPlantInfo extends React.Component {
 
     render() {
         return (
             <View style={styles.container}>
-                <Text>
+                <Text style={styles.text_container}>
                     Bonjour
                 </Text>
             </View>
@@ -14,4 +15,11 @@ class MyPlantInfo extends React.Component {
             )
     }
 }
+
+
+const styles = StyleSheet.create({
+    text_container: {
+        fontSize:50
+    }
+})
 export default MyPlantInfo;

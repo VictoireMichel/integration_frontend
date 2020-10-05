@@ -1,12 +1,15 @@
 import React from 'react'
-import {StyleSheet, Text, View, ImageBackground, Button} from 'react-native'
-import {TouchableOpacity} from "react-native-web";
+import {StyleSheet, Text, View, ImageBackground, Button, TouchableOpacity} from 'react-native'
 //import {NavigationContainer} from "@react-navigation/native";
 //import {createStackNavigator} from "react-navigation-stack";
 
 
 class Accueil extends React.Component {
 
+
+        _displayDetailForMyPlant = () => {
+            this.props.navigation.navigate('MyPlantInfo')
+        }
 
         onClick = () => console.log("test");
 
@@ -16,11 +19,19 @@ class Accueil extends React.Component {
                 <View style={styles.container}>
                     <ImageBackground source={require("../assets/Images/herbe.png")} resizeMode="contain"
                                      style={styles.herbe}/>
+
                     <Button
                         color="#D0D0DC"
                         title="Press me"
                         onPress={() => this.props.navigation.navigate("MyPlants") + console.log("hola")} // pour le moment route vers le mauvais component
                     />
+
+                    <TouchableOpacity
+                        onPress={() => this._displayDetailForMyPlant}
+                    >
+                        <View style={styles.test_container}>
+                        </View>
+                    </TouchableOpacity>
                 </View>
             )
         }
@@ -58,6 +69,11 @@ const styles = StyleSheet.create({
         height: 164,
         color: "#B7B7E5",
         borderRadius: 15,
+    },
+    test_container: {
+        width:50,
+        height: 50,
+        backgroundColor: 'black'
     }
 
 })
