@@ -17,7 +17,7 @@ class Home extends React.Component {
 
                     <View style={styles.square}>
 
-
+                        <Image style={styles.image2} source={require("../assets/Images/persil.png")}/>
 
                         <Text style={styles.info}>Persil</Text>
                         <Text style={styles.info}>Humidité : 40%</Text>
@@ -26,13 +26,13 @@ class Home extends React.Component {
 
                     <View style={styles.button}>
                         <Button
-                            color="#907878"
+                            color="#ABABAB"
                             title="Voir détails..."
                             onPress={() => this.props.navigation.navigate("MyPlantInfo") + console.log("click test")}
                         />
                     </View>
 
-                    <Image style={styles.image2} source={require("../assets/Images/persil.png")}/>
+
 
 
 
@@ -67,26 +67,39 @@ const styles = StyleSheet.create({
     },
     button: {
         position: "absolute",
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        alignItems: 'center',
         top: 300,
-        left: 130,
         height: 44,
         width: 145,
         borderRadius: 19,
     },
     square: {
-        top: 48,
-        left: 30,
+        top: -150,
+        zIndex:-1,
+        backgroundColor:'#FFFFFF',
+        opacity:0.80,
+        justifyContent:'center',
+        alignItems:'center',
         width: 350,
         height: 230,
-        position: "absolute",
-        backgroundColor: "rgba(116,98,98,0.9)",
-        borderRadius: 19
+        paddingTop:15,
+        shadowColor: '#000',
+        shadowOffset: { width: 5, height: 5 },
+        shadowOpacity: 1,
+
+        // its for android
+        elevation: 5,
+        position:'relative',
+        borderRadius:26
     },
     info:{
-        color: "rgba(255,255,255,255)",
+        color: "rgba(0,0,0,1)",
         fontSize: 20,
         marginTop: 35,
-        marginLeft: 185
+        marginLeft: 185,
+        top: -180
     },
     image:{
         top: 0,
@@ -96,7 +109,8 @@ const styles = StyleSheet.create({
         position: "absolute"
     },
     image2:{
-        top: -135,
+        zIndex:2,
+        top: 100,
         left: -90,
         width: 200,
         height: 306
