@@ -25,7 +25,7 @@ class Header extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "rgba(39,185,120,1)",
+        backgroundColor: "#80BD47",
         height: 80,
         flexDirection: 'row',
         paddingTop: 30
@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
         fontSize: 28,
         textAlign: "center",
         letterSpacing: 1.15,
+        left:18,
 
     },
     favorite_image: {

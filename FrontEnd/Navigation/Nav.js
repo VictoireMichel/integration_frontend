@@ -19,7 +19,17 @@ const AcceuilStackNavigator = createStackNavigator({
     Acceuil: {
         screen: Home,
         navigationOptions: {
-            title: 'Ma Plante'
+            title: 'Ma Plante',
+            headerTitleStyle:{
+                textAlign:'center',
+            },
+            headerStyle:{
+                backgroundColor: "#FFFFFF",
+
+            },
+            headerTintColor:"#000000",
+
+
         }
     },
     MyPlantInfo:{
@@ -59,7 +69,7 @@ const TabNavigator = createBottomTabNavigator({
     }
 },{
     tabBarOptions: {
-        activeBackgroundColor: '#DDDDDD', // Couleur d'arrière-plan de l'onglet sélectionné
+        activeBackgroundColor: '#80BD47', // Couleur d'arrière-plan de l'onglet sélectionné
         inactiveBackgroundColor: '#FFFFFF', // Couleur d'arrière-plan des onglets non sélectionnés
         showLabel: false, // On masque les titres
         showIcon: true // On informe le TabNavigator qu'on souhaite afficher les icônes définis
