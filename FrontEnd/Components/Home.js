@@ -17,7 +17,13 @@ class Home extends React.Component {
             return (
                 <View style={styles.background}>
                     <View style={styles.container}>
+                        <View style />
+                        <Image resizeMode='cover' style={styles.parsley} source={require('../assets/Images/persil.png')}/>
+                        <Text style={styles.title}>Persil</Text>
+                        <View style={styles.line}/>
+
                         <View style={styles.container2}>
+
                             <View style={styles.container3}>
                                 <Svg style={styles.ball}>
                                     <Ellipse
@@ -53,6 +59,7 @@ class Home extends React.Component {
                             </View>
 
                         </View>
+
                     </View>
 
 
@@ -75,9 +82,10 @@ const styles = StyleSheet.create({
         marginTop:'10%',
         flex:0,
         backgroundColor: '#FFFFFF',
-        height: 400,
+        height: 350,
         width: 300,
         borderRadius:20,
+        //opacity:0.5,
 
     },
     container2:{
@@ -107,8 +115,29 @@ const styles = StyleSheet.create({
         marginLeft:'auto',
         marginRight:'auto',
     },
+    parsley:{
 
+        width:'100%',
+        height:'50%',
+        marginLeft:'auto',
+        marginRight: 'auto',
+        marginTop:'5%',
 
+    },
+    title:{
+        fontSize:30,
+        marginLeft:'auto',
+        marginRight: 'auto',
+        color:"#7C7C7C"
+    },
+    line:{
+        backgroundColor:'#E6E6E6',
+        width:125,
+        height:2,
+        borderRadius:100,
+        marginLeft:'auto',
+        marginRight: 'auto',
+    }
 
 })
 
