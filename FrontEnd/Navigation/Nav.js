@@ -1,13 +1,28 @@
 import React from 'react';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import {createAppContainer} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
 import {Image, StyleSheet} from "react-native";
 import Accueil from "../Components/Accueil";
-import MyPlants from "../Components/MyPlants";
+import PlantsList from "../Components/MyPlants";
+import PlantDetail from "../Components/PlantDetail";
 import Notifications from "../Components/Notifications";
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import {faHome, faSeedling, faBell, faListUl} from '@fortawesome/free-solid-svg-icons'
+
+
+const PlantsListStackNavigator = createStackNavigator({
+    PlantsList: {
+        screen: PlantsList,
+        navigationOptions: {
+            title: 'List de plante'
+        }
+    },
+    PlantDetail: {
+        screen: PlantDetail
+    }
+})
 
 const TabNavigator = createBottomTabNavigator({
     Acceuil: {
@@ -19,7 +34,7 @@ const TabNavigator = createBottomTabNavigator({
         }
     },
     MyPlants: {
-        screen: MyPlants,
+        screen: PlantsListStackNavigator,
         navigationOptions: {
             tabBarIcon: () => {
                 return <FontAwesomeIcon icon={ faListUl } />
