@@ -6,13 +6,22 @@ class PlantDetail extends React.Component {
         const idPlant = this.props.navigation.state.params.idPlant
         console.log(this.props.navigation.state.params.idPlant)
         return (
-            <View>
-                <Text>Voici la plant n° {idPlant}</Text>
+            <View style={styles.main_container}>
+                <Text style={styles.text}>Voici la plant n° {idPlant}</Text>
             </View>
         )
     }
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    main_container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    text: {
+        fontSize: 25
+    }
+})
 
 export default PlantDetail

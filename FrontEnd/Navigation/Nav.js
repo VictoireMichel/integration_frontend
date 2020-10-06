@@ -16,7 +16,8 @@ const PlantsListStackNavigator = createStackNavigator({
     PlantsList: {
         screen: PlantsList,
         navigationOptions: {
-            title: 'List de plante'
+            title: 'List de plante',
+            headerTitleStyle: {textAlign: 'center'}
         }
     },
     PlantDetail: {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 
 class PlantItem extends React.Component {
     render() {
@@ -9,7 +9,16 @@ class PlantItem extends React.Component {
                 style={styles.listItem_container}
                 onPress={() => displayDetailForPlant(plant.id)}
             >
-                <Text style={styles.listItem_text}>{plant.nom}</Text>
+                <View style={styles.image_container}>
+                    <Image
+                        style={styles.image}
+                        source={require('../assets/Images/BASILIC-detour.png')}
+                    />
+                </View>
+                <View style={styles.text_container}>
+                    <Text style={styles.listItem_text}>{plant.nom}</Text>
+                </View>
+
             </TouchableOpacity>
         )
     }
@@ -27,15 +36,30 @@ const styles = StyleSheet.create({
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.2,
-        justifyContent: 'center',
-        alignItems:'center',
         // its for android
         elevation: 5,
         position:'relative',
-        borderRadius:10
+        borderRadius:10,
+
+        flexDirection: 'row'
+
+    },
+    image_container: {
+        flex: 1
+    },
+    image: {
+        width: 100,
+        height: 80,
+        margin: 5,
+    },
+    text_container: {
+        flex: 1,
+        justifyContent: 'center'
+
     },
     listItem_text: {
         color: "#121212",
+        fontSize: 18
     }
 })
 
