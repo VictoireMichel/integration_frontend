@@ -3,8 +3,8 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import {createAppContainer} from 'react-navigation';
 
 import {createStackNavigator} from 'react-navigation-stack';
-import {Image, StyleSheet} from "react-native";
-import Accueil from "../Components/Accueil";
+//import {Image, StyleSheet} from "react-native";
+//import Accueil from "../Components/Accueil";
 import PlantsList from "../Components/MyPlants";
 import PlantDetail from "../Components/PlantDetail";
 
@@ -19,7 +19,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faSeedling, faBell, faListUl} from '@fortawesome/free-solid-svg-icons'
 
 
-import {createStackNavigator} from 'react-navigation-stack';
+
 
 
 
