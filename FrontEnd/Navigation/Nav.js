@@ -1,15 +1,52 @@
 import React from 'react';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import {createAppContainer} from 'react-navigation';
+
 import {createStackNavigator} from 'react-navigation-stack';
 import {Image, StyleSheet} from "react-native";
 import Accueil from "../Components/Accueil";
 import PlantsList from "../Components/MyPlants";
 import PlantDetail from "../Components/PlantDetail";
+
+
+import Home from "../Components/Home";
+import MyPlants from "../Components/MyPlants";
+
 import Notifications from "../Components/Notifications";
+import MyPlantInfo from "../Components/MyPlantInfo"
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import {faHome, faSeedling, faBell, faListUl} from '@fortawesome/free-solid-svg-icons'
+import { faSeedling, faBell, faListUl} from '@fortawesome/free-solid-svg-icons'
+
+
+import {createStackNavigator} from 'react-navigation-stack';
+
+
+
+const AcceuilStackNavigator = createStackNavigator({
+    Acceuil: {
+        screen: Home,
+        navigationOptions: {
+            title: 'Ma Plante',
+            headerTitleStyle:{
+                textAlign:'center',
+            },
+            headerStyle:{
+                backgroundColor: "#FFFFFF",
+
+            },
+            headerTintColor:"#000000",
+
+
+        }
+    },
+    MyPlantInfo:{
+        screen: MyPlantInfo,
+        navigationOptions: {
+            title: 'Informations'
+        }
+    }
+})
 
 
 const PlantsListStackNavigator = createStackNavigator({
@@ -27,10 +64,10 @@ const PlantsListStackNavigator = createStackNavigator({
 
 const TabNavigator = createBottomTabNavigator({
     Acceuil: {
-        screen: Accueil,
+        screen: AcceuilStackNavigator,
         navigationOptions: {
             tabBarIcon: () => {
-                return <FontAwesomeIcon icon={ faHome } />
+                return <FontAwesomeIcon icon={ faSeedling } />
             }
         }
     },
@@ -54,16 +91,18 @@ const TabNavigator = createBottomTabNavigator({
     }
 },{
     tabBarOptions: {
-        activeBackgroundColor: '#DDDDDD', // Couleur d'arrière-plan de l'onglet sélectionné
+        activeBackgroundColor: '#80BD47', // Couleur d'arrière-plan de l'onglet sélectionné
         inactiveBackgroundColor: '#FFFFFF', // Couleur d'arrière-plan des onglets non sélectionnés
         showLabel: false, // On masque les titres
         showIcon: true // On informe le TabNavigator qu'on souhaite afficher les icônes définis
     }
 })
-const styles = StyleSheet.create({
+/*const styles = StyleSheet.create({
     icon: {
         width: 30,
         height: 30
     }
-})
+})*/
+
+
 export default createAppContainer(TabNavigator)
