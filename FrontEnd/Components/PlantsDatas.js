@@ -62,4 +62,6 @@ const PlantsList = [
         saison: '1',
         description: "C'est une plante verte hé oui"
     }
-]
+];
+
+export default PlantsList;
