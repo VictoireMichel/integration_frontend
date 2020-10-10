@@ -46,23 +46,23 @@ class Home extends React.Component {
                             <View style={styles.container3}>
                                 
                                 <ProgressCircle style={styles.ball}
-                                                percent={20}
+                                                percent={34}
                                                 radius={31}
                                                 borderWidth={4}
                                                 color="#70BDD9"
                                                 shadowColor="#E6E6E6"
                                                 bgColor="#FFFFFF">
-                                    <FontAwesomeIcon style={styles.water} icon={faTint}/>
+                                    <FontAwesomeIcon style={styles.water} icon={faTint} size={25}/>
                                 </ProgressCircle>
 
 
                             </View>
                             <View style={styles.container3}>
                                 <ProgressCircle style={styles.ball}
-                                                percent={20}
+                                                percent={15}
                                                 radius={31}
                                                 borderWidth={4}
-                                                color="#70BDD9"
+                                                color="#A2A2A2"
                                                 shadowColor="#E6E6E6"
                                                 bgColor="#FFFFFF">
                                     <Text style={styles.age}>{'15 jours'}</Text>
@@ -71,13 +71,13 @@ class Home extends React.Component {
                             </View>
                             <View style={styles.container3}>
                                 <ProgressCircle style={styles.ball}
-                                                percent={20}
+                                                percent={75}
                                                 radius={31}
                                                 borderWidth={4}
-                                                color="#70BDD9"
+                                                color="#E1BC31"
                                                 shadowColor="#E6E6E6"
                                                 bgColor="#FFFFFF">
-                                    <FontAwesomeIcon style={styles.sun} icon={faSun}/>
+                                    <FontAwesomeIcon style={styles.sun} icon={faSun} size={25}/>
                                 </ProgressCircle>
 
                             </View>
@@ -207,6 +207,7 @@ const styles = StyleSheet.create({
         marginTop:'-15%',
         top:5,
         color:'#70BDD9',
+
     },
     sun:{
         marginTop:'-15%',
@@ -214,7 +215,8 @@ const styles = StyleSheet.create({
         color:'#E1BC31',
     },
     age:{
-        fontSize:11,
+        fontSize:13.5,
+        textAlign: 'center',
     }
 
 })
