@@ -1,6 +1,8 @@
 import React from 'react'
 import {StyleSheet, Text, View, ImageBackground, Button, Image, TouchableOpacity} from 'react-native'
 import Svg, { Ellipse } from "react-native-svg";
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import {faSun, faTint} from "@fortawesome/free-solid-svg-icons";
 
 
 
@@ -18,10 +20,25 @@ class Home extends React.Component {
             return (
                 <View style={styles.background}>
                     <View style={styles.container}>
-                        <View style />
-                        <Image resizeMode='cover' style={styles.parsley} source={require('../assets/Images/persil.png')}/>
-                        <Text style={styles.title}>Persil</Text>
-                        <View style={styles.line}/>
+
+                        <View>
+                            <Svg style={styles.ball1}>
+                                <Ellipse
+                                    fill="rgba(230, 230, 230,1)"
+                                    cx={65}
+                                    cy={65}
+                                    rx={65}
+                                    ry={65}
+                                />
+
+                            </Svg>
+                            <Text style={styles.title}>Persil</Text>
+                            <View style={styles.line}/>
+                            <Image resizeMode='cover' style={styles.parsley} source={require('../assets/Images/persil.png')}/>
+
+                        </View>
+
+
 
                         <View style={styles.container2}>
 
@@ -34,7 +51,9 @@ class Home extends React.Component {
                                         rx={30}
                                         ry={30}
                                     />
+
                                 </Svg>
+                                <FontAwesomeIcon style={styles.icon} icon={faTint}/>
                             </View>
                             <View style={styles.container3}>
                                 <Svg style={styles.ball}>
@@ -46,6 +65,7 @@ class Home extends React.Component {
                                         ry={30}
                                     />
                                 </Svg>
+                                <Text style={styles.age}>15 jours</Text>
                             </View>
                             <View style={styles.container3}>
                                 <Svg style={styles.ball}>
@@ -57,6 +77,7 @@ class Home extends React.Component {
                                         ry={30}
                                     />
                                 </Svg>
+                                <FontAwesomeIcon style={styles.icon} icon={faSun}/>
                             </View>
 
                         </View>
@@ -65,7 +86,7 @@ class Home extends React.Component {
 
                     <TouchableOpacity style={styles.button} onPress={()=> {this.props.navigation.navigate('MyPlantInfo') ; console.log('nav test')}}>
                        <View style={styles.text_container}>
-                           <Text style={styles.text}>Plus d'infos...</Text>
+                           <Text style={styles.text}>Plus d'infos</Text>
                        </View>
                     </TouchableOpacity>
 
@@ -86,16 +107,23 @@ const styles = StyleSheet.create({
     container:{
         marginTop:'10%',
         flex:0,
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#284F35',
         height: 350,
         width: 300,
         borderRadius:20,
-        //opacity:0.5,
+        shadowColor: '#1E3927',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        //android
+        elevation: 8,
+        position:'relative',
+
+
 
     },
     container2:{
         marginTop:'auto',
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#284F35',
         height: 100,
         width: 300,
         flexDirection: 'row',
@@ -103,15 +131,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius:20,
 
+
     },
     container3:{
         marginTop:'auto',
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#284F35',
         height: 100,
         width: 100,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius:20,
+
     },
     ball:{
         left: 20,
@@ -119,21 +149,26 @@ const styles = StyleSheet.create({
         marginTop:'7%',
         marginLeft:'auto',
         marginRight:'auto',
+        justifyContent:'center',
+    },
+    ball1:{
+        marginTop:'7%',
+        marginLeft:'28%',
+        justifyContent:'center',
     },
     parsley:{
-
-        width:'100%',
+        width:'75%',
         height:'50%',
-        marginLeft:'auto',
+        marginLeft:'10.5%',
         marginRight: 'auto',
-        marginTop:'5%',
-
+        marginTop:'-75.5%',
     },
     title:{
-        fontSize:30,
+        fontSize:38,
         marginLeft:'auto',
         marginRight: 'auto',
-        color:"#7C7C7C"
+        marginTop:'-35%',
+        color:"#FFFFFF"
     },
     line:{
         backgroundColor:'#E6E6E6',
@@ -146,20 +181,35 @@ const styles = StyleSheet.create({
     button:{
         width:130,
         height:35,
-        backgroundColor:'#FFFFFF',
+        backgroundColor:'#284F35',
         marginTop:'10%',
         marginBottom:'10%',
         justifyContent: 'center',
         borderRadius:16,
+        shadowColor: '#1E3927',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        //android
+        elevation: 8,
+        position:'relative',
     },
     text_container:{
         justifyContent: 'center'
     },
     text:{
-        color:'#7C7C7C',
+        color:'#FFFFFF',
         fontSize: 15,
         textAlign:'center',
-
+    },
+    icon:{
+        marginTop:'-15%',
+        top:-45,
+    },
+    age:{
+        color:"#000000",
+        fontSize:10,
+        marginTop:'-15%',
+        top:-45,
     }
 
 })
