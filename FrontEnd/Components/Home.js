@@ -3,6 +3,7 @@ import {StyleSheet, Text, View, ImageBackground, Button, Image, TouchableOpacity
 import Svg, { Ellipse } from "react-native-svg";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import {faSun, faTint} from "@fortawesome/free-solid-svg-icons";
+import ProgressCircle from 'react-native-progress-circle';
 
 
 
@@ -43,41 +44,42 @@ class Home extends React.Component {
                         <View style={styles.container2}>
 
                             <View style={styles.container3}>
-                                <Svg style={styles.ball}>
-                                    <Ellipse
-                                        fill="rgba(230, 230, 230,1)"
-                                        cx={30}
-                                        cy={30}
-                                        rx={30}
-                                        ry={30}
-                                    />
+                                
+                                <ProgressCircle style={styles.ball}
+                                                percent={20}
+                                                radius={31}
+                                                borderWidth={4}
+                                                color="#70BDD9"
+                                                shadowColor="#E6E6E6"
+                                                bgColor="#FFFFFF">
+                                    <FontAwesomeIcon style={styles.water} icon={faTint}/>
+                                </ProgressCircle>
 
-                                </Svg>
-                                <FontAwesomeIcon style={styles.icon} icon={faTint}/>
+
                             </View>
                             <View style={styles.container3}>
-                                <Svg style={styles.ball}>
-                                    <Ellipse
-                                        fill="rgba(230, 230, 230,1)"
-                                        cx={30}
-                                        cy={30}
-                                        rx={30}
-                                        ry={30}
-                                    />
-                                </Svg>
-                                <Text style={styles.age}>15 jours</Text>
+                                <ProgressCircle style={styles.ball}
+                                                percent={20}
+                                                radius={31}
+                                                borderWidth={4}
+                                                color="#70BDD9"
+                                                shadowColor="#E6E6E6"
+                                                bgColor="#FFFFFF">
+                                    <Text style={styles.age}>{'15 jours'}</Text>
+                                </ProgressCircle>
+
                             </View>
                             <View style={styles.container3}>
-                                <Svg style={styles.ball}>
-                                    <Ellipse
-                                        fill="rgba(230, 230, 230,1)"
-                                        cx={30}
-                                        cy={30}
-                                        rx={30}
-                                        ry={30}
-                                    />
-                                </Svg>
-                                <FontAwesomeIcon style={styles.icon} icon={faSun}/>
+                                <ProgressCircle style={styles.ball}
+                                                percent={20}
+                                                radius={31}
+                                                borderWidth={4}
+                                                color="#70BDD9"
+                                                shadowColor="#E6E6E6"
+                                                bgColor="#FFFFFF">
+                                    <FontAwesomeIcon style={styles.sun} icon={faSun}/>
+                                </ProgressCircle>
+
                             </View>
 
                         </View>
@@ -201,15 +203,18 @@ const styles = StyleSheet.create({
         fontSize: 15,
         textAlign:'center',
     },
-    icon:{
+    water:{
         marginTop:'-15%',
-        top:-45,
+        top:5,
+        color:'#70BDD9',
+    },
+    sun:{
+        marginTop:'-15%',
+        top:5,
+        color:'#E1BC31',
     },
     age:{
-        color:"#000000",
-        fontSize:10,
-        marginTop:'-15%',
-        top:-45,
+        fontSize:11,
     }
 
 })
