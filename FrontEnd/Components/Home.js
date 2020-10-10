@@ -1,6 +1,7 @@
 import React from 'react'
-import {StyleSheet, Text, View, ImageBackground, Button, Image} from 'react-native'
+import {StyleSheet, Text, View, ImageBackground, Button, Image, TouchableOpacity} from 'react-native'
 import Svg, { Ellipse } from "react-native-svg";
+
 
 
 
@@ -62,7 +63,11 @@ class Home extends React.Component {
 
                     </View>
 
-
+                    <TouchableOpacity style={styles.button} onPress={()=> {this.props.navigation.navigate('MyPlantInfo') ; console.log('nav test')}}>
+                       <View style={styles.text_container}>
+                           <Text style={styles.text}>Plus d'infos...</Text>
+                       </View>
+                    </TouchableOpacity>
 
                 </View>
             )
@@ -137,6 +142,24 @@ const styles = StyleSheet.create({
         borderRadius:100,
         marginLeft:'auto',
         marginRight: 'auto',
+    },
+    button:{
+        width:130,
+        height:35,
+        backgroundColor:'#FFFFFF',
+        marginTop:'10%',
+        marginBottom:'10%',
+        justifyContent: 'center',
+        borderRadius:16,
+    },
+    text_container:{
+        justifyContent: 'center'
+    },
+    text:{
+        color:'#7C7C7C',
+        fontSize: 15,
+        textAlign:'center',
+
     }
 
 })
