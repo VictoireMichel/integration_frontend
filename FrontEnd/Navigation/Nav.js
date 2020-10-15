@@ -8,6 +8,9 @@ import { faSeedling, faBell, faListUl, faUser, faUserLock} from '@fortawesome/fr
 import PlantsList from "../Components/MyPlants";
 import PlantDetail from "../Components/PlantDetail";
 import Home from "../Components/Home";
+
+//import MyPlants from "../Components/MyPlants";
+
 import Notifications from "../Components/Notifications";
 import MyPlantInfo from "../Components/MyPlantInfo";
 import SignUp from "../Account/SignUp";
