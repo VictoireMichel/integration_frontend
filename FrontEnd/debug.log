@@ -1,0 +1,18 @@
+[1010/161046.967:ERROR:settings.cc(430)] Settings version is not 5
+[1010/161055.063:ERROR:filesystem_win.cc(148)] DeleteFile C:\Users\Rodrigue\AppData\Local\Microsoft\Edge\User Data\Crashpad\reports\043797cf-1290-4a8b-afbd-54fb590c5330.dmp: Le processus ne peut pas accéder au fichier car ce fichier est utilisé par un autre processus. (0x20)
+[1010/163048.166:ERROR:directory_reader_win.cc(43)] FindFirstFile: Le chemin d’accès spécifié est introuvable. (0x3)
+[1010/163640.434:ERROR:minidumpwritedump_with_crashpad_info.cc(452)] Failed to call MiniDumpWriteDump: Le fichier de pagination est insuffisant pour terminer cette opération. (0x800705AF)
+[1010/163640.438:ERROR:minidumpwritedump_with_crashpad_info.cc(661)] Failed to write minidump file
+[1010/163640.438:ERROR:crash_report_exception_handler.cc(134)] TryMiniDumpWriteDumpWithCrashpadInfo failed
+[1010/163640.466:ERROR:process_info.cc(359)] UncheckedAllocate
+[1010/163640.606:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\Rodrigue\AppData\Local\Microsoft\Edge\User Data\Crashpad\attachments\bc7b1518-616b-4c36-97d8-1e5fed6891e1: Le chemin d’accès spécifié est introuvable. (0x3)
+[1010/171457.786:ERROR:directory_reader_win.cc(43)] FindFirstFile: Le chemin d’accès spécifié est introuvable. (0x3)
+[1010/192143.505:ERROR:filesystem_win.cc(148)] DeleteFile C:\Users\Rodrigue\AppData\Local\Microsoft\Edge\User Data\Crashpad\reports\ff414e3e-8e10-4383-820b-a837e96994e7.dmp: Le processus ne peut pas accéder au fichier car ce fichier est utilisé par un autre processus. (0x20)
+[1010/192143.515:ERROR:minidumpwritedump_with_crashpad_info.cc(452)] Failed to call MiniDumpWriteDump: Le fichier de pagination est insuffisant pour terminer cette opération. (0x800705AF)
+[1010/192143.516:ERROR:minidumpwritedump_with_crashpad_info.cc(661)] Failed to write minidump file
+[1010/192143.516:ERROR:crash_report_exception_handler.cc(134)] TryMiniDumpWriteDumpWithCrashpadInfo failed
+[1010/192143.518:ERROR:process_info.cc(359)] UncheckedAllocate
+[1010/192143.541:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\Rodrigue\AppData\Local\Microsoft\Edge\User Data\Crashpad\attachments\ffa82f66-e658-44aa-8e98-78312e2d85a8: Le chemin d’accès spécifié est introuvable. (0x3)
+[1011/215852.554:ERROR:directory_reader_win.cc(43)] FindFirstFile: Le chemin d’accès spécifié est introuvable. (0x3)
+[1011/221915.712:ERROR:directory_reader_win.cc(43)] FindFirstFile: Le chemin d’accès spécifié est introuvable. (0x3)
+[1011/224225.493:ERROR:directory_reader_win.cc(43)] FindFirstFile: Le chemin d’accès spécifié est introuvable. (0x3)
