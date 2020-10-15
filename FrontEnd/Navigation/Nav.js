@@ -10,7 +10,7 @@ import PlantDetail from "../Components/PlantDetail";
 
 
 import Home from "../Components/Home";
-import MyPlants from "../Components/MyPlants";
+//import MyPlants from "../Components/MyPlants";
 
 import Notifications from "../Components/Notifications";
 import MyPlantInfo from "../Components/MyPlantInfo"
