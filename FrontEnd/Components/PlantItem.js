@@ -16,7 +16,7 @@ class PlantItem extends React.Component {
                     />
                 </View>
                 <View style={styles.text_container}>
-                    <Text style={styles.listItem_text}>{plant.nom}</Text>
+                    <Text style={styles.listItem_text}>{plant.name}</Text>
                 </View>
 
             </TouchableOpacity>

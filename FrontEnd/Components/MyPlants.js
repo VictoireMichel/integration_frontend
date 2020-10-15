@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native'
 import PlantItem from "./PlantItem";
+import { getPlantsFromApi } from '../GetDataFromApi/GetDataFromApi'
 
 class PlantsList extends React.Component {
 
@@ -70,8 +71,21 @@ class PlantsList extends React.Component {
                     croissance: '25',
                     saison: '1',
                 }
-            ]
+            ],
+            isLoading: false,
+            plantsListApi: []
         }
+    }
+
+    componentDidMount() {
+        this.setState({
+            isLoading: true
+        })
+        getPlantsFromApi().then(data => {
+            this.setState({
+                plantsListApi: data
+            })
+        })
     }
 
 
@@ -82,8 +96,8 @@ class PlantsList extends React.Component {
     }
 
     _loadListItems= () => {
-        if (this.state.plantsList.length > 0){
-            return this.state.plantsList.map(item => {
+        if (this.state.plantsListApi.length > 0){
+            return this.state.plantsListApi.map(item => {
                 return(
                     <PlantItem
                         key={item.id}
@@ -96,6 +110,8 @@ class PlantsList extends React.Component {
     }
 
     render() {
+        //this._loadPlants()
+        console.log(this.state.plantsListApi)
         return (
             <View>
 
@@ -105,7 +121,8 @@ class PlantsList extends React.Component {
                     ></TextInput>
 
                 <ScrollView style={styles.scrollView_container}>
-                    {this._loadListItems()}
+                    {this.state.isLoading ? (this._loadListItems()) : (null)}
+
                 </ScrollView>
 
             </View>
