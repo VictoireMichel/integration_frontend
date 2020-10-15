@@ -1,28 +1,23 @@
 import React from 'react';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import {createAppContainer} from 'react-navigation';
-
 import {createStackNavigator} from 'react-navigation-stack';
-//import {Image, StyleSheet} from "react-native";
-//import Accueil from "../Components/Accueil";
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faSeedling, faBell, faListUl, faUser, faUserLock} from '@fortawesome/free-solid-svg-icons'
+
 import PlantsList from "../Components/MyPlants";
 import PlantDetail from "../Components/PlantDetail";
-
-
 import Home from "../Components/Home";
-import MyPlants from "../Components/MyPlants";
+
+//import MyPlants from "../Components/MyPlants";
 
 import Notifications from "../Components/Notifications";
-import MyPlantInfo from "../Components/MyPlantInfo"
-
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faSeedling, faBell, faListUl} from '@fortawesome/free-solid-svg-icons'
-
+import MyPlantInfo from "../Components/MyPlantInfo";
+import SignUp from "../Account/SignUp";
+import SignIn from "../Account/SignIn";
 
 
-
-
-
+//-------------------------------------------- Route Acceuil ----------------------------------
 const AcceuilStackNavigator = createStackNavigator({
     Acceuil: {
         screen: Home,
@@ -47,12 +42,12 @@ const AcceuilStackNavigator = createStackNavigator({
         }
     }
 })
-
-
+//-------------------------------------- Route Liste de plantes ---------------------------------
 const PlantsListStackNavigator = createStackNavigator({
     PlantsList: {
         screen: PlantsList,
         navigationOptions: {
+            headerShown: false,
             title: 'List de plante',
             headerTitleStyle: {textAlign: 'center'}
         }
@@ -62,6 +57,7 @@ const PlantsListStackNavigator = createStackNavigator({
     }
 })
 
+//-------------------------------------------- Navigation du bas ----------------------------------
 const TabNavigator = createBottomTabNavigator({
     Acceuil: {
         screen: AcceuilStackNavigator,
@@ -76,7 +72,6 @@ const TabNavigator = createBottomTabNavigator({
         navigationOptions: {
             tabBarIcon: () => {
                 return <FontAwesomeIcon icon={ faListUl } />
-
             }
         }
     },
@@ -85,6 +80,24 @@ const TabNavigator = createBottomTabNavigator({
         navigationOptions: {
             tabBarIcon: () => {
                 return <FontAwesomeIcon icon={ faBell } />
+
+            }
+        }
+    },
+    SignUp: {
+        screen: SignUp,
+        navigationOptions: {
+            tabBarIcon: () => {
+                return <FontAwesomeIcon icon={ faUser } />
+
+            }
+        }
+    },
+    SignIn: {
+        screen: SignIn,
+        navigationOptions: {
+            tabBarIcon: () => {
+                return <FontAwesomeIcon icon={ faUserLock } />
 
             }
         }
@@ -97,12 +110,28 @@ const TabNavigator = createBottomTabNavigator({
         showIcon: true // On informe le TabNavigator qu'on souhaite afficher les icônes définis
     }
 })
-/*const styles = StyleSheet.create({
-    icon: {
-        width: 30,
-        height: 30
-    }
-})*/
 
+//----------------------------------- Option de navigation pour l'acceuil ----------------------------------
+AcceuilStackNavigator.navigationOptions = ({ navigation }) => {
+    let tabBarVisible = true;
+    if (navigation.state.index > 0) {
+        tabBarVisible = false;
+    }
+
+    return {
+        tabBarVisible,
+    };
+}
+//------------------------------ Option de navigation pour la liste de plantes --------------------------------
+PlantsListStackNavigator.navigationOptions = ({ navigation }) => {
+    let tabBarVisible = true;
+    if (navigation.state.index > 0) {
+        tabBarVisible = false;
+    }
+
+    return {
+        tabBarVisible,
+    };
+}
 
 export default createAppContainer(TabNavigator)
