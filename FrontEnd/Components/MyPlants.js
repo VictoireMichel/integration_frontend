@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native'
+import { StyleSheet, View, TextInput, ScrollView } from 'react-native'
 import PlantItem from "./PlantItem";
 import { getPlantsFromApi } from '../GetDataFromApi/GetDataFromApi'
 
