@@ -1,5 +1,5 @@
 import React from 'react'
-import {StyleSheet, Text, View, ImageBackground, Button, Image, TouchableOpacity} from 'react-native'
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native'
 import Svg, { Ellipse } from "react-native-svg";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import {faSun, faTint} from "@fortawesome/free-solid-svg-icons";
@@ -37,7 +37,7 @@ class Home extends React.Component {
                             <View style={styles.container3}>
                                 
                                 <ProgressCircle style={styles.ball}
-                                                percent={34}
+                                                percent={34} // ici => données de la plante qu'on devra récupérer
                                                 radius={31}
                                                 borderWidth={4}
                                                 color="#70BDD9"
@@ -50,7 +50,7 @@ class Home extends React.Component {
                             </View>
                             <View style={styles.container3}>
                                 <ProgressCircle style={styles.ball}
-                                                percent={15}
+                                                percent={15} // ici => données de la plante qu'on devra récupérer
                                                 radius={31}
                                                 borderWidth={4}
                                                 color="#A2A2A2"
@@ -62,7 +62,7 @@ class Home extends React.Component {
                             </View>
                             <View style={styles.container3}>
                                 <ProgressCircle style={styles.ball}
-                                                percent={75}
+                                                percent={75} // ici => données de la plante qu'on devra récupérer
                                                 radius={31}
                                                 borderWidth={4}
                                                 color="#E1BC31"
