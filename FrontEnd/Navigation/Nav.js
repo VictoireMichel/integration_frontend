@@ -1,20 +1,20 @@
 import React from 'react';
+import { StyleSheet} from 'react-native'
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faSeedling, faBell, faListUl, faUser, faUserLock} from '@fortawesome/free-solid-svg-icons'
+import AnimatedTabBar, {TabsConfigsType} from "curved-bottom-navigation-bar";
 
 import PlantsList from "../Components/MyPlants";
 import PlantDetail from "../Components/PlantDetail";
 import Home from "../Components/Home";
-
-//import MyPlants from "../Components/MyPlants";
-
 import Notifications from "../Components/Notifications";
 import MyPlantInfo from "../Components/MyPlantInfo";
 import SignUp from "../Account/SignUp";
 import SignIn from "../Account/SignIn";
+
 
 
 //-------------------------------------------- Route Acceuil ----------------------------------
@@ -22,6 +22,7 @@ const AcceuilStackNavigator = createStackNavigator({
     Acceuil: {
         screen: Home,
         navigationOptions: {
+            headerShown: false,
             title: 'Ma Plante',
             headerTitleStyle:{
                 textAlign:'center',
@@ -31,8 +32,6 @@ const AcceuilStackNavigator = createStackNavigator({
 
             },
             headerTintColor:"#000000",
-
-
         }
     },
     MyPlantInfo:{
@@ -47,15 +46,22 @@ const PlantsListStackNavigator = createStackNavigator({
     PlantsList: {
         screen: PlantsList,
         navigationOptions: {
-            headerShown: false,
-            title: 'List de plante',
-            headerTitleStyle: {textAlign: 'center'}
+            headerShown: false, // Permet de cacher le header
         }
     },
     PlantDetail: {
-        screen: PlantDetail
+        screen: PlantDetail,
+        navigationOptions: {
+            title: 'Détails sur la plante',
+            headerStyle:{
+                backgroundColor: "#f1f1f1",
+
+            },
+        }
     }
 })
+
+
 
 //-------------------------------------------- Navigation du bas ----------------------------------
 const TabNavigator = createBottomTabNavigator({
@@ -63,7 +69,7 @@ const TabNavigator = createBottomTabNavigator({
         screen: AcceuilStackNavigator,
         navigationOptions: {
             tabBarIcon: () => {
-                return <FontAwesomeIcon icon={ faSeedling } />
+                return <FontAwesomeIcon icon={ faSeedling } /> // style={styles.icon}
             }
         }
     },
@@ -90,7 +96,7 @@ const TabNavigator = createBottomTabNavigator({
             tabBarIcon: () => {
                 return <FontAwesomeIcon icon={ faUser } />
 
-            }
+            },
         }
     },
     SignIn: {
@@ -99,15 +105,16 @@ const TabNavigator = createBottomTabNavigator({
             tabBarIcon: () => {
                 return <FontAwesomeIcon icon={ faUserLock } />
 
-            }
+            },
         }
     }
 },{
     tabBarOptions: {
         activeBackgroundColor: '#588B43', // Couleur d'arrière-plan de l'onglet sélectionné
-        inactiveBackgroundColor: '#FFFFFF', // Couleur d'arrière-plan des onglets non sélectionnés
+        inactiveBackgroundColor: '#f1f1f1', // Couleur d'arrière-plan des onglets non sélectionnés
         showLabel: false, // On masque les titres
-        showIcon: true // On informe le TabNavigator qu'on souhaite afficher les icônes définis
+        showIcon: true, // On informe le TabNavigator qu'on souhaite afficher les icônes définis
+
     }
 })
 
@@ -133,5 +140,17 @@ PlantsListStackNavigator.navigationOptions = ({ navigation }) => {
         tabBarVisible,
     };
 }
+
+const styles = StyleSheet.create({
+   icon: {
+       fontSize: 5,
+       color: '#fff',
+       backgroundColor: '#588B43',
+       //padding: 30,
+       //paddingTop: 55,
+       //paddingRight: 40,
+       //borderRadius: 10
+   }
+});
 
 export default createAppContainer(TabNavigator)

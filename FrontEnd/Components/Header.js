@@ -25,10 +25,14 @@ class Header extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "#588B43",
-        height: 80,
+        backgroundColor: "#588B43", //#009387
         flexDirection: 'row',
-        paddingTop: 30
+        paddingTop: 25,
+        borderBottomEndRadius: 20,
+        borderBottomStartRadius: 20,
+        height: 75,
+        elevation: 5,
+        position:'relative',
     },
     container_title: {
         flex: 1,
