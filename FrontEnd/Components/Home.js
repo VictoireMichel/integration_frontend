@@ -5,10 +5,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import {faSun, faTint} from "@fortawesome/free-solid-svg-icons";
 import ProgressCircle from 'react-native-progress-circle';
 
+
+
 class Home extends React.Component {
+
+
 
         render()
         {
+
+
             return (
                 <View style={styles.background}>
                     <View style={styles.container}>

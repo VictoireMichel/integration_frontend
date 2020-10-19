@@ -4,20 +4,20 @@ import {Button, Image} from "react-native-web";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faCog } from '@fortawesome/free-solid-svg-icons'
 
+import { DrawerActions } from '@react-navigation/native';
+
 class Header extends React.Component {
 
     render() {
         return (
             <View style={styles.container}>
-                <View style={styles.container_title}>
-                    <Text style={styles.title_text}>E - Grow</Text>
-
-                </View>
                 <View style={styles.container_icon}>
-                   <FontAwesomeIcon style={styles.favorite_image} icon={ faCog } />
+                    <FontAwesomeIcon
+                    onPress={()=>{this.props.navigation.dispatch(DrawerActions.openDrawer())}} style={styles.favorite_image} icon={ faCog } />
                 </View>
-
-
+                <View style={styles.container_title}>
+                    <Text style={styles.title_text}>EGrow</Text>
+                </View>
             </View>
         )
     }
@@ -25,18 +25,19 @@ class Header extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "#588B43",
-        height: 80,
+        backgroundColor: "#588B43", //#009387
         flexDirection: 'row',
-        paddingTop: 30
+        paddingTop: 25,
+        height: 75,
+        elevation: 5,
+        position:'relative',
     },
     container_title: {
         flex: 1,
         alignItems:'center',
     },
     container_icon: {
-        alignItems:'flex-end',
-        paddingRight: 10
+        paddingLeft: 10,
     },
     title_text: {
         //fontFamily: "allerta-stencil-regular",
@@ -46,13 +47,13 @@ const styles = StyleSheet.create({
         fontSize: 28,
         textAlign: "center",
         letterSpacing: 1.15,
-        left:18,
+        right: '3%',
 
     },
     favorite_image: {
         color:'white',
-        marginRight: 5,
-        marginTop: 10,
+        marginTop:'80%',
+        left:'10%'
     }
 })
 
