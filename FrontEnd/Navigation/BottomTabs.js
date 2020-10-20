@@ -1,7 +1,7 @@
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import {faSeedling, faBell, faListUl, faUser, faUserLock, faCog} from '@fortawesome/free-solid-svg-icons'
+import {faSeedling, faBell, faListUl, faUser, faUserLock} from '@fortawesome/free-solid-svg-icons'
 
 
 import PlantsList from "../Components/MyPlants";
@@ -23,7 +23,7 @@ const AcceuilStackNavigator = createStackNavigator({
     Acceuil: {
         screen: Home,
         navigationOptions: {
-            headerShown: false,
+            //headerShown: true,
             title: 'Ma Plante',
             headerTitleStyle:{
                 textAlign:'center',
@@ -38,6 +38,7 @@ const AcceuilStackNavigator = createStackNavigator({
     MyPlantInfo:{
         screen: MyPlantInfo,
         navigationOptions: {
+            headerShown: true,
             title: 'Informations'
         }
     }
@@ -55,9 +56,9 @@ const PlantsListStackNavigator = createStackNavigator({
         navigationOptions: {
             title: 'Détails sur la plante',
             headerStyle:{
-                backgroundColor: "#f1f1f1",
-
+                backgroundColor: "#f1f1f1"
             },
+            headerShown: true
         }
     }
 })
