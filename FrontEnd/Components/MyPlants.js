@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View, TextInput, ScrollView } from 'react-native'
+import { StyleSheet, View, TextInput, ScrollView, ActivityIndicator } from 'react-native'
 import PlantItem from "./PlantItem";
 import { getPlantsFromApi } from '../GetDataFromApi/GetDataFromApi'
 
@@ -8,93 +8,37 @@ class PlantsList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            plantsList:[
-                {
-                    id: 1,
-                    nom: 'Persil',
-                    croissance: '25',
-                    saison: '1',
-                    description: "C'est une plante verte hé oui"
-                },
-                {
-                    id: 2,
-                    nom: 'Origan',
-                    croissance: '25',
-                    saison: '1',
-                    description: "C'est une plante verte hé oui"
-                },
-                {
-                    id: 3,
-                    nom: 'Thym',
-                    croissance: '25',
-                    saison: '1',
-                    description: "C'est une plante verte hé oui"
-                },
-                {
-                    id: 4,
-                    nom: 'Ail',
-                    croissance: '25',
-                    saison: '1',
-                    description: "C'est une plante verte hé oui"
-                },
-                {
-                    id: 5,
-                    nom: 'Oignon',
-                    croissance: '25',
-                    saison: '1',
-                    description: "C'est une plante verte hé oui"
-                },
-                {
-                    id: 6,
-                    nom: 'Ciboulette',
-                    croissance: '25',
-                    saison: '1',
-                    description: "C'est une plante verte hé oui"
-                },
-                {
-                    id: 7,
-                    nom: 'Echalotte',
-                    croissance: '25',
-                    saison: '1',
-                    description: "C'est une plante verte hé oui"
-                },
-                {
-                    id: 8,
-                    nom: 'Cerfeuil',
-                    croissance: '25',
-                    saison: '1',
-                    description: "C'est une plante verte hé oui"
-                },
-                {
-                    id: 9,
-                    nom: 'Fenouil',
-                    croissance: '25',
-                    saison: '1',
-                }
-            ],
             isLoading: false,
             plantsListApi: []
         }
     }
 
+    /**
+     * C'est dans cette fonction que ce fait l'appel à l'API
+     */
     componentDidMount() {
-        this.setState({
-            isLoading: true
-        })
+        this.setState({ isLoading: true }) // Lancemenent du chargement
         getPlantsFromApi().then(data => {
             this.setState({
-                plantsListApi: data
+                plantsListApi: data,
+                isLoading: false // Arrêt du chargement
             })
         })
     }
 
-
-
+    /**
+     * Cette fonction permet de naviguer dans le détail de chaque plante
+     * lorsque l'on click desus
+     */
     _displayDetailForPlant = (idPlant) => {
         console.log("Display plant " + idPlant)
         this.props.navigation.navigate('PlantDetail', {idPlant: idPlant})
     }
 
+    /**
+     * Cette fonction parcours la liste de film précédement remplie en appelant
+     * le componsant "PlantItem"
+     */
     _loadListItems= () => {
         if (this.state.plantsListApi.length > 0){
             return this.state.plantsListApi.map(item => {
@@ -110,28 +54,25 @@ class PlantsList extends React.Component {
     }
 
     render() {
-        //this._loadPlants()
-        console.log(this.state.plantsListApi)
+        console.log(this.state.isLoading)
         return (
             <View>
+                <TextInput placeholder="Rechercher..." style={styles.Search}/>
 
-                    <TextInput
-                        placeholder="Rechercher..."
-                        style={styles.rechercher}
-                    ></TextInput>
-
-                <ScrollView style={styles.scrollView_container}>
-                    {this.state.isLoading ? (this._loadListItems()) : (null)}
-
-                </ScrollView>
-
+                {this.state.isLoading ?
+                    (<View style={styles.loading_container}>
+                        <ActivityIndicator size='large' color="#0000ff" />
+                    </View>) :
+                    (<ScrollView style={styles.scrollView_container}>
+                        {this._loadListItems()}
+                    </ScrollView>)}
             </View>
         )
     }
 }
 
 const styles = StyleSheet.create({
-    rechercher: {
+    Search: {
         marginRight: 'auto',
         marginLeft: 'auto',
         marginTop: 20,
@@ -151,9 +92,18 @@ const styles = StyleSheet.create({
     scrollView_container: {
         marginRight: 'auto',
         marginLeft: 'auto',
-        marginBottom: 50,
+        marginBottom: 75,
         paddingRight: 10,
         paddingLeft: 10
+    },
+    loading_container: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 100,
+        bottom: 0,
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 })
 
