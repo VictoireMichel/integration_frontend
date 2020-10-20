@@ -1,49 +1,76 @@
 import React from 'react'
-import { StyleSheet, View, Text, Image, ScrollView } from 'react-native'
-import PlantsList from "./PlantsDatas";
+import { StyleSheet, View, Text, Image, ScrollView, ActivityIndicator } from 'react-native'
+import { getPlantsByIDFromApi } from '../GetDataFromApi/GetDataFromApi'
 
 class PlantDetail extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            idPlant : null
+            idPlant: null,
+            plant : [],
+            isLoading:true
         }
     }
 
     componentDidMount() {
 
-        if(this.props.navigation.state.params.idPlant){
+        getPlantsByIDFromApi(this.props.navigation.state.params.idPlant).then(data => {
             this.setState({
-                idPlant : this.props.navigation.state.params.idPlant
+                idPlant: this.props.navigation.state.params.idPlant,
+                plant:data,
+                isLoading: false
             })
+        })
+    }
+
+    /**
+     *
+     * Fonction affichant des informations (venant de l'API) à propos de la plante selectionnée parmi la liste des plantes.
+     *
+     * @returns {JSX.Element}
+     *
+     */
+    _displayPlant() {
+        const plante = this.state.plant
+        if(plante.findIndex(item => item.id === this.state.idPlant ) !== -1){
+            return (
+                <View style={styles.main_container}>
+                    <Text style={styles.nomPlante}>{plante[0].name}</Text>
+                    <Image
+                        style={styles.image}
+                        source={require('../assets/Images/persil.png')} //Image mis par défaut pour l'instant
+                    />
+
+                    <Text style={styles.description_title}>Croissance(jours)</Text>
+                    <Text style={styles.description_text}>{plante[0].growTime}</Text>
+                    <Text style={styles.description_title}>Description</Text>
+                    <Text style={styles.description_text}>{plante[0].description}</Text>
+                    <Text style={styles.description_title}>Sol</Text>
+                    <Text style={styles.description_text}>{plante[0].soil}</Text>
+                    <Text style={styles.description_title}>Luminosité demandée</Text>
+                    <Text style={styles.description_text}>{plante[0].luminosity}</Text>
+                    <Text style={styles.description_title}>Entretien</Text>
+                    <Text style={styles.description_text}>{plante[0].maintenance}</Text>
+                </View>
+            )
+
         }
     }
 
 
-    _displayPlant(){
-        if(PlantsList.findIndex(item => item.id === this.state.idPlant ) !== -1){
-            const tempRealId = PlantsList[this.state.idPlant - 1] //Variable temporaire le temps que je sache comment correctement récuper l'id par index
-            //console.log(tempRealId)
+    /**
+     *
+     * Fonction permettant d'afficher une page de loading le temps d'aller chercher les informations dans l'API.
+     *
+     * @returns {JSX.Element}
+     *
+     */
+    _displayLoading() {
+        if (this.state.isLoading) {
             return (
-                <View style={styles.main_container}>
-                    <Text style={styles.nomPlante}>{tempRealId.nom} </Text>
-                    <Image
-                        style={styles.image}
-                        source={require('../assets/Images/persil.png')}
-
-                    />
-
-                    <Text style={styles.description_title}>Croissance(jours)</Text>
-                    <Text style={styles.description_text}>{tempRealId.croissance}</Text>
-                    <Text style={styles.description_title}>Description</Text>
-                    <Text style={styles.description_text}>{tempRealId.description}</Text>
-                    <Text style={styles.description_title}>Sol</Text>
-                    <Text style={styles.description_text}>{tempRealId.sol}</Text>
-                    <Text style={styles.description_title}>Luminosité demandée</Text>
-                    <Text style={styles.description_text}>{tempRealId.luminosité}</Text>
-                    <Text style={styles.description_title}>Entretien</Text>
-                    <Text style={styles.description_text}>{tempRealId.entretien}</Text>
+                <View style={styles.loading_container}>
+                    <ActivityIndicator size='large' />
                 </View>
             )
         }
@@ -52,12 +79,14 @@ class PlantDetail extends React.Component {
 
 
 
+
     render() {
         const idPlant = this.props.navigation.state.params.idPlant
-        //console.log(this.state.idPlant)
+        //console.log(this.state.idPlant + "Hello")
         return (
             <ScrollView>
                 <View style={styles.main_container}>
+                    {this._displayLoading()}
                     {this._displayPlant()}
                 </View>
             </ScrollView>
@@ -70,6 +99,15 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    loading_container: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     text: {
         fontSize: 25
