@@ -47,7 +47,7 @@ const Stack = createStackNavigator(
     EGrow: {
         screen: TopNav,
         navigationOptions:{
-            title: 'E-Grow',
+            title: 'EGrow',
             headerTintColor:'#FFFFFF',
             headerTitleAlign:'center',
             headerStyle:{
