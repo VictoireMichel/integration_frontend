@@ -2,15 +2,13 @@ import React from 'react';
 import {StyleSheet, View, Text, SafeAreaView, ScrollView} from 'react-native'
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
-
 import {createDrawerNavigator} from "react-navigation-drawer";
-
 import SignIn from "../Account/SignIn";
-
-
 import HamburgerIcon from "../Components/HamburgerIcon";
-
 import BottomTabs from "./BottomTabs";
+import SignUp from "../Account/SignUp";
+import {FontAwesomeIcon} from "@fortawesome/react-native-fontawesome";
+import {faUser, faUserLock} from "@fortawesome/free-solid-svg-icons";
 
 
 
@@ -24,16 +22,16 @@ const TopNav = createDrawerNavigator(
         initialRouteName:'Tabs',
         contentComponent: props => {
             return (
-                <ScrollView>
-                    <SafeAreaView forceInset={{top:'always', horizontal:'never'}}>
-                        <Text onPress={()=> {props.navigation.navigate("SignIn")}}>
+                <View style={styles.slide}>
+                    <View>
+                        <Text style={styles.text} onPress={()=> {props.navigation.navigate("SignIn")}}>
                             Sign In
                         </Text>
-                        <Text onPress={()=>{props.navigation.navigate("SignUp")}}>
+                        <Text style={styles.text} onPress={()=>{props.navigation.navigate("SignUp")}}>
                             Sign Up
                         </Text>
-                    </SafeAreaView>
-                </ScrollView>
+                    </View>
+                </View>
 
             )
         }
@@ -47,7 +45,8 @@ const Stack = createStackNavigator(
     EGrow: {
         screen: TopNav,
         navigationOptions:{
-            title: 'EGrow',
+            headerShown: true,
+            title: 'eGrow',
             headerTintColor:'#FFFFFF',
             headerTitleAlign:'center',
             headerStyle:{
@@ -56,25 +55,49 @@ const Stack = createStackNavigator(
             headerLeft: ()=> <HamburgerIcon/>
         },
     },
+        SignUp: {
+            screen: SignUp,
+            navigationOptions: {
 
+                tabBarIcon: () => {
+                    return <FontAwesomeIcon icon={ faUser } />
+                },
+
+            }
+        },
+        SignIn: {
+            screen: SignIn,
+            navigationOptions: {
+                tabBarIcon: () => {
+                    return <FontAwesomeIcon icon={ faUserLock } />
+                },
+            }
+        }
     }
 )
 
 //----------------------------------- Styles ----------------------------------
 
 const styles = StyleSheet.create({
-    icon: {
-        fontSize: 5,
-        color: '#fff',
-        backgroundColor: '#588B43',
-        //padding: 30,
-        //paddingTop: 55,
-        //paddingRight: 40,
-        //borderRadius: 10
+    slide:{
+        flex:1,
+        flexDirection: "column",
+        backgroundColor: "#FFFFFF",
+        justifyContent: 'space-around',
+
+
     },
-    favorite_image: {
-        color:'#FFFFFF',
-        justifyContent:'flex-end'
+    text:{
+        backgroundColor: "#284F35",
+        color: "#FFFFFF",
+        borderWidth: 0,
+        borderRadius :5,
+        borderColor : "#FFFFFF",
+        margin: 10,
+        padding: 10,
+        alignItems: 'center',
+        justifyContent:'center',
+        textAlign: 'center',
     }
 });
 
