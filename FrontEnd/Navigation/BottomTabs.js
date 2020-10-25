@@ -9,7 +9,8 @@ import PlantDetail from "../Components/PlantDetail";
 import Home from "../Components/Home";
 import Notifications from "../Components/Notifications";
 import MyPlantInfo from "../Components/MyPlantInfo";
-
+import SignUp from "../Account/SignUp";
+import SignIn from "../Account/SignIn";
 
 import {createBottomTabNavigator} from "react-navigation-tabs";
 import React from "react";
@@ -22,7 +23,7 @@ const AcceuilStackNavigator = createStackNavigator({
     Acceuil: {
         screen: Home,
         navigationOptions: {
-            headerShown: false,
+            //headerShown: true,
             title: 'Ma Plante',
             headerTitleStyle:{
                 textAlign:'center',
@@ -89,13 +90,31 @@ const TabNavigator = createBottomTabNavigator({
             }
         }
     },
+    SignUp: {
+        screen: SignUp,
+        navigationOptions: {
+            tabBarIcon: () => {
+                return <FontAwesomeIcon icon={ faUser } />
 
+            },
+        }
+    },
+    SignIn: {
+        screen: SignIn,
+        navigationOptions: {
+            tabBarIcon: () => {
+                return <FontAwesomeIcon icon={ faUserLock } />
+
+            },
+        }
+    }
 },{
     tabBarOptions: {
         activeBackgroundColor: '#588B43', // Couleur d'arrière-plan de l'onglet sélectionné
         inactiveBackgroundColor: '#f1f1f1', // Couleur d'arrière-plan des onglets non sélectionnés
         showLabel: false, // On masque les titres
         showIcon: true, // On informe le TabNavigator qu'on souhaite afficher les icônes définies
+
     }
 })
 
@@ -125,7 +144,19 @@ PlantsListStackNavigator.navigationOptions = ({ navigation }) => {
 //----------------------------------- Styles ------------------------------------------------------------------
 
 const styles = StyleSheet.create({
-
+    icon: {
+        fontSize: 5,
+        color: '#fff',
+        backgroundColor: '#588B43',
+        //padding: 30,
+        //paddingTop: 55,
+        //paddingRight: 40,
+        //borderRadius: 10
+    },
+    favorite_image: {
+        color:'#FFFFFF',
+        justifyContent:'flex-end'
+    }
 });
 
 export default createAppContainer(TabNavigator)
