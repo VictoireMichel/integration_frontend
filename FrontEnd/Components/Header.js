@@ -4,19 +4,16 @@ import {Button, Image} from "react-native-web";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faCog } from '@fortawesome/free-solid-svg-icons'
 
-import { DrawerActions } from '@react-navigation/native';
-
 class Header extends React.Component {
 
     render() {
         return (
             <View style={styles.container}>
                 <View style={styles.container_icon}>
-                    <FontAwesomeIcon
-                    onPress={()=>{this.props.navigation.dispatch(DrawerActions.openDrawer())}} style={styles.favorite_image} icon={ faCog } />
+                    <FontAwesomeIcon style={styles.favorite_image} icon={ faCog } />
                 </View>
                 <View style={styles.container_title}>
-                    <Text style={styles.title_text}>EGrow</Text>
+                    <Text style={styles.title_text}>eGrow</Text>
                 </View>
             </View>
         )
