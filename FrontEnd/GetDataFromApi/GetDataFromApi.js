@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 /*
 *
@@ -6,11 +6,11 @@ import React from 'react';
 * reponse.json() étant la donnée
 *
 * */
-export function getPlantsFromApi() {
-    const url = 'https://pi2-ephec.herokuapp.com/plants/all';
-    return fetch(url)
-        .then((response) => response.json())
-        .catch((error) => console.log(error))
+export function getPlantsFromApi () {
+  const url = "https://pi2-ephec.herokuapp.com/plants/all";
+  return fetch(url)
+    .then((response) => response.json())
+    .catch((error) => console.log(error));
 }
 
 /*
@@ -19,9 +19,9 @@ export function getPlantsFromApi() {
 * reponse.json() étant la donnée
 *
 * */
-export function getPlantsByIDFromApi(id) {
-    const url = 'https://pi2-ephec.herokuapp.com/plants/one?id=' + id;
-    return fetch(url)
-        .then((response) => response.json())
-        .catch((error) => console.log(error))
+export function getPlantsByIDFromApi (id) {
+  const url = "https://pi2-ephec.herokuapp.com/plants/one?id=" + id;
+  return fetch(url)
+    .then((response) => response.json())
+    .catch((error) => console.log(error));
 }
