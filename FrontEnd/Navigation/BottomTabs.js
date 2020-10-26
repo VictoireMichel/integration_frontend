@@ -14,6 +14,7 @@ import MyPlantInfo from "../Components/MyPlantInfo";
 import {createBottomTabNavigator} from "react-navigation-tabs";
 import React from "react";
 import {StyleSheet} from "react-native";
+import HamburgerIcon from "../Components/HamburgerIcon";
 
 
 
@@ -32,6 +33,10 @@ const AcceuilStackNavigator = createStackNavigator({
 
             },
             headerTintColor:"#000000",
+
+
+
+
         }
     },
     MyPlantInfo:{
@@ -69,7 +74,7 @@ const TabNavigator = createBottomTabNavigator({
         navigationOptions: {
             tabBarIcon: () => {
                 return <FontAwesomeIcon icon={ faSeedling } /> // style={styles.icon}
-            }
+            },
         }
     },
     MyPlants: {
@@ -101,6 +106,7 @@ const TabNavigator = createBottomTabNavigator({
 
 //----------------------------------- Option de navigation pour l'acceuil ----------------------------------
 AcceuilStackNavigator.navigationOptions = ({ navigation }) => {
+
     let tabBarVisible = true;
     if (navigation.state.index > 0) {
         tabBarVisible = false;

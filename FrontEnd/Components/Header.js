@@ -3,7 +3,9 @@ import { StyleSheet, Text, View } from 'react-native'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faCog } from '@fortawesome/free-solid-svg-icons'
 
+
 class Header extends React.Component {
+
 
     render() {
         return (
