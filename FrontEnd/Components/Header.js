@@ -4,7 +4,9 @@ import {Button, Image} from "react-native-web";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faCog } from '@fortawesome/free-solid-svg-icons'
 
+
 class Header extends React.Component {
+
 
     render() {
         return (

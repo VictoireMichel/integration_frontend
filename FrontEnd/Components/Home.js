@@ -7,14 +7,16 @@ import ProgressCircle from 'react-native-progress-circle';
 
 
 
+
 class Home extends React.Component {
 
-
+    // let pots = {};
+    // leService.la requete(idUser)
+    //    .then((resultat) => pots = resultat)
+    //    .catch();
 
         render()
         {
-
-
             return (
                 <View style={styles.background}>
                     <View style={styles.container}>
@@ -93,7 +95,6 @@ class Home extends React.Component {
             )
         }
     }
-
 
 const styles = StyleSheet.create({
     background: {
