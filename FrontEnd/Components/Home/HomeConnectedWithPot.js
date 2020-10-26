@@ -8,7 +8,7 @@ import ProgressCircle from 'react-native-progress-circle';
 
 
 
-class Home extends React.Component {
+class HomeConnectedWithPot extends React.Component {
 
     // let pots = {};
     // leService.la requete(idUser)
@@ -20,7 +20,6 @@ class Home extends React.Component {
             return (
                 <View style={styles.background}>
                     <View style={styles.container}>
-
                         <View>
                             <Svg style={styles.ball1}>
                                 <Ellipse
@@ -30,20 +29,13 @@ class Home extends React.Component {
                                     rx={65}
                                     ry={65}
                                 />
-
                             </Svg>
                             <Text style={styles.title}>Persil</Text>
                             <View style={styles.line}/>
-                            <Image resizeMode='cover' style={styles.parsley} source={require('../assets/Images/persil.png')}/>
-
+                            <Image resizeMode='cover' style={styles.parsley} source={require('../../assets/Images/persil.png')}/>
                         </View>
-
-
-
                         <View style={styles.container2}>
-
                             <View style={styles.container3}>
-                                
                                 <ProgressCircle style={styles.ball}
                                                 percent={34} // ici => données de la plante qu'on devra récupérer
                                                 radius={31}
@@ -53,8 +45,6 @@ class Home extends React.Component {
                                                 bgColor="#FFFFFF">
                                     <FontAwesomeIcon style={styles.water} icon={faTint} size={25}/>
                                 </ProgressCircle>
-
-
                             </View>
                             <View style={styles.container3}>
                                 <ProgressCircle style={styles.ball}
@@ -66,7 +56,6 @@ class Home extends React.Component {
                                                 bgColor="#FFFFFF">
                                     <Text style={styles.age}>{'15 jours'}</Text>
                                 </ProgressCircle>
-
                             </View>
                             <View style={styles.container3}>
                                 <ProgressCircle style={styles.ball}
@@ -78,19 +67,14 @@ class Home extends React.Component {
                                                 bgColor="#FFFFFF">
                                     <FontAwesomeIcon style={styles.sun} icon={faSun} size={25}/>
                                 </ProgressCircle>
-
                             </View>
-
                         </View>
-
                     </View>
-
                     <TouchableOpacity style={styles.button} onPress={()=> {this.props.navigation.navigate('MyPlantInfo') ; console.log('nav test')}}>
                        <View style={styles.text_container}>
                            <Text style={styles.text}>Plus d'infos</Text>
                        </View>
                     </TouchableOpacity>
-
                 </View>
             )
         }
@@ -117,9 +101,6 @@ const styles = StyleSheet.create({
         //android
         elevation: 8,
         position:'relative',
-
-
-
     },
     container2:{
         marginTop:'auto',
@@ -130,8 +111,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius:20,
-
-
     },
     container3:{
         marginTop:'auto',
@@ -141,7 +120,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius:20,
-
     },
     ball:{
         left: 20,
@@ -205,7 +183,6 @@ const styles = StyleSheet.create({
         marginTop:'-15%',
         top:5,
         color:'#70BDD9',
-
     },
     sun:{
         marginTop:'-15%',
@@ -219,4 +196,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default Home
+export default HomeConnectedWithPot

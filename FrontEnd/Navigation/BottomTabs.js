@@ -6,7 +6,7 @@ import {faSeedling, faBell, faListUl, faUser, faUserLock} from '@fortawesome/fre
 
 import PlantsList from "../Components/MyPlants";
 import PlantDetail from "../Components/PlantDetail";
-import Home from "../Components/Home";
+import HomeConnectedWithPot from "../Components/Home/HomeConnectedWithPot";
 import Notifications from "../Components/Notifications";
 import MyPlantInfo from "../Components/MyPlantInfo";
 
@@ -15,13 +15,15 @@ import {createBottomTabNavigator} from "react-navigation-tabs";
 import React from "react";
 import {StyleSheet} from "react-native";
 import HamburgerIcon from "../Components/HamburgerIcon";
+import HomeConnectedWithoutPot from "../Components/Home/HomeConnectedWithoutPot";
+import HomeNotConnected from "../Components/Home/HomeNotConnected";
 
 
 
 //-------------------------------------------- Route Acceuil ----------------------------------
 const AcceuilStackNavigator = createStackNavigator({
     Acceuil: {
-        screen: Home,
+        screen: HomeConnectedWithPot,
         navigationOptions: {
             headerShown: false,
             title: 'Ma Plante',
@@ -33,10 +35,6 @@ const AcceuilStackNavigator = createStackNavigator({
 
             },
             headerTintColor:"#000000",
-
-
-
-
         }
     },
     MyPlantInfo:{
@@ -45,7 +43,13 @@ const AcceuilStackNavigator = createStackNavigator({
             headerShown: true,
             title: 'Informations'
         }
-    }
+    },
+    PlantsList: {
+        screen: PlantsList,
+        navigationOptions: {
+            headerShown: false, // Permet de cacher le header
+        }
+    },
 })
 //-------------------------------------- Route Liste de plantes ---------------------------------
 const PlantsListStackNavigator = createStackNavigator({
@@ -93,7 +97,7 @@ const TabNavigator = createBottomTabNavigator({
 
             }
         }
-    },
+    }
 
 },{
     tabBarOptions: {
