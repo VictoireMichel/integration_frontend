@@ -9,6 +9,7 @@ class PlantItem extends React.Component {
         style={styles.listItem_container}
         onPress={() => displayDetailForPlant(plant.id)}
       >
+        {/**/}
         <View style={styles.image_container}>
           <Image
             style={styles.image}

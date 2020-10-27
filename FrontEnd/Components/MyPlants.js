@@ -32,7 +32,7 @@ class PlantsList extends React.Component {
      */
     _displayDetailForPlant = (idPlant) => {
         console.log("Display plant " + idPlant)
-        this.props.navigation.navigate('PlantDetail', {idPlant: idPlant})
+        this.props.navigation.navigate('Details')
     }
 
     /**
@@ -54,7 +54,7 @@ class PlantsList extends React.Component {
     }
 
     render() {
-        console.log(this.state.isLoading)
+        console.log(this.props.navigation.navigate)
         return (
             <View>
                 <TextInput placeholder="Rechercher..." style={styles.Search}/>
