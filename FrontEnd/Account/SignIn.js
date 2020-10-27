@@ -51,6 +51,7 @@ class SignIn extends React.Component{
 
 const styles = StyleSheet.create({
     main_container: {
+        paddingTop: 35,
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
