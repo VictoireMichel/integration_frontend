@@ -62,7 +62,7 @@ class SignUp extends React.Component{
                             <Text style={styles.text_bottom}>Vous avez déjà un compte ? </Text>
                         </View>
                         <TouchableOpacity style={styles.container_bottomButton}
-                                          onPress={()=> {this.props.navigation.navigate('SignIn')}}>
+                                          onPress={()=> {this.props.navigation.navigate('Connexion')}}>
                             <Text style={styles.text_button}>
                                 Connexion
                             </Text>

@@ -70,7 +70,7 @@ class HomeConnectedWithPot extends React.Component {
           this.props.navigation.navigate("Details",
               {itemId: 86,
                 otherParam: 'anything you want here'});
-          console.log("nav test");
+          console.log(this.props.navigation);
         }}>
           <View style={styles.text_container}>
             <Text style={styles.text}>Plus d'infos</Text>

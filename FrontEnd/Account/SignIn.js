@@ -38,7 +38,7 @@ class SignIn extends React.Component{
 
                     <View style={styles.main_container}>
                         <Text>Pas encore de compte ?</Text>
-                        <TouchableOpacity onPress={()=> {this.props.navigation.navigate('SignUp')}}>
+                        <TouchableOpacity onPress={()=> {this.props.navigation.navigate('Enregistrement')}}>
                             <Text style={styles.redirect_signin_text}>Enregistrez-vous</Text>
                         </TouchableOpacity>
                     </View>

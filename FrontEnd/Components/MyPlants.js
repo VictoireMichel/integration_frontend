@@ -1,6 +1,5 @@
 import React from 'react'
-import { StyleSheet, View, TextInput, ScrollView, ActivityIndicator } from 'react-native'
-import PlantItem from "./PlantItem";
+import {StyleSheet, View, TextInput, ScrollView, ActivityIndicator, TouchableOpacity, Text, Image} from 'react-native'
 import { getPlantsFromApi } from '../GetDataFromApi/GetDataFromApi'
 
 class PlantsList extends React.Component {
@@ -32,7 +31,7 @@ class PlantsList extends React.Component {
      */
     _displayDetailForPlant = (idPlant) => {
         console.log("Display plant " + idPlant)
-        this.props.navigation.navigate('Details')
+        this.props.navigation.navigate('itemDetail')
     }
 
     /**
@@ -43,18 +42,26 @@ class PlantsList extends React.Component {
         if (this.state.plantsListApi.length > 0){
             return this.state.plantsListApi.map(item => {
                 return(
-                    <PlantItem
-                        key={item.id}
-                        plant={item}
-                        displayDetailForPlant={this._displayDetailForPlant}
-                    />
+                    <TouchableOpacity style={styles.listItem_container} onPress={() => {
+                        this.props.navigation.navigate("Details", {itemId: item.id})}}>
+
+                        <View style={styles.image_container}>
+                            <Image
+                                style={styles.image}
+                                source={require("../assets/Images/BASILIC-detour.png")}
+                            />
+                        </View>
+                        <View style={styles.text_container}>
+                            <Text style={styles.listItem_text}>{item.name}</Text>
+                        </View>
+                    </TouchableOpacity>
                 )
             })
         }
     }
 
     render() {
-        console.log(this.props.navigation.navigate)
+
         return (
             <View>
                 <TextInput placeholder="Rechercher..." style={styles.Search}/>
@@ -104,6 +111,43 @@ const styles = StyleSheet.create({
         bottom: 0,
         alignItems: 'center',
         justifyContent: 'center'
+    },
+//******************************************** Touchable opacity ************************************//
+    listItem_container: {
+        width: 280,
+        height: 90,
+        marginRight: 5,
+        marginLeft: 5,
+        marginTop: 5,
+        marginBottom: 5,
+        backgroundColor: "#F8F8F8",
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        // its for android
+        elevation: 5,
+        position: "relative",
+        borderRadius: 10,
+
+        flexDirection: "row"
+
+    },
+    image_container: {
+        flex: 1
+    },
+    image: {
+        width: 100,
+        height: 80,
+        margin: 5
+    },
+    text_container: {
+        flex: 1,
+        justifyContent: "center"
+
+    },
+    listItem_text: {
+        color: "#121212",
+        fontSize: 18
     }
 })
 

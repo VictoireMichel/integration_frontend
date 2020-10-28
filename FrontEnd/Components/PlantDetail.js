@@ -13,9 +13,9 @@ class PlantDetail extends React.Component {
   }
 
   componentDidMount () {
-    getPlantsByIDFromApi(this.props.navigation.state.params.idPlant).then(data => {
+    getPlantsByIDFromApi(this.props.route.params.itemId).then(data => {
       this.setState({
-        idPlant: this.props.navigation.state.params.idPlant,
+        idPlant: this.props.route.params.itemId,
         plant: data,
         isLoading: false
       });
@@ -30,26 +30,26 @@ class PlantDetail extends React.Component {
      *
      */
   _displayPlant () {
-    const plante = this.state.plant;
-    if (plante.findIndex(item => item.id === this.state.idPlant) !== -1) {
+    const plant = this.state.plant;
+    if (plant.length > 0) {
       return (
         <View style={styles.main_container}>
-          <Text style={styles.nomPlante}>{plante[0].name}</Text>
+          <Text style={styles.nomPlante}>{plant[0].name}</Text>
           <Image
             style={styles.image}
             source={require("../assets/Images/persil.png")} // Image mis par défaut pour l'instant
           />
 
           <Text style={styles.description_title}>Croissance(jours)</Text>
-          <Text style={styles.description_text}>{plante[0].growTime}</Text>
+          <Text style={styles.description_text}>{plant[0].growTime}</Text>
           <Text style={styles.description_title}>Description</Text>
-          <Text style={styles.description_text}>{plante[0].description}</Text>
+          <Text style={styles.description_text}>{plant[0].description}</Text>
           <Text style={styles.description_title}>Sol</Text>
-          <Text style={styles.description_text}>{plante[0].soil}</Text>
+          <Text style={styles.description_text}>{plant[0].soil}</Text>
           <Text style={styles.description_title}>Luminosité demandée</Text>
-          <Text style={styles.description_text}>{plante[0].luminosity}</Text>
+          <Text style={styles.description_text}>{plant[0].luminosity}</Text>
           <Text style={styles.description_title}>Entretien</Text>
-          <Text style={styles.description_text}>{plante[0].maintenance}</Text>
+          <Text style={styles.description_text}>{plant[0].maintenance}</Text>
         </View>
       );
     }
@@ -73,8 +73,6 @@ class PlantDetail extends React.Component {
   }
 
   render () {
-    const idPlant = this.props.navigation.state.params.idPlant;
-    // console.log(this.state.idPlant + "Hello")
     return (
       <ScrollView>
         <View style={styles.main_container}>

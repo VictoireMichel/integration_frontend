@@ -10,7 +10,7 @@ class MyPlantInfo extends React.Component {
                     Bonjour
         </Text>
 
-          <Text>
+          <Text>{/* test qui permet de passer des paramètres d'un Component parent à l'enfant*/}
               itemId: {JSON.stringify(itemId)}
           </Text>
       </View>
