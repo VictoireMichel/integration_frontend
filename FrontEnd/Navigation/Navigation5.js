@@ -11,7 +11,7 @@ import { Container } from 'native-base'
 const BottomTab = createBottomTabNavigator();
 
 //***************************************** BOTTOM NAVIGATION *********************************//
-function Navigation5({ navigation }) { //2nd param : route
+function Navigation5({ navigation }) { // 2nd param : route
     return (
         <Container>
 
