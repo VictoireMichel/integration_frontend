@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Text, Image, ScrollView, ActivityIndicator } from "react-native";
-import { getPlantsByIDFromApi } from "../GetDataFromApi/GetDataFromApi";
+import { getPlantsByIDFromApi } from "../../GetDataFromApi/GetDataFromApi";
 
 class PlantDetail extends React.Component {
   constructor (props) {
@@ -37,7 +37,7 @@ class PlantDetail extends React.Component {
           <Text style={styles.nomPlante}>{plant[0].name}</Text>
           <Image
             style={styles.image}
-            source={require("../assets/Images/persil.png")} // Image mis par défaut pour l'instant
+            source={require("../../assets/Images/persil.png")} // Image mis par défaut pour l'instant
           />
 
           <Text style={styles.description_title}>Croissance(jours)</Text>

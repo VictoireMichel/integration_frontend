@@ -1,6 +1,6 @@
 import React from 'react'
 import {StyleSheet, View, TextInput, ScrollView, ActivityIndicator, TouchableOpacity, Text, Image} from 'react-native'
-import { getPlantsFromApi } from '../GetDataFromApi/GetDataFromApi'
+import { getPlantsFromApi } from '../../GetDataFromApi/GetDataFromApi'
 
 class PlantsList extends React.Component {
 
@@ -26,15 +26,6 @@ class PlantsList extends React.Component {
     }
 
     /**
-     * Cette fonction permet de naviguer dans le détail de chaque plante
-     * lorsque l'on click desus
-     */
-    _displayDetailForPlant = (idPlant) => {
-        console.log("Display plant " + idPlant)
-        this.props.navigation.navigate('itemDetail')
-    }
-
-    /**
      * Cette fonction parcours la liste de film précédement remplie en appelant
      * le componsant "PlantItem"
      */
@@ -43,12 +34,14 @@ class PlantsList extends React.Component {
             return this.state.plantsListApi.map(item => {
                 return(
                     <TouchableOpacity style={styles.listItem_container} onPress={() => {
-                        this.props.navigation.navigate("Details", {itemId: item.id})}}>
+                        this.props.navigation.navigate("Details", {itemId: item.id})}}
+                        key={item.id}
+                    >
 
                         <View style={styles.image_container}>
                             <Image
                                 style={styles.image}
-                                source={require("../assets/Images/BASILIC-detour.png")}
+                                source={require("../../assets/Images/BASILIC-detour.png")}
                             />
                         </View>
                         <View style={styles.text_container}>
@@ -61,7 +54,6 @@ class PlantsList extends React.Component {
     }
 
     render() {
-
         return (
             <View>
                 <TextInput placeholder="Rechercher..." style={styles.Search}/>

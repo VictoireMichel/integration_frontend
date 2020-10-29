@@ -26,8 +26,3 @@ const styles = StyleSheet.create({
 });
 
 export default Notifications;
-
-/* background: #F1F2B5;
-background: -webkit-linear-gradient(to right, #135058, #F1F2B5);
-background: linear-gradient(to right, #135058, #F1F2B5);
-*/

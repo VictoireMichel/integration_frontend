@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView, Button} from 'react-native';
 import {faLockOpen, faMailBulk, faLock} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from "@fortawesome/react-native-fontawesome";
+import CustomHeader from "../Navigation/Header/CustomHeader";
 
 const mailIcon =  () => {
     return <FontAwesomeIcon icon={ faMailBulk } />
@@ -17,9 +18,9 @@ class SignUp extends React.Component{
     render() {
         return(
             <ScrollView style={styles.container_out}>
-                <View>
-                    <Button title="Go to the Drawer" onPress={() => this.props.navigation.toggleDrawer()}/>
-                </View>
+
+                <CustomHeader nav={this.props.navigation}/>
+
                 <View style={styles.container_in}>
 
 

@@ -7,7 +7,7 @@ class MyPlantInfo extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.text_container}>
-                    Bonjour
+                    Détails sur ma plante
         </Text>
 
           <Text>{/* test qui permet de passer des paramètres d'un Component parent à l'enfant*/}
@@ -20,8 +20,13 @@ class MyPlantInfo extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  text_container: {
-    fontSize: 50
-  }
+    container:{
+        flex:1,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    text_container: {
+        fontSize: 30
+    }
 });
 export default MyPlantInfo;

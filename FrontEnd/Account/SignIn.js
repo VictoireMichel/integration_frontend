@@ -2,15 +2,16 @@ import React from 'react';
 import {StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity, CheckBox, Button} from 'react-native';
 import {FontAwesomeIcon} from "@fortawesome/react-native-fontawesome";
 import { faKey, faEnvelope} from '@fortawesome/free-solid-svg-icons';
+import CustomHeader from "../Navigation/Header/CustomHeader";
 
 
 class SignIn extends React.Component{
     render() {
         return(
             <ScrollView>
-                <View>
-                    <Button title="Go to the Drawer" onPress={() => this.props.navigation.toggleDrawer()}/>
-                </View>
+
+                <CustomHeader nav={this.props.navigation}/>
+
                 <View style={styles.main_container}>
                     <View><Text style={styles.title_Screen}>Connexion</Text></View>
 

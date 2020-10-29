@@ -1,26 +1,22 @@
 import * as React from 'react';
-
-import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { faSeedling, faBell, faListUl } from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-native-fontawesome";
-
 import Notifications from "../Components/Notifications";
-import ListPlantsNavigation from "./ListPlantsNavigation";
-import HomeNavigation from "./HomeNavigation";
-import CustomHeader from "./CustomHeader";
+import ListPlantsNavigation from "./StackNavigator/ListPlantsNavigation";
+import HomeNavigation from "./StackNavigator/HomeNavigation";
+import CustomHeader from "./Header/CustomHeader";
 import { Container } from 'native-base'
-import {Button, View} from "react-native";
 
 const BottomTab = createBottomTabNavigator();
 
 //***************************************** BOTTOM NAVIGATION *********************************//
-function Navigation5({ navigation }) {
+function Navigation5({ navigation }) { //2nd param : route
     return (
-        <Container >
-            <View>
-                <Button title="Go to the Drawer" onPress={() => navigation.toggleDrawer()}/>
-            </View>
+        <Container>
+
+            <CustomHeader nav={navigation}/>
+
             <BottomTab.Navigator tabBarOptions={{
                 activeBackgroundColor: "#588B43", // Couleur d'arrière-plan de l'onglet sélectionné
                 inactiveBackgroundColor: "#f1f1f1", // Couleur d'arrière-plan des onglets non sélectionnés
@@ -30,14 +26,18 @@ function Navigation5({ navigation }) {
                 <BottomTab.Screen name="Acceuil" component={HomeNavigation}
                                   options={{
                                       tabBarIcon: () => {
-                                          return <FontAwesomeIcon icon={ faSeedling } />;
+                                          return <FontAwesomeIcon icon={ faSeedling }/>;
                                       }
+                                      //tabBarVisible: (route.state === undefined) ? (true) : (route.state.routes[0].state.index > 0 ? false : true)
+                                      //Pour retirer la bottom bar
                                   }}/>
                 <BottomTab.Screen name="List" component={ListPlantsNavigation}
                                   options={{
                                       tabBarIcon: () => {
                                           return <FontAwesomeIcon icon={faListUl}/>;
                                       }
+                                      //tabBarVisible: (route.state === undefined) ? (true) : (route.state.routes[0].state.index > 0 ? false : true)
+                                      //Pour retirer la bottom bar
                                   }}/>
                 <BottomTab.Screen name="Notifications" component={Notifications}
                                   options={{
