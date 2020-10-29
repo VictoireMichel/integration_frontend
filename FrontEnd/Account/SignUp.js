@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import {StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView, Button} from 'react-native';
 import {faLockOpen, faMailBulk, faLock} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from "@fortawesome/react-native-fontawesome";
 
@@ -17,6 +17,9 @@ class SignUp extends React.Component{
     render() {
         return(
             <ScrollView style={styles.container_out}>
+                <View>
+                    <Button title="Go to the Drawer" onPress={() => this.props.navigation.toggleDrawer()}/>
+                </View>
                 <View style={styles.container_in}>
 
 

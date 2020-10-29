@@ -10,14 +10,17 @@ import ListPlantsNavigation from "./ListPlantsNavigation";
 import HomeNavigation from "./HomeNavigation";
 import CustomHeader from "./CustomHeader";
 import { Container } from 'native-base'
+import {Button, View} from "react-native";
 
 const BottomTab = createBottomTabNavigator();
 
 //***************************************** BOTTOM NAVIGATION *********************************//
-function Navigation5() {
+function Navigation5({ navigation }) {
     return (
         <Container >
-            <CustomHeader/>
+            <View>
+                <Button title="Go to the Drawer" onPress={() => navigation.toggleDrawer()}/>
+            </View>
             <BottomTab.Navigator tabBarOptions={{
                 activeBackgroundColor: "#588B43", // Couleur d'arrière-plan de l'onglet sélectionné
                 inactiveBackgroundColor: "#f1f1f1", // Couleur d'arrière-plan des onglets non sélectionnés

@@ -10,6 +10,7 @@ function ListPlantsNavigation() {
         <Stack.Navigator>
             <Stack.Screen name="Liste" component={MyPlants} options={{ headerShown: false }}/>
             <Stack.Screen name="Details" component={PlantDetail}/>
+
         </Stack.Navigator>
     );
 }
