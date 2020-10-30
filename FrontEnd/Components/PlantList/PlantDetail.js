@@ -37,7 +37,9 @@ class PlantDetail extends React.Component {
           <Text style={styles.nomPlante}>{plant[0].name}</Text>
           <Image
             style={styles.image}
-            source={require("../../assets/Images/persil.png")} // Image mis par défaut pour l'instant
+            source={{
+              uri:'http://51.77.203.95:3000/files/' + plant[0].picturePath
+            }}
           />
 
           <Text style={styles.description_title}>Croissance(jours)</Text>

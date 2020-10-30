@@ -8,7 +8,7 @@ class PlantsList extends React.Component {
         super(props);
         this.state = {
             isLoading: false,
-            plantsListApi: []
+            plantsListApi: [],
         }
     }
 
@@ -41,7 +41,9 @@ class PlantsList extends React.Component {
                         <View style={styles.image_container}>
                             <Image
                                 style={styles.image}
-                                source={require("../../assets/Images/BASILIC-detour.png")}
+                                source={{
+                                    uri:'http://51.77.203.95:3000/files/' + item.picturePath
+                                }}
                             />
                         </View>
                         <View style={styles.text_container}>
