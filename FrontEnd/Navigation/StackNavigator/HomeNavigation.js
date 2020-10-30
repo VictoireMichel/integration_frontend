@@ -22,7 +22,7 @@ function HomeNavigation ({ navigation, route }) {
     <Stack.Navigator>
       <Stack.Screen name="Home" component={HomeConnectedWithPot} options={{ headerShown: false }}/>
       <Stack.Screen name="Details" component={MyPlantInfo} options={ { tabBarVisible: false } }/>
-      <Stack.Screen name="Liste" component={MyPlants} options={{ headerShown: false }}/>
+      <Stack.Screen name="List" component={MyPlants} options={{ headerShown: false }}/>
     </Stack.Navigator>
   );
 }
