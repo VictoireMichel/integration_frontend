@@ -32,6 +32,20 @@ class SignUp extends React.Component{
                     <View style={styles.container_input}>
                         <View style={styles.icon_inputText}>{mailIcon()}</View>
                         <TextInput
+                            placeholder="First name"
+                            style={styles.input_text}
+                        />
+                    </View>
+                    <View style={styles.container_input}>
+                        <View style={styles.icon_inputText}>{mailIcon()}</View>
+                        <TextInput
+                            placeholder="Last name"
+                            style={styles.input_text}
+                        />
+                    </View>
+                    <View style={styles.container_input}>
+                        <View style={styles.icon_inputText}>{mailIcon()}</View>
+                        <TextInput
                             placeholder="Email"
                             style={styles.input_text}
                         />
@@ -88,7 +102,7 @@ const styles = StyleSheet.create({
     },
     container_in: {
         backgroundColor: 'white',
-        height: 420,
+        height: 550,
         marginTop: '10%',
         marginBottom: '10%',
         width: 310,
