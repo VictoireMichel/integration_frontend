@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import {View, Text, StyleSheet, TouchableOpacity} from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faQuestionCircle, faUser } from "@fortawesome/free-solid-svg-icons";
 import ToggleSwitch from "toggle-switch-react-native";
@@ -41,16 +41,16 @@ export default function DrawerContent (props) {
         </View>
         <View style={styles.help_container}>
           <Text style={styles.help_text}>
-
             <FontAwesomeIcon style={styles.help_icon} icon={faQuestionCircle} size={16}/>
             <View style={{ width: 5 }}>
-
             </View>
                         Aide
           </Text>
+            <Text style={styles.text} onPress={()=>{console.log("ici : rajouter route pour delete le pot")}}>
+              Supprimer Pot
+            </Text>
         </View>
       </View>
-
     </View>
   );
 }
@@ -105,5 +105,6 @@ const styles = StyleSheet.create({
   },
   help_icon: {
 
-  }
+  },
+
 });
