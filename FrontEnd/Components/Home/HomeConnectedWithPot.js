@@ -4,12 +4,85 @@ import Svg, { Ellipse } from "react-native-svg";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faSun, faTint } from "@fortawesome/free-solid-svg-icons";
 import ProgressCircle from "react-native-progress-circle";
+import {getDataByIDFromApi, getPotsByIDFromApi} from "../../GetDataFromApi/GetDataFromApi";
 
 class HomeConnectedWithPot extends React.Component {
-  // let pots = {};
-  // leService.la requete(idUser)
-  //    .then((resultat) => pots = resultat)
-  //    .catch();
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: true,
+      infosPots: [],
+      infosData:[],
+    }
+  }
+
+  componentDidMount () {
+    getPotsByIDFromApi(1).then(data => {
+      this.setState({
+        infosPots: data,
+        isLoading: false
+      });
+    });
+    getDataByIDFromApi(1).then(data => {
+      this.setState({
+        infosData: data,
+        isLoading: false
+      });
+    });
+  }
+
+
+  _displayDayCount () {
+    const day = this.state.infosPots;
+    if (day.length > 0) {
+      return (
+          <ProgressCircle style={styles.ball}
+                          percent={day[0].dayCount} // ici => données de la plante qu'on devra récupérer
+                          radius={31}
+                          borderWidth={4}
+                          color="#A2A2A2"
+                          shadowColor="#E6E6E6"
+                          bgColor="#FFFFFF">
+            <Text style={styles.age}>{ day[0].dayCount + " jours"}</Text>
+          </ProgressCircle>
+      )
+    }
+  }
+
+  _displayDataHum () {
+    const data = this.state.infosData;
+    if(data.length > 0){
+      return (
+          <ProgressCircle style={styles.ball}
+                          percent={data[0].dataHumidity} // ici => données de la plante qu'on devra récupérer
+                          radius={31}
+                          borderWidth={4}
+                          color="#70BDD9"
+                          shadowColor="#E6E6E6"
+                          bgColor="#FFFFFF">
+            <FontAwesomeIcon style={styles.water} icon={faTint} size={25}/>
+          </ProgressCircle>
+      )
+    }
+  }
+
+  _displayDataLum () {
+    const data = this.state.infosData;
+    if(data.length > 0){
+      return(
+          <ProgressCircle style={styles.ball}
+                          percent={data[0].dataLuminosity} // ici => données de la plante qu'on devra récupérer
+                          radius={31}
+                          borderWidth={4}
+                          color="#E1BC31"
+                          shadowColor="#E6E6E6"
+                          bgColor="#FFFFFF">
+            <FontAwesomeIcon style={styles.sun} icon={faSun} size={25}/>
+          </ProgressCircle>
+      )
+    }
+  }
 
   render () {
     return (
@@ -31,37 +104,13 @@ class HomeConnectedWithPot extends React.Component {
           </View>
           <View style={styles.container2}>
             <View style={styles.container3}>
-              <ProgressCircle style={styles.ball}
-                percent={34} // ici => données de la plante qu'on devra récupérer
-                radius={31}
-                borderWidth={4}
-                color="#70BDD9"
-                shadowColor="#E6E6E6"
-                bgColor="#FFFFFF">
-                <FontAwesomeIcon style={styles.water} icon={faTint} size={25}/>
-              </ProgressCircle>
+              {this._displayDataHum()}
             </View>
             <View style={styles.container3}>
-              <ProgressCircle style={styles.ball}
-                percent={15} // ici => données de la plante qu'on devra récupérer
-                radius={31}
-                borderWidth={4}
-                color="#A2A2A2"
-                shadowColor="#E6E6E6"
-                bgColor="#FFFFFF">
-                <Text style={styles.age}>{"15 jours"}</Text>
-              </ProgressCircle>
+              {this._displayDayCount()}
             </View>
             <View style={styles.container3}>
-              <ProgressCircle style={styles.ball}
-                percent={75} // ici => données de la plante qu'on devra récupérer
-                radius={31}
-                borderWidth={4}
-                color="#E1BC31"
-                shadowColor="#E6E6E6"
-                bgColor="#FFFFFF">
-                <FontAwesomeIcon style={styles.sun} icon={faSun} size={25}/>
-              </ProgressCircle>
+              {this._displayDataLum()}
             </View>
           </View>
         </View>
