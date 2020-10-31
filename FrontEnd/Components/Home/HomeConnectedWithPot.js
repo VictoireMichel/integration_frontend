@@ -133,7 +133,6 @@ class HomeConnectedWithPot extends React.Component {
         }}>
           <View style={styles.text_container}>
             <Text style={styles.text}>Plus d'infos</Text>
-
           </View>
         </TouchableOpacity>
       </View>
@@ -253,7 +252,7 @@ const styles = StyleSheet.create({
   age: {
     fontSize: 13.5,
     textAlign: "center"
-  }
+  },
 
 });
 
