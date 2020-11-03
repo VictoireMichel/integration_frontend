@@ -8,6 +8,7 @@ import SignUpStep2 from "../Account/SignUpStep2";
 import DrawerContent from "./DrawerContent";
 import {createStackNavigator} from "@react-navigation/stack";
 
+
 const Drawer = createDrawerNavigator();
 
 function MyDrawer () {

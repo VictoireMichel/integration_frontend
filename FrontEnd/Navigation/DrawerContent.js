@@ -5,6 +5,9 @@ import { faQuestionCircle, faUser } from "@fortawesome/free-solid-svg-icons";
 import ToggleSwitch from "toggle-switch-react-native";
 
 export default function DrawerContent (props) {
+
+
+
   return (
     <View style={styles.slide} forceInset={{ top: "always" }}>
       <View style={styles.header}>
@@ -46,9 +49,7 @@ export default function DrawerContent (props) {
             </View>
                         Aide
           </Text>
-            <Text style={styles.text} onPress={()=>{console.log("ici : rajouter route pour delete le pot")}}>
-              Supprimer Pot
-            </Text>
+
         </View>
       </View>
     </View>
