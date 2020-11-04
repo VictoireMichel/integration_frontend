@@ -62,7 +62,8 @@ const styles = StyleSheet.create({
     },
     title_Screen: {
         fontSize:35,
-        color:'green'
+        color:'green',
+        paddingBottom: 15
     },
     inputView:{
         height: 37,
