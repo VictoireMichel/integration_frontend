@@ -4,7 +4,7 @@ import Svg, { Ellipse } from "react-native-svg";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faSun, faTint } from "@fortawesome/free-solid-svg-icons";
 import ProgressCircle from "react-native-progress-circle";
-import { getDataByIDFromApi, getPotsByIDFromApi } from "../../GetDataFromApi/GetDataFromApi";
+import {getDataByIDFromApi, getPlantsByIDFromApi, getPotsByIDFromApi} from "../../GetDataFromApi/GetDataFromApi";
 
 class HomeConnectedWithPot extends React.Component {
   constructor (props) {
@@ -12,7 +12,8 @@ class HomeConnectedWithPot extends React.Component {
     this.state = {
       isLoading: true,
       infosPots: [],
-      infosData: []
+      infosData: [],
+      infosPlant: []
     };
   }
 
@@ -32,6 +33,12 @@ class HomeConnectedWithPot extends React.Component {
         isLoading: false
       });
     });
+    getPlantsByIDFromApi(8).then(data => {
+      this.setState({
+        infosPlant: data,
+        isLoading: false
+      })
+    })
   }
 
   /**
@@ -41,15 +48,15 @@ class HomeConnectedWithPot extends React.Component {
     const day = this.state.infosPots;
     if (day.length > 0) {
       return (
-        <ProgressCircle style={styles.ball}
-          percent={day[0].dayCount} // ici => données de la plante qu'on devra récupérer
-          radius={31}
-          borderWidth={4}
-          color="#A2A2A2"
-          shadowColor="#E6E6E6"
-          bgColor="#FFFFFF">
-          <Text style={styles.age}>{ day[0].dayCount + " jours"}</Text>
-        </ProgressCircle>
+          <ProgressCircle style={styles.ball}
+                          percent={day[0].dayCount} // ici => données de la plante qu'on devra récupérer
+                          radius={31}
+                          borderWidth={4}
+                          color="#A2A2A2"
+                          shadowColor="#E6E6E6"
+                          bgColor="#FFFFFF">
+            <Text style={styles.age}>{ day[0].dayCount + " jours"}</Text>
+          </ProgressCircle>
       );
     }
   }
@@ -61,15 +68,15 @@ class HomeConnectedWithPot extends React.Component {
     const data = this.state.infosData;
     if (data.length > 0) {
       return (
-        <ProgressCircle style={styles.ball}
-          percent={data[0].dataHumidity} // ici => données de la plante qu'on devra récupérer
-          radius={31}
-          borderWidth={4}
-          color="#70BDD9"
-          shadowColor="#E6E6E6"
-          bgColor="#FFFFFF">
-          <FontAwesomeIcon style={styles.water} icon={faTint} size={25}/>
-        </ProgressCircle>
+          <ProgressCircle style={styles.ball}
+                          percent={data[0].dataHumidity} // ici => données de la plante qu'on devra récupérer
+                          radius={31}
+                          borderWidth={4}
+                          color="#70BDD9"
+                          shadowColor="#E6E6E6"
+                          bgColor="#FFFFFF">
+            <FontAwesomeIcon style={styles.water} icon={faTint} size={25}/>
+          </ProgressCircle>
       );
     }
   }
@@ -81,61 +88,79 @@ class HomeConnectedWithPot extends React.Component {
     const data = this.state.infosData;
     if (data.length > 0) {
       return (
-        <ProgressCircle style={styles.ball}
-          percent={data[0].dataLuminosity} // ici => données de la plante qu'on devra récupérer
-          radius={31}
-          borderWidth={4}
-          color="#E1BC31"
-          shadowColor="#E6E6E6"
-          bgColor="#FFFFFF">
-          <FontAwesomeIcon style={styles.sun} icon={faSun} size={25}/>
-        </ProgressCircle>
+          <ProgressCircle style={styles.ball}
+                          percent={data[0].dataLuminosity} // ici => données de la plante qu'on devra récupérer
+                          radius={31}
+                          borderWidth={4}
+                          color="#E1BC31"
+                          shadowColor="#E6E6E6"
+                          bgColor="#FFFFFF">
+            <FontAwesomeIcon style={styles.sun} icon={faSun} size={25}/>
+          </ProgressCircle>
+      );
+    }
+  }
+
+  _displayName () {
+    const plant = this.state.infosPlant;
+    if (plant.length > 0) {
+      return (
+          <Text style={styles.title}>{plant[0].name}</Text>
+      );
+    }
+  }
+
+  _displayPic () {
+    const plant = this.state.infosPlant;
+    if (plant.length > 0) {
+      return (
+          <Image resizeMode='cover' style={styles.pic} source={{uri: 'http://51.77.203.95:3000/files/' + plant[0].picturePath}}/>
       );
     }
   }
 
   render () {
     return (
-      <View style={styles.background}>
-        <View style={styles.container}>
-          <View>
-            <Svg style={styles.ball1}>
-              <Ellipse
-                fill="rgba(230, 230, 230,1)"
-                cx={65}
-                cy={65}
-                rx={65}
-                ry={65}
-              />
-            </Svg>
-            <Text style={styles.title}>Persil</Text>
-            <View style={styles.line}/>
-            <Image resizeMode='cover' style={styles.parsley} source={require("../../assets/Images/persil.png")}/>
+        <View style={styles.background}>
+          <View style={styles.container}>
+            <View>
+              <Svg style={styles.ball1} >
+                <Ellipse
+                    fill="rgba(230, 230, 230,1)"
+                    cx={68}
+                    cy={68}
+                    rx={68}
+                    ry={68}
+                />
+              </Svg>
+              {this._displayName()}
+              <View style={styles.line}/>
+              {this._displayPic()}
+            </View>
+            <View style={styles.container2}>
+              <View style={styles.container3}>
+                {this._displayDataHum()}
+              </View>
+              <View style={styles.container3}>
+                {this._displayDayCount()}
+              </View>
+              <View style={styles.container3}>
+                {this._displayDataLum()}
+              </View>
+            </View>
           </View>
-          <View style={styles.container2}>
-            <View style={styles.container3}>
-              {this._displayDataHum()}
+          <TouchableOpacity style={styles.button} onPress={() => {
+            this.props.navigation.navigate("Details",
+                {
+                  itemId: 86,
+                  otherParam: "anything you want here"
+                });
+          }}>
+            <View style={styles.text_container}>
+              <Text style={styles.text}>Plus d'infos</Text>
             </View>
-            <View style={styles.container3}>
-              {this._displayDayCount()}
-            </View>
-            <View style={styles.container3}>
-              {this._displayDataLum()}
-            </View>
-          </View>
+          </TouchableOpacity>
         </View>
-        <TouchableOpacity style={styles.button} onPress={() => {
-          this.props.navigation.navigate("Details",
-            {
-              itemId: 86,
-              otherParam: "anything you want here"
-            });
-        }}>
-          <View style={styles.text_container}>
-            <Text style={styles.text}>Plus d'infos</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
     );
   }
 }
@@ -191,15 +216,16 @@ const styles = StyleSheet.create({
   },
   ball1: {
     marginTop: "7%",
-    marginLeft: "28%",
+    marginLeft: "27%",
     justifyContent: "center"
   },
-  parsley: {
-    width: "75%",
+  pic: {
+    width: "45%",
     height: "50%",
-    marginLeft: "10.5%",
+    marginLeft: "27%",
     marginRight: "auto",
-    marginTop: "-75.5%"
+    marginTop: "-75.5%",
+    borderRadius:100,
   },
   title: {
     fontSize: 38,
