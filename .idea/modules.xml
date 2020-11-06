@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/integration_frontend.iml" filepath="$PROJECT_DIR$/.idea/integration_frontend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/eGrow.iml" filepath="$PROJECT_DIR$/.idea/eGrow.iml" />
     </modules>
   </component>
 </project>
