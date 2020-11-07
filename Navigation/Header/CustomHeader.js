@@ -14,7 +14,7 @@ export default class CustomHeader extends React.Component {
             </Button>
         </Left>
         <Body >
-          <Text style={{ color: "#f1f1f1", fontSize: 20, paddingLeft: 55 }}>eGrow</Text>
+          <Text style={{ color: "#f1f1f1", fontSize: 20, paddingLeft: 52 }}>eGrow</Text>
         </Body>
       </Header>
     );
