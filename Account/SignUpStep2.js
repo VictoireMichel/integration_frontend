@@ -34,37 +34,36 @@ class SignIn extends React.Component {
             console.log('Champs valide');
             this.setState({ validField: true });
         } else if (!this.input.isValid()) {
-            alert('adresse Email non valide');
+            //alert('adresse Email non valide');
         } else if (this.state.password1 !== this.state.password2) {
-            alert('Mot de passe non identique');
+            //alert('Mot de passe non identique');
         } else {
-            alert('Champ(s) non complet');
+            //alert('Champ(s) non complet');
         }
         this._postDataApi()
     }
 
     _postDataApi() {
         //alert('To Do : PostMethod')
-        if (this.state.validField) {
 
-            fetch("http://51.77.203.95:3000/users/signin", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    "mail": "robin@test.com",
-                    "password": "user1234",
-                    "firstName": "robin",
-                    "lastName": "castermane",
-                    "learningMode": false
-                })
+        fetch("http://51.77.203.95:3000/users/signin", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "mail": "robin@test.com",
+                "password": "user1234"
             })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data)
-                })
-        }
+        })
+            .then(res => res.text())
+            .then(data => {
+                console.log(data)
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
     }
 
     render() {
