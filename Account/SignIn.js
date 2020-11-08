@@ -1,5 +1,6 @@
 import React from 'react';
-import {StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity, CheckBox, Button} from 'react-native';
+import {StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity} from 'react-native';
+import CheckBox from '@react-native-community/checkbox'
 import {FontAwesomeIcon} from "@fortawesome/react-native-fontawesome";
 import { faKey, faEnvelope} from '@fortawesome/free-solid-svg-icons';
 import CustomHeader from "../Navigation/Header/CustomHeader";

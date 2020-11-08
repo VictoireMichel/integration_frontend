@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View, ScrollView, TouchableOpacity, CheckBox, Button} from 'react-native';
+import {StyleSheet, Text, View, ScrollView, TouchableOpacity} from 'react-native';
 import {FontAwesomeIcon} from "@fortawesome/react-native-fontawesome";
 import {faMailBulk, faLockOpen, faLock, faArrowCircleLeft, faArrowLeft} from '@fortawesome/free-solid-svg-icons';
 import CustomHeader from "../Navigation/Header/CustomHeader";
