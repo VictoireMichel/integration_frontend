@@ -1,7 +1,8 @@
 import React from 'react';
 import {StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity} from 'react-native';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
-import { postPotDatatoApi } from "../../PostDataToAPI/postDataToApi"
+import { postPotDatatoApi } from "../../SendDataToAPI/postDataToApi"
+import { updateLearningMode } from "../../SendDataToAPI/updateLearningMode"
 
 class addPotForm extends React.Component{
 
@@ -12,7 +13,8 @@ class addPotForm extends React.Component{
             potName: null,
             needWater: 0,
             dayCount: 0,
-            userId: 1
+            learningMode: 0,
+            userId: 18
 
         };
     }
@@ -56,12 +58,15 @@ class addPotForm extends React.Component{
                         <RadioForm
                             radio_props={radio_props}
                             initial={0}
-                            onPress={(value) => {console.log(value)}}
+                            onPress={(value) => {this.setState({
+                                learningMode: value
+                                }
+                            )}}
                         />
                     </View>
 
                     <View style={styles.main_container}>
-                        <TouchableOpacity style={styles.validateBtn} onPress={() => { postPotDatatoApi(this.state.potName,this.state.needWater,this.state.dayCount,this.state.idPlant,this.state.userId), this.props.navigation.goBack(), this.props.navigation.goBack(), this.props.navigation.navigate('Home')}}>
+                        <TouchableOpacity style={styles.validateBtn} onPress={() => {postPotDatatoApi(this.state.potName,this.state.needWater,this.state.dayCount,this.state.idPlant,this.state.userId), updateLearningMode(this.state.userId, this.state.learningMode), this.props.navigation.goBack(), this.props.navigation.goBack(), this.props.navigation.navigate('Home')}}>
                             <Text style={styles.text_button}>Valider</Text>
                         </TouchableOpacity>
                     </View>
