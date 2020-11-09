@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Text, Image, ScrollView, ActivityIndicator } from "react-native";
+import { StyleSheet, View, Text, Image, ScrollView, ActivityIndicator, TouchableOpacity } from "react-native";
 import { getPlantsByIDFromApi } from "../../GetDataFromApi/GetDataFromApi";
 
 class PlantDetail extends React.Component {
@@ -34,6 +34,15 @@ class PlantDetail extends React.Component {
     if (plant.length > 0) {
       return (
         <View style={styles.main_container}>
+
+          <TouchableOpacity style={styles.button} onPress={() => {
+            this.props.navigation.navigate("addPotForm", this.state.idPlant)}}
+          >
+            <View style={styles.addingPot}>
+              <Text style={styles.text_button}>Ajouter un pot</Text>
+            </View>
+          </TouchableOpacity>
+
           <Text style={styles.nomPlante}>{plant[0].name}</Text>
           <Image
             style={styles.image}
@@ -122,6 +131,29 @@ const styles = StyleSheet.create({
   },
   description_title: {
     fontSize: 20
+  },
+  button: {
+    width: 150,
+    height: 40,
+    backgroundColor: "#284F35",
+    marginTop: "10%",
+    marginBottom: "10%",
+    justifyContent: "center",
+    borderRadius: 16,
+    shadowColor: "#1E3927",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    elevation: 8,
+    position: "relative"
+  },
+  text_button: {
+    color: "#FFFFFF",
+    fontSize: 15,
+    textAlign: "center"
+
+  },
+  addingPot: {
+    justifyContent: "center"
   }
 });
 
