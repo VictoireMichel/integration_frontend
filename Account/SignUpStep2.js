@@ -21,26 +21,42 @@ class SignIn extends React.Component {
         }
     }
 
-    _testFiledField() {
-        if (this.state.name !== '' & this.state.firstName !== '' & this.state.email !== ''
-            & this.state.password1 !== '' & this.state.password2 !== '') {
-            this.setState({ filedField: true });
+    _testFiledField = () => {
+        if (this.state.name.length > 0 & this.state.firstName.length > 0 & this.state.email.length > 0
+            & this.state.password1.length > 0 & this.state.password2.length > 0) {
+            this.setState({ filedField: true }, () => {
+                if (this.input.isValid() & this.state.password1 === this.state.password2 & this.state.filedField) {
+                    this.setState({ validField: true }, () => {
+                        fetch("http://51.77.203.95:3000/users/signin", {
+                            method: "POST",
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                "mail": "robin@test.com",
+                                "password": "user1234"
+                            })
+                        })
+                            .then(res => res.text())
+                            .then(data => {
+                                console.log(data)
+                            })
+                            .catch((error) => {
+                                console.error(error);
+                            });
+                    });
+                } else if (!this.input.isValid()) {
+                    alert('adresse Email non valide');
+                } else if (this.state.password1 !== this.state.password2) {
+                    alert('Mot de passe non identique');
+                } else {
+                    console.log('Champ(s) non complet');
+                }
+            });
         }
-    }
-    _testValidData() {
-        this._testFiledField();
-
-        if (this.input.isValid() & this.state.password1 === this.state.password2 & this.state.filedField) {
-            console.log('Champs valide');
-            this.setState({ validField: true });
-        } else if (!this.input.isValid()) {
-            //alert('adresse Email non valide');
-        } else if (this.state.password1 !== this.state.password2) {
-            //alert('Mot de passe non identique');
-        } else {
-            //alert('Champ(s) non complet');
+        else {
+            alert('Champ(s) Incomplet !')
         }
-        this._postDataApi()
     }
 
     _postDataApi() {
@@ -130,7 +146,7 @@ class SignIn extends React.Component {
                         </View>
 
                         <View>
-                            <TouchableOpacity style={styles.step_button} onPress={() => this._testValidData()}>
+                            <TouchableOpacity style={styles.step_button} onPress={() => this._testFiledField()}>
                                 <Text style={styles.stepText}>S'inscrire</Text>
                             </TouchableOpacity>
                         </View>
