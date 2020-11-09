@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import {StyleSheet, Text, View, Image, TouchableOpacity, ActivityIndicator, ScrollView} from "react-native";
 import Svg, { Ellipse } from "react-native-svg";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faSun, faTint } from "@fortawesome/free-solid-svg-icons";
@@ -122,44 +122,49 @@ class HomeConnectedWithPot extends React.Component {
   render () {
     return (
         <View style={styles.background}>
-          <View style={styles.container}>
-            <View>
-              <Svg style={styles.ball1} >
-                <Ellipse
-                    fill="rgba(230, 230, 230,1)"
-                    cx={68}
-                    cy={68}
-                    rx={68}
-                    ry={68}
-                />
-              </Svg>
-              {this._displayName()}
-              <View style={styles.line}/>
-              {this._displayPic()}
-            </View>
-            <View style={styles.container2}>
-              <View style={styles.container3}>
-                {this._displayDataHum()}
+          {this.state.isLoading ?
+              (<View style={styles.loading_container}>
+            <ActivityIndicator size='large' color="#005B00" />
+          </View>) :
+              (<View style={styles.container}>
+                <View>
+                  <Svg style={styles.ball1} >
+                    <Ellipse
+                        fill="rgba(230, 230, 230,1)"
+                        cx={68}
+                        cy={68}
+                        rx={68}
+                        ry={68}
+                    />
+                  </Svg>
+                  {this._displayName()}
+                  <View style={styles.line}/>
+                  {this._displayPic()}
+                </View>
+                <View style={styles.container2}>
+                  <View style={styles.container3}>
+                    {this._displayDataHum()}
+                  </View>
+                  <View style={styles.container3}>
+                    {this._displayDayCount()}
+                  </View>
+                  <View style={styles.container3}>
+                    {this._displayDataLum()}
+                  </View>
+                </View>
               </View>
-              <View style={styles.container3}>
-                {this._displayDayCount()}
-              </View>
-              <View style={styles.container3}>
-                {this._displayDataLum()}
-              </View>
-            </View>
-          </View>
-          <TouchableOpacity style={styles.button} onPress={() => {
+              )}
+            <TouchableOpacity style={styles.button} onPress={() => {
             this.props.navigation.navigate("Details",
                 {
                   itemId: 86,
                   otherParam: "anything you want here"
                 });
-          }}>
+            }}>
             <View style={styles.text_container}>
-              <Text style={styles.text}>Plus d'infos</Text>
+            <Text style={styles.text}>Plus d'infos</Text>
             </View>
-          </TouchableOpacity>
+            </TouchableOpacity>
         </View>
     );
   }
