@@ -1,13 +1,9 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
-import Svg, { Ellipse } from "react-native-svg";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faSun, faTint } from "@fortawesome/free-solid-svg-icons";
-import ProgressCircle from "react-native-progress-circle";
+import {StyleSheet, Text, View, TouchableOpacity, Image} from "react-native";
+import Svg, {Ellipse} from "react-native-svg";
 
 class HomeNotConnected extends React.Component {
-
-  render () {
+  render() {
     return (
       <View style={styles.background}>
         <View style={styles.container}>
@@ -22,8 +18,8 @@ class HomeNotConnected extends React.Component {
               />
             </Svg>
             <Text style={styles.title}>Veuillez vous connecter</Text>
-            <View style={styles.line}/>
-            <Image resizeMode='cover' style={styles.parsley}/>
+            <View style={styles.line} />
+            <Image resizeMode="cover" style={styles.parsley} />
           </View>
         </View>
       </View>
@@ -37,7 +33,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F0F0F0",
     alignItems: "center",
     justifyContent: "flex-start",
-    flexDirection: "column"
+    flexDirection: "column",
   },
   container: {
     marginTop: "10%",
@@ -47,11 +43,11 @@ const styles = StyleSheet.create({
     width: 300,
     borderRadius: 20,
     shadowColor: "#1E3927",
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.2,
     // android
     elevation: 8,
-    position: "relative"
+    position: "relative",
   },
   container2: {
     marginTop: "auto",
@@ -61,7 +57,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 20
+    borderRadius: 20,
   },
   container3: {
     marginTop: "auto",
@@ -70,7 +66,7 @@ const styles = StyleSheet.create({
     width: 100,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 20
+    borderRadius: 20,
   },
   ball: {
     left: 20,
@@ -78,19 +74,19 @@ const styles = StyleSheet.create({
     marginTop: "7%",
     marginLeft: "auto",
     marginRight: "auto",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   ball1: {
     marginTop: "7%",
     marginLeft: "28%",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   parsley: {
     width: "75%",
     height: "50%",
     marginLeft: "10.5%",
     marginRight: "auto",
-    marginTop: "-75.5%"
+    marginTop: "-75.5%",
   },
   title: {
     fontSize: 30,
@@ -98,7 +94,7 @@ const styles = StyleSheet.create({
     marginRight: "auto",
     marginTop: "-35%",
     color: "#FFFFFF",
-    textAlign: "center"
+    textAlign: "center",
   },
   line: {
     backgroundColor: "#E6E6E6",
@@ -106,8 +102,8 @@ const styles = StyleSheet.create({
     height: 2,
     borderRadius: 100,
     marginLeft: "auto",
-    marginRight: "auto"
-  }
+    marginRight: "auto",
+  },
 });
 
 export default HomeNotConnected;

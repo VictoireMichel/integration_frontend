@@ -1,62 +1,75 @@
 import React from "react";
-import {StyleSheet, Text, View, Image, TouchableOpacity, ActivityIndicator, ScrollView} from "react-native";
-import Svg, { Ellipse } from "react-native-svg";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faSun, faTint } from "@fortawesome/free-solid-svg-icons";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  ActivityIndicator,
+  ScrollView,
+} from "react-native";
+import Svg, {Ellipse} from "react-native-svg";
+import {FontAwesomeIcon} from "@fortawesome/react-native-fontawesome";
+import {faSun, faTint} from "@fortawesome/free-solid-svg-icons";
 import ProgressCircle from "react-native-progress-circle";
-import {getDataByIDFromApi, getPlantsByIDFromApi, getPotsByIDFromApi} from "../../GetDataFromApi/GetDataFromApi";
+import {
+  getDataByIDFromApi,
+  getPlantsByIDFromApi,
+  getPotsByIDFromApi,
+} from "../../GetDataFromApi/GetDataFromApi";
 
 class HomeConnectedWithPot extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       isLoading: true,
       infosPots: [],
       infosData: [],
-      infosPlant: []
+      infosPlant: [],
     };
   }
 
   /**
    * Fonction récupérant les données du pot de la base de données
    */
-  componentDidMount () {
-    getPotsByIDFromApi(1).then(data => {
+  componentDidMount() {
+    getPotsByIDFromApi(1).then((data) => {
       this.setState({
         infosPots: data,
-        isLoading: false
+        isLoading: false,
       });
     });
-    getDataByIDFromApi(1).then(data => {
+    getDataByIDFromApi(1).then((data) => {
       this.setState({
         infosData: data,
-        isLoading: false
+        isLoading: false,
       });
     });
-    getPlantsByIDFromApi(8).then(data => {
+    getPlantsByIDFromApi(8).then((data) => {
       this.setState({
         infosPlant: data,
-        isLoading: false
-      })
-    })
+        isLoading: false,
+      });
+    });
   }
 
   /**
    * Fonction qui récupère et affiche la durée de vie de la plante
    */
-  _displayDayCount () {
+  _displayDayCount() {
     const day = this.state.infosPots;
     if (day.length > 0) {
       return (
-          <ProgressCircle style={styles.ball}
-                          percent={day[0].dayCount} // ici => données de la plante qu'on devra récupérer
-                          radius={31}
-                          borderWidth={4}
-                          color="#A2A2A2"
-                          shadowColor="#E6E6E6"
-                          bgColor="#FFFFFF">
-            <Text style={styles.age}>{ day[0].dayCount + " jours"}</Text>
-          </ProgressCircle>
+        <ProgressCircle
+          style={styles.ball}
+          percent={day[0].dayCount} // ici => données de la plante qu'on devra récupérer
+          radius={31}
+          borderWidth={4}
+          color="#A2A2A2"
+          shadowColor="#E6E6E6"
+          bgColor="#FFFFFF">
+          <Text style={styles.age}>{day[0].dayCount + " jours"}</Text>
+        </ProgressCircle>
       );
     }
   }
@@ -64,19 +77,20 @@ class HomeConnectedWithPot extends React.Component {
   /**
    * Fonction qui récupère et affiche l'humidité de la plante
    */
-  _displayDataHum () {
+  _displayDataHum() {
     const data = this.state.infosData;
     if (data.length > 0) {
       return (
-          <ProgressCircle style={styles.ball}
-                          percent={data[0].dataHumidity} // ici => données de la plante qu'on devra récupérer
-                          radius={31}
-                          borderWidth={4}
-                          color="#70BDD9"
-                          shadowColor="#E6E6E6"
-                          bgColor="#FFFFFF">
-            <FontAwesomeIcon style={styles.water} icon={faTint} size={25}/>
-          </ProgressCircle>
+        <ProgressCircle
+          style={styles.ball}
+          percent={data[0].dataHumidity} // ici => données de la plante qu'on devra récupérer
+          radius={31}
+          borderWidth={4}
+          color="#70BDD9"
+          shadowColor="#E6E6E6"
+          bgColor="#FFFFFF">
+          <FontAwesomeIcon style={styles.water} icon={faTint} size={25} />
+        </ProgressCircle>
       );
     }
   }
@@ -84,88 +98,89 @@ class HomeConnectedWithPot extends React.Component {
   /**
    * Fonction qui récupère et affiche la luminosité de la plante
    */
-  _displayDataLum () {
+  _displayDataLum() {
     const data = this.state.infosData;
     if (data.length > 0) {
       return (
-          <ProgressCircle style={styles.ball}
-                          percent={data[0].dataLuminosity} // ici => données de la plante qu'on devra récupérer
-                          radius={31}
-                          borderWidth={4}
-                          color="#E1BC31"
-                          shadowColor="#E6E6E6"
-                          bgColor="#FFFFFF">
-            <FontAwesomeIcon style={styles.sun} icon={faSun} size={25}/>
-          </ProgressCircle>
+        <ProgressCircle
+          style={styles.ball}
+          percent={data[0].dataLuminosity} // ici => données de la plante qu'on devra récupérer
+          radius={31}
+          borderWidth={4}
+          color="#E1BC31"
+          shadowColor="#E6E6E6"
+          bgColor="#FFFFFF">
+          <FontAwesomeIcon style={styles.sun} icon={faSun} size={25} />
+        </ProgressCircle>
       );
     }
   }
 
-  _displayName () {
+  _displayName() {
+    const plant = this.state.infosPlant;
+    if (plant.length > 0) {
+      return <Text style={styles.title}>{plant[0].name}</Text>;
+    }
+  }
+
+  _displayPic() {
     const plant = this.state.infosPlant;
     if (plant.length > 0) {
       return (
-          <Text style={styles.title}>{plant[0].name}</Text>
+        <Image
+          resizeMode="cover"
+          style={styles.pic}
+          source={{
+            uri: "http://51.77.203.95:3000/files/" + plant[0].picturePath,
+          }}
+        />
       );
     }
   }
 
-  _displayPic () {
-    const plant = this.state.infosPlant;
-    if (plant.length > 0) {
-      return (
-          <Image resizeMode='cover' style={styles.pic} source={{uri: 'http://51.77.203.95:3000/files/' + plant[0].picturePath}}/>
-      );
-    }
-  }
-
-  render () {
+  render() {
     return (
-        <View style={styles.background}>
-          {this.state.isLoading ?
-              (<View style={styles.loading_container}>
-            <ActivityIndicator size='large' color="#005B00" />
-          </View>) :
-              (<View style={styles.container}>
-                <View>
-                  <Svg style={styles.ball1} >
-                    <Ellipse
-                        fill="rgba(230, 230, 230,1)"
-                        cx={68}
-                        cy={68}
-                        rx={68}
-                        ry={68}
-                    />
-                  </Svg>
-                  {this._displayName()}
-                  <View style={styles.line}/>
-                  {this._displayPic()}
-                </View>
-                <View style={styles.container2}>
-                  <View style={styles.container3}>
-                    {this._displayDataHum()}
-                  </View>
-                  <View style={styles.container3}>
-                    {this._displayDayCount()}
-                  </View>
-                  <View style={styles.container3}>
-                    {this._displayDataLum()}
-                  </View>
-                </View>
-              </View>
-              )}
-            <TouchableOpacity style={styles.button} onPress={() => {
-            this.props.navigation.navigate("Details",
-                {
-                  itemId: 86,
-                  otherParam: "anything you want here"
-                });
-            }}>
-            <View style={styles.text_container}>
-            <Text style={styles.text}>Plus d'infos</Text>
+      <View style={styles.background}>
+        {this.state.isLoading ? (
+          <View style={styles.loading_container}>
+            <ActivityIndicator size="large" color="#005B00" />
+          </View>
+        ) : (
+          <View style={styles.container}>
+            <View>
+              <Svg style={styles.ball1}>
+                <Ellipse
+                  fill="rgba(230, 230, 230,1)"
+                  cx={68}
+                  cy={68}
+                  rx={68}
+                  ry={68}
+                />
+              </Svg>
+              {this._displayName()}
+              <View style={styles.line} />
+              {this._displayPic()}
             </View>
-            </TouchableOpacity>
-        </View>
+            <View style={styles.container2}>
+              <View style={styles.container3}>{this._displayDataHum()}</View>
+              <View style={styles.container3}>{this._displayDayCount()}</View>
+              <View style={styles.container3}>{this._displayDataLum()}</View>
+            </View>
+          </View>
+        )}
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            this.props.navigation.navigate("Details", {
+              itemId: 86,
+              otherParam: "anything you want here",
+            });
+          }}>
+          <View style={styles.text_container}>
+            <Text style={styles.text}>Plus d'infos</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
     );
   }
 }
@@ -176,7 +191,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F0F0F0",
     alignItems: "center",
     justifyContent: "flex-start",
-    flexDirection: "column"
+    flexDirection: "column",
   },
   container: {
     marginTop: "10%",
@@ -186,11 +201,11 @@ const styles = StyleSheet.create({
     width: 300,
     borderRadius: 20,
     shadowColor: "#1E3927",
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.2,
     // android
     elevation: 8,
-    position: "relative"
+    position: "relative",
   },
   container2: {
     marginTop: "auto",
@@ -200,7 +215,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 20
+    borderRadius: 20,
   },
   container3: {
     marginTop: "auto",
@@ -209,7 +224,7 @@ const styles = StyleSheet.create({
     width: 100,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 20
+    borderRadius: 20,
   },
   ball: {
     left: 20,
@@ -217,12 +232,12 @@ const styles = StyleSheet.create({
     marginTop: "7%",
     marginLeft: "auto",
     marginRight: "auto",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   ball1: {
     marginTop: "7%",
     marginLeft: "27%",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   pic: {
     width: "45%",
@@ -230,14 +245,14 @@ const styles = StyleSheet.create({
     marginLeft: "27%",
     marginRight: "auto",
     marginTop: "-75.5%",
-    borderRadius:100,
+    borderRadius: 100,
   },
   title: {
     fontSize: 38,
     marginLeft: "auto",
     marginRight: "auto",
     marginTop: "-35%",
-    color: "#FFFFFF"
+    color: "#FFFFFF",
   },
   line: {
     backgroundColor: "#E6E6E6",
@@ -245,7 +260,7 @@ const styles = StyleSheet.create({
     height: 2,
     borderRadius: 100,
     marginLeft: "auto",
-    marginRight: "auto"
+    marginRight: "auto",
   },
   button: {
     width: 130,
@@ -256,35 +271,34 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 16,
     shadowColor: "#1E3927",
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.2,
     // android
     elevation: 8,
-    position: "relative"
+    position: "relative",
   },
   text_container: {
-    justifyContent: "center"
+    justifyContent: "center",
   },
   text: {
     color: "#FFFFFF",
     fontSize: 15,
-    textAlign: "center"
+    textAlign: "center",
   },
   water: {
     marginTop: "-15%",
     top: 5,
-    color: "#70BDD9"
+    color: "#70BDD9",
   },
   sun: {
     marginTop: "-15%",
     top: 5,
-    color: "#E1BC31"
+    color: "#E1BC31",
   },
   age: {
     fontSize: 13.5,
-    textAlign: "center"
+    textAlign: "center",
   },
-
 });
 
 export default HomeConnectedWithPot;

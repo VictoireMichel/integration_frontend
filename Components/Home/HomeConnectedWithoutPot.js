@@ -1,13 +1,12 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
-import Svg, { Ellipse } from "react-native-svg";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faSun, faTint } from "@fortawesome/free-solid-svg-icons";
+import {StyleSheet, Text, View, TouchableOpacity, Image} from "react-native";
+import Svg, {Ellipse} from "react-native-svg";
+import {FontAwesomeIcon} from "@fortawesome/react-native-fontawesome";
+import {faSun, faTint} from "@fortawesome/free-solid-svg-icons";
 import ProgressCircle from "react-native-progress-circle";
 
 class HomeConnectedWithoutPot extends React.Component {
-
-  render () {
+  render() {
     return (
       <View style={styles.background}>
         <View style={styles.container}>
@@ -22,23 +21,25 @@ class HomeConnectedWithoutPot extends React.Component {
               />
             </Svg>
             <Text style={styles.title}>Aucune plante</Text>
-            <View style={styles.line}/>
-            <Image resizeMode='cover' style={styles.parsley}/>
+            <View style={styles.line} />
+            <Image resizeMode="cover" style={styles.parsley} />
           </View>
           <View style={styles.container2}>
             <View style={styles.container3}>
-              <ProgressCircle style={styles.ball}
+              <ProgressCircle
+                style={styles.ball}
                 percent={0}
                 radius={31}
                 borderWidth={4}
                 color="#70BDD9"
                 shadowColor="#E6E6E6"
                 bgColor="#FFFFFF">
-                <FontAwesomeIcon style={styles.water} icon={faTint} size={25}/>
+                <FontAwesomeIcon style={styles.water} icon={faTint} size={25} />
               </ProgressCircle>
             </View>
             <View style={styles.container3}>
-              <ProgressCircle style={styles.ball}
+              <ProgressCircle
+                style={styles.ball}
                 percent={0}
                 radius={31}
                 borderWidth={4}
@@ -49,19 +50,25 @@ class HomeConnectedWithoutPot extends React.Component {
               </ProgressCircle>
             </View>
             <View style={styles.container3}>
-              <ProgressCircle style={styles.ball}
+              <ProgressCircle
+                style={styles.ball}
                 percent={0}
                 radius={31}
                 borderWidth={4}
                 color="#E1BC31"
                 shadowColor="#E6E6E6"
                 bgColor="#FFFFFF">
-                <FontAwesomeIcon style={styles.sun} icon={faSun} size={25}/>
+                <FontAwesomeIcon style={styles.sun} icon={faSun} size={25} />
               </ProgressCircle>
             </View>
           </View>
         </View>
-        <TouchableOpacity style={styles.button} onPress={() => { this.props.navigation.navigate("PlantsList"); console.log("nav test"); }}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            this.props.navigation.navigate("PlantsList");
+            console.log("nav test");
+          }}>
           <View style={styles.text_container}>
             <Text style={styles.text}>Ajouter une plante</Text>
           </View>
@@ -77,7 +84,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F0F0F0",
     alignItems: "center",
     justifyContent: "flex-start",
-    flexDirection: "column"
+    flexDirection: "column",
   },
   container: {
     marginTop: "10%",
@@ -87,11 +94,11 @@ const styles = StyleSheet.create({
     width: 300,
     borderRadius: 20,
     shadowColor: "#1E3927",
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.2,
     // android
     elevation: 8,
-    position: "relative"
+    position: "relative",
   },
   container2: {
     marginTop: "auto",
@@ -101,7 +108,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 20
+    borderRadius: 20,
   },
   container3: {
     marginTop: "auto",
@@ -110,7 +117,7 @@ const styles = StyleSheet.create({
     width: 100,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 20
+    borderRadius: 20,
   },
   ball: {
     left: 20,
@@ -118,26 +125,26 @@ const styles = StyleSheet.create({
     marginTop: "7%",
     marginLeft: "auto",
     marginRight: "auto",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   ball1: {
     marginTop: "7%",
     marginLeft: "28%",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   parsley: {
     width: "75%",
     height: "50%",
     marginLeft: "10.5%",
     marginRight: "auto",
-    marginTop: "-75.5%"
+    marginTop: "-75.5%",
   },
   title: {
     fontSize: 33,
     marginLeft: "auto",
     marginRight: "auto",
     marginTop: "-35%",
-    color: "#FFFFFF"
+    color: "#FFFFFF",
   },
   line: {
     backgroundColor: "#E6E6E6",
@@ -145,7 +152,7 @@ const styles = StyleSheet.create({
     height: 2,
     borderRadius: 100,
     marginLeft: "auto",
-    marginRight: "auto"
+    marginRight: "auto",
   },
   button: {
     width: 150,
@@ -156,37 +163,34 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 16,
     shadowColor: "#1E3927",
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.2,
     // android
     elevation: 8,
-    position: "relative"
+    position: "relative",
   },
   text_container: {
-    justifyContent: "center"
-
+    justifyContent: "center",
   },
   text: {
     color: "#FFFFFF",
     fontSize: 15,
-    textAlign: "center"
-
+    textAlign: "center",
   },
   water: {
     marginTop: "-15%",
     top: 5,
-    color: "#70BDD9"
+    color: "#70BDD9",
   },
   sun: {
     marginTop: "-15%",
     top: 5,
-    color: "#E1BC31"
+    color: "#E1BC31",
   },
   age: {
     fontSize: 13.5,
-    textAlign: "center"
-  }
-
+    textAlign: "center",
+  },
 });
 
 export default HomeConnectedWithoutPot;
