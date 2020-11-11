@@ -168,18 +168,24 @@ class HomeConnectedWithPot extends React.Component {
             </View>
           </View>
         )}
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => {
-            this.props.navigation.navigate("Details", {
-              itemId: 86,
-              otherParam: "anything you want here",
-            });
-          }}>
-          <View style={styles.text_container}>
-            <Text style={styles.text}>Plus d'infos</Text>
+        {this.state.isLoading ? (
+          <View style={styles.loading_container}>
+            <ActivityIndicator size="large" color="#005B00" />
           </View>
-        </TouchableOpacity>
+        ) : (
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => {
+              this.props.navigation.navigate("Details", {
+                itemId: 86,
+                otherParam: "anything you want here",
+              });
+            }}>
+            <View style={styles.text_container}>
+              <Text style={styles.text}>Plus d'infos</Text>
+            </View>
+          </TouchableOpacity>
+        )}
       </View>
     );
   }
@@ -298,6 +304,15 @@ const styles = StyleSheet.create({
   age: {
     fontSize: 13.5,
     textAlign: "center",
+  },
+  loading_container: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 100,
+    bottom: 0,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 
