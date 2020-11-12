@@ -1,8 +1,8 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import {StyleSheet, Text, View} from "react-native";
 
 class Notifications extends React.Component {
-  render () {
+  render() {
     return (
       <View style={styles.container}>
         <Text style={styles.text_menu}>Mes notifications</Text>
@@ -16,13 +16,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center"
-
+    justifyContent: "center",
   },
   text_menu: {
     fontSize: 25,
-    color: "red"
-  }
+    color: "red",
+  },
 });
 
 export default Notifications;

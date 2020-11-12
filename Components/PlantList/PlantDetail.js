@@ -1,53 +1,51 @@
 import React from "react";
-import { StyleSheet, View, Text, Image, ScrollView, ActivityIndicator, TouchableOpacity } from "react-native";
-import { getPlantsByIDFromApi } from "../../GetDataFromApi/GetDataFromApi";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  ScrollView,
+  ActivityIndicator,
+} from "react-native";
+import {getPlantsByIDFromApi} from "../../GetDataFromApi/GetDataFromApi";
 
 class PlantDetail extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       idPlant: null,
       plant: [],
-      isLoading: true
+      isLoading: true,
     };
   }
 
-  componentDidMount () {
-    getPlantsByIDFromApi(this.props.route.params.itemId).then(data => {
+  componentDidMount() {
+    getPlantsByIDFromApi(this.props.route.params.itemId).then((data) => {
       this.setState({
         idPlant: this.props.route.params.itemId,
         plant: data,
-        isLoading: false
+        isLoading: false,
       });
     });
   }
 
   /**
-     *
-     * Fonction affichant des informations (venant de l'API) à propos de la plante selectionnée parmi la liste des plantes.
-     *
-     * @returns {JSX.Element}
-     *
-     */
-  _displayPlant () {
+   *
+   * Fonction affichant des informations (venant de l'API) à propos de la plante selectionnée parmi la liste des plantes.
+   *
+   * @returns {JSX.Element}
+   *
+   */
+  _displayPlant() {
     const plant = this.state.plant;
     if (plant.length > 0) {
       return (
         <View style={styles.main_container}>
-
-          <TouchableOpacity style={styles.button} onPress={() => {
-            this.props.navigation.navigate("addPotForm", this.state.idPlant)}}
-          >
-            <View style={styles.addingPot}>
-              <Text style={styles.text_button}>Ajouter un pot</Text>
-            </View>
-          </TouchableOpacity>
-
           <Text style={styles.nomPlante}>{plant[0].name}</Text>
           <Image
             style={styles.image}
             source={{
-              uri:'http://51.77.203.95:3000/files/' + plant[0].picturePath
+              uri: "http://51.77.203.95:3000/files/" + plant[0].picturePath,
             }}
           />
 
@@ -67,23 +65,23 @@ class PlantDetail extends React.Component {
   }
 
   /**
-     *
-     * Fonction permettant d'afficher une page de loading le temps d'aller chercher les informations dans l'API.
-     *
-     * @returns {JSX.Element}
-     *
-     */
-  _displayLoading () {
+   *
+   * Fonction permettant d'afficher une page de loading le temps d'aller chercher les informations dans l'API.
+   *
+   * @returns {JSX.Element}
+   *
+   */
+  _displayLoading() {
     if (this.state.isLoading) {
       return (
         <View style={styles.loading_container}>
-          <ActivityIndicator size='large' />
+          <ActivityIndicator size="large" />
         </View>
       );
     }
   }
 
-  render () {
+  render() {
     return (
       <ScrollView>
         <View style={styles.main_container}>
@@ -99,7 +97,7 @@ const styles = StyleSheet.create({
   main_container: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   loading_container: {
     position: "absolute",
@@ -108,53 +106,30 @@ const styles = StyleSheet.create({
     top: 0,
     bottom: 0,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   text: {
-    fontSize: 25
+    fontSize: 25,
   },
   image: {
     flex: 1,
     height: 150,
     width: 200,
-    resizeMode: "cover"
+    resizeMode: "cover",
   },
   description_text: {
     color: "#666666",
     margin: 5,
     marginBottom: 15,
     textAlign: "center",
-    fontSize: 15
+    fontSize: 15,
   },
   nomPlante: {
-    fontSize: 30
+    fontSize: 30,
   },
   description_title: {
-    fontSize: 20
+    fontSize: 20,
   },
-  button: {
-    width: 150,
-    height: 40,
-    backgroundColor: "#284F35",
-    marginTop: "10%",
-    marginBottom: "10%",
-    justifyContent: "center",
-    borderRadius: 16,
-    shadowColor: "#1E3927",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    elevation: 8,
-    position: "relative"
-  },
-  text_button: {
-    color: "#FFFFFF",
-    fontSize: 15,
-    textAlign: "center"
-
-  },
-  addingPot: {
-    justifyContent: "center"
-  }
 });
 
 export default PlantDetail;
