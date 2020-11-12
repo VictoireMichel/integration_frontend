@@ -5,7 +5,7 @@ import { faUser, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import TextInput from 'react-native-input-validator';
 import LinearGradient from 'react-native-linear-gradient'
 
-class SignIn extends React.Component {
+class SignUpStep1 extends React.Component {
 
     constructor(props) {
         super(props);
@@ -190,4 +190,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default SignIn
+export default SignUpStep1

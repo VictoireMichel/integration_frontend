@@ -6,7 +6,7 @@ import TextInput from 'react-native-input-validator';
 import LinearGradient from 'react-native-linear-gradient'
 
 
-class SignIn extends React.Component {
+class SignUpStep2 extends React.Component {
 
     constructor(props) {
         super(props);
@@ -36,22 +36,27 @@ class SignIn extends React.Component {
             this.setState({ filedField: true }, () => {
                 if (this.input.isValid() & this.state.password1 === this.state.password2 & this.state.filedField) {
                     this.setState({ validField: true }, () => {
-                        fetch("http://51.77.203.95:3000/users/signin", {
+                        fetch("https://pi2-ephec.herokuapp.com/users/signup", {
                             method: "POST",
                             headers: {
                                 'Content-Type': 'application/json'
                             },
                             body: JSON.stringify({
-                                "mail": "robin@test.com",
-                                "password": "user1234"
+                                "mail": this.state.email,
+                                "password": this.state.password1,
+                                "firstName": this.state.firstName,
+                                "lastName": this.state.name,
+                                "learningMode": false
                             })
                         })
                             .then(res => res.text())
                             .then(data => {
                                 console.log(data)
-                                console.log(this.props.navigation.goBack(), this.props.navigation.goBack())
-                                if (data === '"connection successful"') {
-                                    console.log("ICI ON NAVIGUE VERS L'ACCUEIL")
+                                if (data === '"successCreation"') {
+                                    this.props.navigation.navigate('SignUpStep3',
+                                        {
+                                            firstName: this.state.firstName
+                                        })
                                 } else {
                                     alert(data)
                                 }
@@ -84,23 +89,7 @@ class SignIn extends React.Component {
                     <FontAwesomeIcon icon={faArrowLeft} style={{ color: 'white' }} />
                 </TouchableOpacity>
 
-
-
                 <View style={styles.main_container}>
-
-                    {/*
-                    <View style={styles.step}>
-                        <View style={styles.circleToDo} />
-                        <View style={styles.line} />
-                        <View style={styles.line} />
-                        <View style={styles.line} />
-                        <View style={styles.circleDone} />
-                        <View style={styles.line} />
-                        <View style={styles.line} />
-                        <View style={styles.line} />
-                        <View style={styles.circleToDo} />
-                    </View>
-                    */}
 
                     <View><Text style={styles.title_Screen}>Inscription</Text></View>
 
@@ -167,48 +156,12 @@ const styles = StyleSheet.create({
     },
     main_container: {
         alignItems: 'center',
-        //backgroundColor: 'blue'
     },
     title_Screen: {
         marginTop: 80,
         fontSize: 35,
         color: 'white',
         marginBottom: 25
-    },
-    step: {
-        flexDirection: 'row',
-        marginTop: 25
-    },
-    circleDone: {
-        width: 30,
-        height: 30,
-        backgroundColor: '#599743',
-        borderRadius: 30,
-        elevation: 5,
-        position: 'relative',
-        marginLeft: 8,
-        marginRight: 8
-    },
-    line: {
-        width: 13,
-        height: 4,
-        backgroundColor: '#577B43',
-        borderRadius: 30,
-        marginTop: 12,
-        elevation: 5,
-        position: 'relative',
-        marginLeft: 8,
-        marginRight: 8
-    },
-    circleToDo: {
-        width: 30,
-        height: 30,
-        backgroundColor: '#577B43',
-        borderRadius: 30,
-        elevation: 5,
-        position: 'relative',
-        marginLeft: 8,
-        marginRight: 8
     },
     inputView: {
         height: 37,
@@ -251,4 +204,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default SignIn
+export default SignUpStep2
