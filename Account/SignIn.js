@@ -8,30 +8,47 @@ import CustomHeader from "../Navigation/Header/CustomHeader";
 
 class SignIn extends React.Component {
 
-
-    _postDataApi() {
-        alert('To Do : PostMethod')
-
-        /*
-        fetch("http://51.77.203.95:3000/users/signin", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                "mail": "robin@test.com",
-                "password": "user1234"
-            })
-        })
-            .then(res => res.text())
-            .then(data => {
-                console.log(data) // --> Si tout fonctionne bien on reçoit "connection successful"
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-        */
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: '',
+            password: ''
+        }
     }
+
+    validate = (text) => {
+        let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+        if (this.state.email.length == 0 || this.state.password.length == 0) {
+            alert('Champ(s) incomplet(s) !')
+        } else if (reg.test(text) === false) {
+            alert('Adresse email non valide');
+            this.setState({email: text})
+            return false;
+        } else if (this.state.email.length > 0 & this.state.password.length > 0 & reg.test(text) === true) {
+            this.setState({email: text})
+            console.log("Email is Correct");
+
+            fetch("https://pi2-ephec.herokuapp.com/users/signin", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "mail": this.state.email,
+                    "password": this.state.password
+                })
+            })
+                .then(res => res.text())
+                .then(data => {
+                    alert(data) // --> Si tout fonctionne bien on reçoit "connection successful"
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        }
+    }
+
 
     render() {
         return (
@@ -44,14 +61,25 @@ class SignIn extends React.Component {
 
                     <View style={styles.inputView}>
                         <View style={styles.icon_inputText}><FontAwesomeIcon icon={faEnvelope} /></View>
-                        <TextInput placeholder="Email" style={styles.inputText}>
+                        <TextInput
+                            placeholder="Email"
+                            style={styles.inputText}
+                            value={this.state.email}
+                            onChangeText={(text => this.setState({ email: text }))}
+                        >
 
                         </TextInput>
                     </View>
 
                     <View style={styles.inputView}>
                         <View style={styles.icon_inputText}><FontAwesomeIcon icon={faKey} /></View>
-                        <TextInput secureTextEntry={true} placeholder="Password" style={styles.inputText}>
+                        <TextInput
+                            secureTextEntry={true}
+                            placeholder="Password"
+                            style={styles.inputText}
+                            value={this.state.password}
+                            onChangeText={(text => this.setState({ password: text }))}
+                        >
 
                         </TextInput>
                     </View>
@@ -62,7 +90,7 @@ class SignIn extends React.Component {
                     </View>
 
                     <View style={styles.main_container}>
-                        <TouchableOpacity style={styles.loginBtn} onPress={() => { console.log('Connexion') }}>
+                        <TouchableOpacity style={styles.loginBtn} onPress={() => { { this.validate(this.state.email)} }}>
                             <Text style={styles.loginText}>Se connecter</Text>
                         </TouchableOpacity>
                     </View>
