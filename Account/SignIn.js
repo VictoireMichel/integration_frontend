@@ -4,7 +4,7 @@ import CheckBox from '@react-native-community/checkbox'
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faKey, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import CustomHeader from "../Navigation/Header/CustomHeader";
-
+import { connect } from 'react-redux'
 
 class SignIn extends React.Component {
 
@@ -12,7 +12,8 @@ class SignIn extends React.Component {
         super(props);
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            userId: null
         }
     }
 
@@ -27,7 +28,7 @@ class SignIn extends React.Component {
             return false;
         } else if (this.state.email.length > 0 & this.state.password.length > 0 & reg.test(text) === true) {
             this.setState({email: text})
-            console.log("Email is Correct");
+            console.log("Email format is correct");
 
             fetch("https://pi2-ephec.herokuapp.com/users/signin", {
                 method: "POST",
@@ -38,10 +39,18 @@ class SignIn extends React.Component {
                     "mail": this.state.email,
                     "password": this.state.password
                 })
-            })
-                .then(res => res.text())
-                .then(data => {
-                    alert(data) // --> Si tout fonctionne bien on reçoit "connection successful"
+            }).then((response) => response.json())
+                .then((json) => {
+                    if(json === 'email/password incorrect') {
+                        console.log("NOK");
+                        alert(json)
+                    }
+                    else{
+                        console.log("OK");
+                        this.setState({userId: json[0].id})
+                        this._addUserId();
+                        //alert("Connexion réussi !");
+                    }
                 })
                 .catch((error) => {
                     console.error(error);
@@ -49,8 +58,19 @@ class SignIn extends React.Component {
         }
     }
 
+    _addUserId(){
+        const action = {type:"SET_ID", value: this.state.userId}
+        this.props.dispatch(action)
+        console.log(this.props)
+    }
+
+    componentDidUpdate() {
+        console.log(this.props.id)
+    }
+
 
     render() {
+
         return (
             <ScrollView>
 
@@ -90,7 +110,7 @@ class SignIn extends React.Component {
                     </View>
 
                     <View style={styles.main_container}>
-                        <TouchableOpacity style={styles.loginBtn} onPress={() => { { this.validate(this.state.email)} }}>
+                        <TouchableOpacity style={styles.loginBtn} onPress={() => { { this.validate(this.state.email)};  this.props.navigation.navigate("Home")}}>
                             <Text style={styles.loginText}>Se connecter</Text>
                         </TouchableOpacity>
                     </View>
@@ -167,4 +187,10 @@ const styles = StyleSheet.create({
     }
 })
 
-export default SignIn
+const mapStateToProps = (state) => {
+    return {
+        id: state.id
+    }
+}
+
+export default connect(mapStateToProps)(SignIn)
