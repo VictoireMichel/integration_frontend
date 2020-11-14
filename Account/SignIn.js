@@ -48,7 +48,8 @@ class SignIn extends React.Component {
                     else{
                         console.log("OK");
                         this.setState({userId: json[0].id})
-                        this._addUserId();
+                        this._changeGlobalState();
+                        this.props.navigation.navigate("Home")
                         //alert("Connexion réussi !");
                     }
                 })
@@ -58,14 +59,17 @@ class SignIn extends React.Component {
         }
     }
 
-    _addUserId(){
+    _changeGlobalState(){
         const action = {type:"SET_ID", value: this.state.userId}
+        const action2 = {type:"LOGIN", value: true}
         this.props.dispatch(action)
+        this.props.dispatch(action2)
         console.log(this.props)
     }
 
     componentDidUpdate() {
         console.log(this.props.id)
+        console.log(this.props.isLoggedIn)
     }
 
 
@@ -110,7 +114,7 @@ class SignIn extends React.Component {
                     </View>
 
                     <View style={styles.main_container}>
-                        <TouchableOpacity style={styles.loginBtn} onPress={() => { { this.validate(this.state.email)};  this.props.navigation.navigate("Home")}}>
+                        <TouchableOpacity style={styles.loginBtn} onPress={() => { { this.validate(this.state.email)}}}>
                             <Text style={styles.loginText}>Se connecter</Text>
                         </TouchableOpacity>
                     </View>
@@ -189,7 +193,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
     return {
-        id: state.id
+        id: state.storeUserId.id,
+        isLoggedIn: state.isLogged.isLoggedIn
     }
 }
 

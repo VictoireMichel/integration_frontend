@@ -1,6 +1,6 @@
 const initialState = { id: null }
 
-function reducer(state = initialState, action) {
+function storeUserId(state = initialState, action) {
     let nextState
     switch (action.type) {
         case 'SET_ID':
@@ -14,5 +14,4 @@ function reducer(state = initialState, action) {
     }
 }
 
-
-export  default reducer
+export default storeUserId
