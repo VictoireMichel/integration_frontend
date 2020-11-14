@@ -53,17 +53,7 @@ class SignUpStep1 extends React.Component {
 
             </TextInput>
           </View>
-          <View style={styles.inputView}>
-            <View style={styles.icon_inputText}>
-              <FontAwesomeIcon icon={faUser} />
-            </View>
-            <TextInput
-              placeholder="Name"
-              value={this.state.name}
-              onChangeText={(text) => this.setState({ name: text })}
-              style={styles.inputText}
-            />
-          </View>
+
 
           <View>
             <TouchableOpacity style={styles.step_button} onPress={() => {
