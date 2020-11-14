@@ -37,25 +37,26 @@ class addPotForm extends React.Component{
                 <View style={styles.container_in}>
 
                     <View style={styles.main_container}>
-                        <Text style={styles.question_text}>Comment voulez-vous nommer votre pot ?</Text>
+                        <Text style={styles.potName_text}>Comment voulez-vous nommer votre pot ?</Text>
                     </View>
 
-                    <View style={styles.container_input}>
+
                         <TextInput
                             name="potName"
                             placeholder="Nom du pot"
-                            style={styles.input_text}
+                            style={styles.inputText}
                             onChangeText={potName => this.setState({potName})}
                             value={this.state.potName}
                         />
-                    </View>
+
 
                     <View style={styles.main_container}>
-                        <Text style={styles.question_text}>Quel mode désirez-vous choisir ?</Text>
+                        <Text style={styles.mode_text}>Quel mode désirez-vous choisir ?</Text>
                     </View>
 
                     <View style={styles.main_container}>
                         <RadioForm
+                            labelStyle={{fontSize: 18}}
                             radio_props={radio_props}
                             initial={0}
                             onPress={(value) => {this.setState({
@@ -80,39 +81,27 @@ class addPotForm extends React.Component{
 
 const styles = StyleSheet.create({
     main_container: {
-        paddingTop: 35,
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
     },
-    container_out: {
-        backgroundColor: '#e2e2e2',
-        height: '100%',
-        flexDirection: 'column'
-    },
+
     container_in: {
         backgroundColor: 'white',
         height: 550,
         marginTop: '10%',
         marginBottom: '10%',
-        width: 310,
+        width: 350,
         marginRight: 'auto',
         marginLeft: 'auto',
 
         elevation: 5,
         borderRadius:10,
     },
-    container_title: {
-        marginTop: 30,
-        marginBottom: 30
+    potName_text: {
+        fontSize: 17,
     },
-    title_text: {
-        color: "#588B43",
-        fontSize: 36,
-        textAlign: "center",
-        letterSpacing: 1.15,
-    },
-    container_input: {
+    inputText: {
         height: 37,
         width: 270,
         paddingLeft: 30,
@@ -121,19 +110,11 @@ const styles = StyleSheet.create({
         marginTop: 10,
         marginBottom: 10,
         backgroundColor: '#fff',
-
         flexDirection: 'row',
         alignItems: 'center',
-
-
-        borderRadius:10,
+        borderRadius: 10,
         elevation: 5,
-        position:'relative'
-    },
-    input_text: {
-        fontSize: 18,
-        backgroundColor: '#fff',
-        color: '#424242',
+        position: 'relative'
     },
     container_validate: {
         width: 270,
@@ -150,8 +131,8 @@ const styles = StyleSheet.create({
         position:'relative',
         borderRadius:10,
     },
-    question_text:{
-        fontSize:15
+    mode_text:{
+        fontSize:18
     },
     button:{
         flexDirection: 'row',
