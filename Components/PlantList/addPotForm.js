@@ -3,6 +3,7 @@ import {StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity} from 'r
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import { postPotDatatoApi } from "../../SendDataToAPI/postDataToApi"
 import { updateLearningMode } from "../../SendDataToAPI/updateLearningMode"
+import { connect } from 'react-redux'
 
 class addPotForm extends React.Component{
 
@@ -14,7 +15,7 @@ class addPotForm extends React.Component{
             needWater: 0,
             dayCount: 0,
             learningMode: 0,
-            userId: 18
+            userId: null
 
         };
     }
@@ -22,6 +23,7 @@ class addPotForm extends React.Component{
     componentDidMount () {
         this.setState({
             idPlant : this.props.route.params,
+            userId: this.props.id
         });
     }
 
@@ -154,4 +156,11 @@ const styles = StyleSheet.create({
     }
 })
 
-export default addPotForm
+const mapStateToProps = (state) => {
+    return {
+        id: state.storeUserId.id,
+        isLoggedIn: state.isLogged.isLoggedIn
+    }
+}
+
+export default connect(mapStateToProps)(addPotForm)
