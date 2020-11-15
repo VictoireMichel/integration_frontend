@@ -68,3 +68,11 @@ export function getDataByIDFromApi(id) {
     .then((response) => response.json())
     .catch((error) => console.log(error));
 }
+
+export function getPotsByUserIDFromApi(id) {
+  console.log(id);
+  const url = "https://pi2-ephec.herokuapp.com/pots/user?userId=" + id;
+  return fetch(url)
+      .then((response) => response.json())
+      .catch((error) => console.log(error));
+}

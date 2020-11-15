@@ -4,11 +4,10 @@ import {delPotsByIDFromApi} from "../GetDataFromApi/GetDataFromApi";
 
 class MyPlantInfo extends React.Component {
   render() {
-    const {itemId, otherParam} = this.props.route.params;
+    const {itemId} = this.props.route.params;
     return (
       <View style={styles.container}>
         <Text style={styles.text_container}>Détails sur ma plante</Text>
-
         <Text>
           {/* test qui permet de passer des paramètres d'un Component parent à l'enfant*/}
           itemId: {JSON.stringify(itemId)}

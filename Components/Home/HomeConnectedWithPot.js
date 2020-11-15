@@ -15,8 +15,9 @@ import ProgressCircle from "react-native-progress-circle";
 import {
   getDataByIDFromApi,
   getPlantsByIDFromApi,
-  getPotsByIDFromApi,
+  getPotsByIDFromApi, getPotsByUserIDFromApi,
 } from "../../GetDataFromApi/GetDataFromApi";
+import {connect} from "react-redux";
 
 class HomeConnectedWithPot extends React.Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class HomeConnectedWithPot extends React.Component {
     this.state = {
       idPot: null,
       idPlant: null,
-      idUser: null,
+      userId: null,
       isLoading: true,
       infosPots: [],
       infosData: [],
@@ -37,46 +38,44 @@ class HomeConnectedWithPot extends React.Component {
    * Fonction récupérant les données du pot de la base de données
    */
   componentDidMount() {
-    //console.log(this.props.id)
-    getPotsByIDFromApi(1).then((data) => {
+    getPotsByUserIDFromApi(this.props.id).then((data) => {
       this.setState({
-        infosPots: data,
+        infosPots: data[0],
         isLoading: false,
       });
-    });
-    getDataByIDFromApi(1).then((data) => {
-      this.setState({
-        infosData: data,
-        isLoading: false,
+      getPlantsByIDFromApi(this.state.infosPots.plantId).then((data) => {
+        this.setState({
+          infosPlant: data,
+          isLoading: false,
+        });
       });
-    });
-    getPlantsByIDFromApi(8).then((data) => {
-      this.setState({
-        infosPlant: data,
-        isLoading: false,
+      getDataByIDFromApi(1).then((data) => { // this.state.infosPots.id
+        this.setState({
+          infosData: data,
+          isLoading: false,
+        });
       });
-    });
+    }).catch(error => console.log('erreur getPotByUserIdFromApi', error));
+
+
   }
 
   /**
    * Fonction qui récupère et affiche la durée de vie de la plante
    */
   _displayDayCount() {
-    const day = this.state.infosPots;
-    if (day.length > 0) {
       return (
         <ProgressCircle
           style={styles.ball}
-          percent={day[0].dayCount} // ici => données de la plante qu'on devra récupérer
+          percent={this.state.infosPots.dayCount} // ici => données de la plante qu'on devra récupérer
           radius={31}
           borderWidth={4}
           color="#A2A2A2"
           shadowColor="#E6E6E6"
           bgColor="#FFFFFF">
-          <Text style={styles.age}>{day[0].dayCount + " jours"}</Text>
+          <Text style={styles.age}>{this.state.infosPots.dayCount + " jours"}</Text>
         </ProgressCircle>
       );
-    }
   }
 
   /**
@@ -120,7 +119,9 @@ class HomeConnectedWithPot extends React.Component {
       );
     }
   }
-
+  /**
+   * Fonction qui récupère et affiche le nom de la plante
+   */
   _displayName() {
     const plant = this.state.infosPlant;
     if (plant.length > 0) {
@@ -128,6 +129,9 @@ class HomeConnectedWithPot extends React.Component {
     }
   }
 
+  /**
+   * Fonction qui récupère et affiche la photo de la plante
+   */
   _displayPic() {
     const plant = this.state.infosPlant;
     if (plant.length > 0) {
@@ -182,10 +186,7 @@ class HomeConnectedWithPot extends React.Component {
             style={styles.button}
             onPress={() => {
               this.props.navigation.navigate("Details", {
-                itemId: 86,
-                potId: 1,
-                userId: 2,
-                otherParam: "anything you want here",
+                itemId: this.state.infosPots.id,
               });
             }}>
             <View style={styles.text_container}>
@@ -323,4 +324,12 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeConnectedWithPot;
+
+const mapStateToProps = (state) => {
+  return {
+    id: state.storeUserId.id,
+    isLoggedIn: state.isLogged.isLoggedIn
+  }
+}
+
+export default connect(mapStateToProps)(HomeConnectedWithPot)
