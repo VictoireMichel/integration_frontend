@@ -11,7 +11,8 @@ class PlantDetail extends React.Component {
     this.state = {
       idPlant: null,
       plant: [],
-      isLoading: true
+      isLoading: true,
+      idUser: null
     };
   }
 
@@ -19,6 +20,7 @@ class PlantDetail extends React.Component {
     getPlantsByIDFromApi(this.props.route.params.itemId).then(data => {
       this.setState({
         idPlant: this.props.route.params.itemId,
+        idUser: this.props.route.params.idUser,
         plant: data,
         isLoading: false
       });

@@ -49,7 +49,7 @@ class SignIn extends React.Component {
                         console.log("OK");
                         this.setState({userId: json[0].id})
                         this._changeGlobalState();
-                        this.props.navigation.navigate("Home")
+                        this.props.navigation.navigate("Acceuil")
                         //alert("Connexion réussi !");
                     }
                 })
@@ -64,12 +64,12 @@ class SignIn extends React.Component {
         const action2 = {type:"LOGIN", value: true}
         this.props.dispatch(action)
         this.props.dispatch(action2)
-        console.log(this.props)
+       // console.log(this.props)
     }
 
     componentDidUpdate() {
-        console.log(this.props.id)
-        console.log(this.props.isLoggedIn)
+        //console.log(this.props.id)
+        //console.log(this.props.isLoggedIn)
     }
 
 

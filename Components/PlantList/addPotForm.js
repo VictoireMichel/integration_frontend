@@ -21,6 +21,7 @@ class addPotForm extends React.Component{
     }
 
     componentDidMount () {
+        console.log(this.props.id);
         this.setState({
             idPlant : this.props.route.params,
             userId: this.props.id
@@ -69,7 +70,11 @@ class addPotForm extends React.Component{
                     </View>
 
                     <View style={styles.main_container}>
-                        <TouchableOpacity style={styles.validateBtn} onPress={() => {postPotDatatoApi(this.state.potName,this.state.needWater,this.state.dayCount,this.state.idPlant,this.state.userId), updateLearningMode(this.state.userId, this.state.learningMode), this.props.navigation.goBack(), this.props.navigation.goBack(), this.props.navigation.navigate('Home')}}>
+                        <TouchableOpacity style={styles.validateBtn} onPress={() => {postPotDatatoApi(this.state.potName,this.state.needWater,
+                            this.state.dayCount,this.state.idPlant,this.state.userId),
+                            updateLearningMode(this.state.userId, this.state.learningMode),
+                            this.props.navigation.goBack(), this.props.navigation.goBack(),
+                            this.props.navigation.navigate('Accueil')}}>
                             <Text style={styles.text_button}>Valider</Text>
                         </TouchableOpacity>
                     </View>

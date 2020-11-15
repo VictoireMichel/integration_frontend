@@ -22,6 +22,9 @@ class HomeConnectedWithPot extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      idPot: null,
+      idPlant: null,
+      idUser: null,
       isLoading: true,
       infosPots: [],
       infosData: [],
@@ -29,10 +32,12 @@ class HomeConnectedWithPot extends React.Component {
     };
   }
 
+
   /**
    * Fonction récupérant les données du pot de la base de données
    */
   componentDidMount() {
+    //console.log(this.props.id)
     getPotsByIDFromApi(1).then((data) => {
       this.setState({
         infosPots: data,
@@ -178,6 +183,8 @@ class HomeConnectedWithPot extends React.Component {
             onPress={() => {
               this.props.navigation.navigate("Details", {
                 itemId: 86,
+                potId: 1,
+                userId: 2,
                 otherParam: "anything you want here",
               });
             }}>
