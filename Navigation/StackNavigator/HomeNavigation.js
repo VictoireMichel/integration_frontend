@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import LoginControl from "../../Account/LoginControl";
 import HomeConnectedWithPot from "../../Components/Home/HomeConnectedWithPot";
 import Navigation5 from "../Navigation5";
+import HomeConnected from "../../Components/Home/HomeConnected";
 
 
 const Stack = createStackNavigator();
@@ -28,6 +29,7 @@ function HomeNavigation ({ navigation, route }) {
       <Stack.Screen name="Home" component={LoginControl} options={{ headerShown: false }}/>
       <Stack.Screen name="Details" component={MyPlantInfo} options={ { tabBarVisible: false } }/>
       <Stack.Screen name="List" component={MyPlants} options={{ headerShown: false }}/>
+        <Stack.Screen name="Connect" component={HomeConnected} options={{ headerShown: false }}/>
     </Stack.Navigator>
   );
 }
