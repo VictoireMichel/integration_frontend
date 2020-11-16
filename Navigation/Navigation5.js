@@ -11,11 +11,11 @@ import { Container } from "native-base";
 const BottomTab = createBottomTabNavigator();
 
 //* **************************************** BOTTOM NAVIGATION *********************************//
-function Navigation5 ({ navigation }) { // 2nd param : route
+function Navigation5({ navigation }) { // 2nd param : route
   return (
     <Container>
 
-      <CustomHeader nav={navigation}/>
+      <CustomHeader nav={navigation} />
 
       <BottomTab.Navigator tabBarOptions={{
         activeBackgroundColor: "#588B43", // Couleur d'arrière-plan de l'onglet sélectionné
@@ -26,23 +26,23 @@ function Navigation5 ({ navigation }) { // 2nd param : route
         <BottomTab.Screen name="Acceuil" component={HomeNavigation}
           options={{
             tabBarIcon: () => {
-              return <FontAwesomeIcon icon={ faSeedling }/>;
+              return <FontAwesomeIcon icon={faSeedling} />;
             }
             // tabBarVisible: (route.state === undefined) ? (true) : (route.state.routes[0].state.index > 0 ? false : true)
             // Pour retirer la bottom bar
-          }}/>
+          }} />
         <BottomTab.Screen name="List" component={ListPlantsNavigation}
           options={{
             tabBarIcon: () => {
-              return <FontAwesomeIcon icon={faListUl}/>;
+              return <FontAwesomeIcon icon={faListUl} />;
             }
             // tabBarVisible: (route.state === undefined) ? (true) : (route.state.routes[0].state.index > 0 ? false : true)
             // Pour retirer la bottom bar
-          }}/>
+          }} />
         <BottomTab.Screen name="Notifications" component={Notifications}
           options={{
             tabBarIcon: () => {
-              return <FontAwesomeIcon icon={faBell}/>;
+              return <FontAwesomeIcon icon={faBell} />;
             }
           }}
         />
