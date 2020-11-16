@@ -79,7 +79,7 @@ class PlantDetail extends React.Component {
           <View style={{ flex: 1, flexDirection: 'row' }}>
             <View>
               <TouchableOpacity onPress={() => { this.props.navigation.goBack() }}>
-                <FontAwesomeIcon size='25' icon={faArrowLeft} style={{ color: '#585858', margin: 20 }} />
+                <FontAwesomeIcon icon={faArrowLeft} style={{ color: '#585858', margin: 20 }} />
               </TouchableOpacity>
             </View>
 

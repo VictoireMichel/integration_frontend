@@ -6,16 +6,14 @@ import { useEffect } from "react";
 import LoginControl from "../../Account/LoginControl";
 import HomeConnectedWithPot from "../../Components/Home/HomeConnectedWithPot";
 import Navigation5 from "../Navigation5";
-
+import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 
 const Stack = createStackNavigator();
 
-
-
-function HomeNavigation ({ navigation, route }) {
+function HomeNavigation({ navigation, route }) {
   useEffect(() => {
-    if (route.state !== undefined) {
-      if (route.state.index > 0) {
+    if (getFocusedRouteNameFromRoute(route) !== null) {
+      if (getFocusedRouteNameFromRoute(route) === 'Details') {
         navigation.setOptions({ tabBarVisible: false });
       } else {
         navigation.setOptions({ tabBarVisible: true });
@@ -25,9 +23,9 @@ function HomeNavigation ({ navigation, route }) {
 
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Home" component={LoginControl} options={{ headerShown: false }}/>
-      <Stack.Screen name="Details" component={MyPlantInfo} options={ { tabBarVisible: false } }/>
-      <Stack.Screen name="List" component={MyPlants} options={{ headerShown: false }}/>
+      <Stack.Screen name="Home" component={LoginControl} options={{ headerShown: false }} />
+      <Stack.Screen name="Details" component={MyPlantInfo} options={{ tabBarVisible: false }} />
+      <Stack.Screen name="List" component={MyPlants} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 }
