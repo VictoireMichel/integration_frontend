@@ -8,9 +8,9 @@ import {
   ActivityIndicator,
   TouchableOpacity,
 } from "react-native";
-import {getPlantsByIDFromApi} from "../../GetDataFromApi/GetDataFromApi";
-import {FontAwesomeIcon} from "@fortawesome/react-native-fontawesome";
-import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
+import { getPlantsByIDFromApi } from "../../GetDataFromApi/GetDataFromApi";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import LinearGradient from "react-native-linear-gradient";
 
 class PlantDetail extends React.Component {
@@ -63,27 +63,24 @@ class PlantDetail extends React.Component {
             paddingLeft: 20,
             paddingRight: 20,
           }}>
-          <View style={{flex: 1, marginBottom: 10, flexDirection: "row"}}>
-            <View style={{flex: 1, alignItems: "center"}}>
+          <View style={{ flex: 1, marginBottom: 10, flexDirection: "row" }}>
+            <View style={{ flex: 1, alignItems: "center", elevation: 8 }}>
               <View
                 style={{
-                  backgroundColor: "#588B43",
-                  elevation: 8,
-                  width: 130,
-                  height: 35,
+                  height: 30,
                   alignItems: "center",
                   justifyContent: "center",
                 }}>
                 <Text
-                  style={{fontSize: 20, color: "#f1f1f1", fontWeight: "bold"}}>
+                  style={{ fontSize: 20, color: "#f1f1f1", fontWeight: "bold", textDecorationLine: 'underline', fontFamily: "sans-serif-thin" }}>
                   Description
                 </Text>
               </View>
             </View>
           </View>
 
-          <View style={{flex: 4}}>
-            <Text style={{fontSize: 14, color: "#f1f1f1", textAlign: "center"}}>
+          <View style={{ flex: 4 }}>
+            <Text style={{ fontSize: 14, color: "#f1f1f1", textAlign: "justify", fontFamily: "sans-serif-thin" }}>
               {plant[0].description}
             </Text>
           </View>
@@ -102,29 +99,27 @@ class PlantDetail extends React.Component {
           style={{
             flex: 1,
             flexDirection: "column",
-            padding: 20,
+            paddingLeft: 20,
+            paddingRight: 20
           }}>
-          <View style={{flex: 1, marginBottom: 10, flexDirection: "row"}}>
-            <View style={{flex: 1, alignItems: "center"}}>
+          <View style={{ flex: 1, marginBottom: 10, flexDirection: "row" }}>
+            <View style={{ flex: 1, alignItems: "center", elevation: 8 }}>
               <View
                 style={{
-                  backgroundColor: "#588B43",
-                  elevation: 8,
-                  width: 130,
-                  height: 35,
+                  height: 30,
                   alignItems: "center",
                   justifyContent: "center",
                 }}>
                 <Text
-                  style={{fontSize: 20, color: "#f1f1f1", fontWeight: "bold"}}>
+                  style={{ fontSize: 20, color: "#f1f1f1", fontWeight: "bold", textDecorationLine: 'underline', fontFamily: "sans-serif-thin" }}>
                   Entretien
                 </Text>
               </View>
             </View>
           </View>
 
-          <View style={{flex: 4}}>
-            <Text style={{fontSize: 14, color: "#f1f1f1", textAlign: "center"}}>
+          <View style={{ flex: 4 }}>
+            <Text style={{ fontSize: 14, color: "#f1f1f1", textAlign: "justify", fontFamily: "sans-serif-thin" }}>
               {plant[0].maintenance}
             </Text>
           </View>
@@ -139,7 +134,7 @@ class PlantDetail extends React.Component {
     const plant = this.state.plant;
     if (plant.length > 0) {
       return (
-        <View style={{flex: 1, flexDirection: "row"}}>
+        <View style={{ flex: 1, flexDirection: "row" }}>
           <View
             style={{
               flex: 1,
@@ -148,15 +143,15 @@ class PlantDetail extends React.Component {
               justifyContent: "center",
             }}>
             <Image
-              style={{width: 80, height: 60}}
+              style={{ width: 80, height: 60 }}
               source={require("../../Picture/croissance.png")}
             />
           </View>
 
-          <View style={{flex: 1, flexDirection: "column", marginRight: 20}}>
+          <View style={{ flex: 1, flexDirection: "column", marginRight: 20 }}>
             <View
-              style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
-              <Text style={{fontSize: 18, color: "#f1f1f1"}}>Croissance</Text>
+              style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+              <Text style={{ fontSize: 18, color: "#f1f1f1", fontFamily: "serif" }}>Croissance</Text>
             </View>
             <View
               style={{
@@ -164,7 +159,7 @@ class PlantDetail extends React.Component {
                 alignItems: "center",
                 justifyContent: "flex-start",
               }}>
-              <Text style={{fontSize: 14, color: "#f1f1f1"}}>
+              <Text style={{ fontSize: 14, color: "#f1f1f1", fontFamily: "serif" }}>
                 {plant[0].growTime} jours
               </Text>
             </View>
@@ -180,7 +175,7 @@ class PlantDetail extends React.Component {
     const plant = this.state.plant;
     if (plant.length > 0) {
       return (
-        <View style={{flex: 1, flexDirection: "row"}}>
+        <View style={{ flex: 1, flexDirection: "row" }}>
           <View
             style={{
               flex: 1,
@@ -189,15 +184,15 @@ class PlantDetail extends React.Component {
               justifyContent: "center",
             }}>
             <Image
-              style={{width: 60, height: 60}}
+              style={{ width: 60, height: 60 }}
               source={require("../../Picture/croissancePlante.png")}
             />
           </View>
 
-          <View style={{flex: 1, flexDirection: "column", marginRight: 20}}>
+          <View style={{ flex: 1, flexDirection: "column", marginRight: 18 }}>
             <View
-              style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
-              <Text style={{fontSize: 18, color: "#f1f1f1"}}>Type de sol</Text>
+              style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+              <Text style={{ fontSize: 18, color: "#f1f1f1", fontFamily: "serif" }}>Type de sol</Text>
             </View>
             <View
               style={{
@@ -205,8 +200,8 @@ class PlantDetail extends React.Component {
                 alignItems: "center",
                 justifyContent: "flex-start",
               }}>
-              <ScrollView style={{marginBottom: 5}}>
-                <Text style={{fontSize: 14, color: "#f1f1f1"}}>
+              <ScrollView style={{ marginBottom: 5 }}>
+                <Text style={{ fontSize: 14, color: "#f1f1f1", fontFamily: "serif" }}>
                   {plant[0].soil}
                 </Text>
               </ScrollView>
@@ -230,10 +225,10 @@ class PlantDetail extends React.Component {
             alignItems: "center",
             justifyContent: "center",
           }}>
-          <Text style={{fontSize: 18, color: "#f1f1f1"}}>
+          <Text style={{ fontSize: 18, color: "#f1f1f1", fontFamily: "serif" }}>
             Luminosité demandée
           </Text>
-          <Text style={{fontSize: 14, color: "#f1f1f1"}}>
+          <Text style={{ fontSize: 14, color: "#f1f1f1", fontFamily: "serif" }}>
             {plant[0].luminosity}
           </Text>
         </View>
@@ -247,13 +242,14 @@ class PlantDetail extends React.Component {
     const plant = this.state.plant;
     if (plant.length > 0) {
       return (
-        <View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
+        <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
           <Text
             style={{
               color: "#f1f1f1",
               fontSize: 32,
               textAlign: "center",
               fontWeight: "bold",
+              fontFamily: "serif"
             }}>
             {plant[0].name}
           </Text>
@@ -268,7 +264,7 @@ class PlantDetail extends React.Component {
     const plant = this.state.plant;
     if (plant.length > 0) {
       return (
-        <View style={{flex: 1}}>
+        <View style={{ flex: 1 }}>
           <View
             style={{
               width: 140,
@@ -290,14 +286,14 @@ class PlantDetail extends React.Component {
 
   _displayArrowGoBack() {
     return (
-      <View style={{width: "100%", height: 20, justifyContent: "center"}}>
+      <View style={{ width: "100%", height: 20, justifyContent: "center" }}>
         <TouchableOpacity
           onPress={() => {
             this.props.navigation.goBack();
           }}>
           <FontAwesomeIcon
             icon={faArrowLeft}
-            style={{color: "#f1f1f1", margin: 20}}
+            style={{ color: "#f1f1f1", margin: 20 }}
           />
         </TouchableOpacity>
       </View>
@@ -321,14 +317,14 @@ class PlantDetail extends React.Component {
         onPress={() => {
           this.props.navigation.navigate("addPotForm", this.state.idPlant);
         }}>
-        <Text style={{fontSize: 14, color: "#f1f1f1"}}>+ Ajouter au pot</Text>
+        <Text style={{ fontSize: 14, color: "#f1f1f1" }}>+ Ajouter au pot</Text>
       </TouchableOpacity>
     );
   }
 
   render() {
     return (
-      <View style={{flex: 1, flexDirection: "column"}}>
+      <View style={{ flex: 1, flexDirection: "column" }}>
         <LinearGradient
           colors={["#588B43", "#373b44"]}
           style={{
@@ -337,15 +333,15 @@ class PlantDetail extends React.Component {
             borderBottomRightRadius: 30,
             elevation: 8,
           }}>
-          <View style={{flexDirection: "row"}}>
-            <View style={{flex: 1}}>{this._displayArrowGoBack()}</View>
+          <View style={{ flexDirection: "row" }}>
+            <View style={{ flex: 1 }}>{this._displayArrowGoBack()}</View>
 
-            <View style={{flex: 1, marginRight: 30}}>
+            <View style={{ flex: 1, marginRight: 30 }}>
               {this._displayAddPotButton()}
             </View>
           </View>
 
-          <View style={{flex: 1, flexDirection: "column"}}>
+          <View style={{ flex: 1, flexDirection: "column" }}>
             <View
               style={{
                 flex: 1,
@@ -356,7 +352,7 @@ class PlantDetail extends React.Component {
               {this._displayNamePlant()}
               {this._displayPicturePlant()}
             </View>
-            <View style={{flex: 3, paddingBottom: 12}}>
+            <View style={{ flex: 3, paddingBottom: 12 }}>
               <ScrollView>
                 {this._displayDescriptionDetail()}
                 {this._displayEntretienDetail()}
@@ -365,8 +361,8 @@ class PlantDetail extends React.Component {
           </View>
         </LinearGradient>
 
-        <View style={{flex: 4}}>
-          <View style={{height: 120, marginTop: 10}}>
+        <View style={{ flex: 4 }}>
+          <View style={{ height: 120, marginTop: 10 }}>
             <ScrollView horizontal>
               <View style={styles.itemScrollView}>
                 {this._displayCroissanceDetail()}
