@@ -23,16 +23,17 @@ class LoginControl extends React.Component {
             infosPots: [],
         };
     }
+
     render() {
         return(
             <View>
                 {this.props.isLoggedIn && <HomeConnected/>}
                 {!this.props.isLoggedIn && <HomeNotConnected/>}
             </View>
+
         )
     }
 }
-
 
 const mapStateToProps = (state) => {
     return {
