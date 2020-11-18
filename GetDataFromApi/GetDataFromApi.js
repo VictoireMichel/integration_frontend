@@ -83,3 +83,20 @@ export function getPotsByUserIDFromApi(id) {
       .then((response) => response.json())
       .catch((error) => console.log(error));
 }
+
+export function logOut(){
+  const url = 'https://pi2-ephec.herokuapp.com/users/logout'
+  fetch(url, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+  }).then((response) => response.json())
+      .then((json) => {
+        console.log(json);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+}
