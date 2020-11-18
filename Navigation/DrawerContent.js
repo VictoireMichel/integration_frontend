@@ -17,7 +17,7 @@ export default function DrawerContent(props) {
       </View>
       <View style={styles.text_container}>
         <Text style={styles.text} onPress={() => {
-          props.navigation.navigate("Acceuil");
+          props.navigation.navigate("Accueil");
         }}>
           Acceuil
         </Text>
@@ -27,7 +27,7 @@ export default function DrawerContent(props) {
           store.dispatch({ type: "SET_ID", value: null });
           store.dispatch({ type: "LOGIN", value: false });
           logOut();
-          props.navigation.navigate("Acceuil"); // Déconnexion
+          props.navigation.navigate("Accueil"); // Déconnexion
         }}>
           Deconnexion
         </Text>) : ([<Text key='2' style={styles.text} onPress={() => {
