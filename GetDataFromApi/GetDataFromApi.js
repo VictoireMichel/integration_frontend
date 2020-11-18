@@ -13,6 +13,13 @@ export function getPlantsFromApi() {
     .catch((error) => console.log(error));
 }
 
+export function getPotsFromApi() {
+  const url = "https://pi2-ephec.herokuapp.com/pots/all";
+  return fetch(url)
+      .then((response) => response.json())
+      .catch((error) => console.log(error));
+}
+
 /*
  *
  * Cette fonction permet de récupérer une plante précise au complet via le paramètre ID
@@ -71,8 +78,25 @@ export function getDataByIDFromApi(id) {
 
 export function getPotsByUserIDFromApi(id) {
   console.log(id);
-  const url = "https://pi2-ephec.herokuapp.com/pots/user?userId=" + id;
+  const url = 'https://pi2-ephec.herokuapp.com/pots/user?userId=' + id;
   return fetch(url)
       .then((response) => response.json())
       .catch((error) => console.log(error));
+}
+
+export function logOut(){
+  const url = 'https://pi2-ephec.herokuapp.com/users/logout'
+  fetch(url, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+  }).then((response) => response.json())
+      .then((json) => {
+        console.log(json);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
 }

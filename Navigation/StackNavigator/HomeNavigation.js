@@ -6,14 +6,22 @@ import { useEffect } from "react";
 import LoginControl from "../../Account/LoginControl";
 import HomeConnectedWithPot from "../../Components/Home/HomeConnectedWithPot";
 import Navigation5 from "../Navigation5";
-import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
+import HomeConnected from "../../Components/Home/HomeConnected";
+import SignUpStep1 from "../../Account/SignUpStep1";
+import SignUpStep2 from "../../Account/SignUpStep2";
+import SignUpStep3 from "../../Account/SignUpStep3";
+import HomeConnectedWithoutPot from "../../Components/Home/HomeConnectedWithoutPot";
+import HomeNotConnected from "../../Components/Home/HomeNotConnected";
+
 
 const Stack = createStackNavigator();
 
-function HomeNavigation({ navigation, route }) {
+
+
+function HomeNavigation ({ navigation, route }) {
   useEffect(() => {
-    if (getFocusedRouteNameFromRoute(route) !== null) {
-      if (getFocusedRouteNameFromRoute(route) === 'Details') {
+    if (route.state !== undefined) {
+      if (route.state.index > 0) {
         navigation.setOptions({ tabBarVisible: false });
       } else {
         navigation.setOptions({ tabBarVisible: true });
@@ -23,11 +31,25 @@ function HomeNavigation({ navigation, route }) {
 
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Home" component={LoginControl} options={{ headerShown: false }} />
-      <Stack.Screen name="Details" component={MyPlantInfo} options={{ tabBarVisible: false }} />
-      <Stack.Screen name="List" component={MyPlants} options={{ headerShown: false }} />
+      <Stack.Screen name="Home" component={ControlNav} options={{ headerShown: false }}/>
+        <Stack.Screen name="HomeConnectedWithPot" component={HomeConnectedWithPot} options={{ headerShown: false }} />
+        <Stack.Screen name="Details" component={MyPlantInfo} options={{ headerShown: false }} />
+        <Stack.Screen name="HomeConnectedWithoutPot" component={HomeConnectedWithoutPot} options={{ headerShown: false }} />
+        <Stack.Screen name="List" component={MyPlants} options={{ headerShown: false }}/>
+        <Stack.Screen name="HomeNotConnected" component={HomeNotConnected} options={{ headerShown: false }} />
+
     </Stack.Navigator>
   );
+}
+
+function ControlNav(){
+    return(
+        <Stack.Navigator>
+            <Stack.Screen name="Control" component={LoginControl} options={{ headerShown: false }}/>
+            <Stack.Screen name="Connect" component={HomeConnected} options={{ headerShown: false }}/>
+        </Stack.Navigator>
+    )
+
 }
 
 export default HomeNavigation;

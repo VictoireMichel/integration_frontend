@@ -19,6 +19,7 @@ import {
 } from "../../GetDataFromApi/GetDataFromApi";
 import {connect} from "react-redux";
 
+
 class HomeConnectedWithPot extends React.Component {
   constructor(props) {
     super(props);
@@ -32,7 +33,6 @@ class HomeConnectedWithPot extends React.Component {
       infosPlant: [],
     };
   }
-
 
   /**
    * Fonction récupérant les données du pot de la base de données
@@ -56,8 +56,6 @@ class HomeConnectedWithPot extends React.Component {
         });
       });
     }).catch(error => console.log('erreur getPotByUserIdFromApi', error));
-
-
   }
 
   /**
@@ -149,6 +147,7 @@ class HomeConnectedWithPot extends React.Component {
 
   render() {
     return (
+
       <View style={styles.background}>
         {this.state.isLoading ? (
           <View style={styles.loading_container}>
@@ -185,6 +184,7 @@ class HomeConnectedWithPot extends React.Component {
           <TouchableOpacity
             style={styles.button}
             onPress={() => {
+              console.log(" testclik ");
               this.props.navigation.navigate("Details", {
                 itemId: this.state.infosPots.id,
               });
@@ -323,6 +323,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+
 
 
 const mapStateToProps = (state) => {
