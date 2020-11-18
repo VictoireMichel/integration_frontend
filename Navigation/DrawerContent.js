@@ -3,6 +3,8 @@ import {View, Text, StyleSheet, TouchableOpacity} from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faQuestionCircle, faUser } from "@fortawesome/free-solid-svg-icons";
 import ToggleSwitch from "toggle-switch-react-native";
+import store from "../redux/store";
+import { logOut } from "../GetDataFromApi/GetDataFromApi"
 
 export default function DrawerContent (props) {
 
@@ -19,16 +21,28 @@ export default function DrawerContent (props) {
         }}>
                     Acceuil
         </Text>
-        <Text style={styles.text} onPress={() => {
+
+
+        {store.getState().isLogged.isLoggedIn ? (<Text style={styles.text} onPress={() => {
+          store.dispatch({type:"SET_ID", value: null});
+          store.dispatch({type:"LOGIN", value: false});
+          logOut();
+          props.navigation.navigate("Acceuil"); // Déconnexion
+        }}>
+          Deconnexion
+        </Text>) : ([<Text style={styles.text} onPress={() => {
           props.navigation.navigate("Connexion");
         }}>
-                    Se connecter
-        </Text>
-        <Text style={styles.text} onPress={() => {
+          Se connecter
+        </Text>,
+          <Text style={styles.text} onPress={() => {
           props.navigation.navigate("Enregistrement");
         }}>
-                    S'inscrire
-        </Text>
+          S'inscrire
+          </Text>
+          ])}
+
+
       </View>
       <View style={styles.end}>
         <View style={styles.switch}>
