@@ -32,13 +32,25 @@ class HomeConnected extends React.Component {
             })
             console.log(data[0]);
         });
+
+        if (this.props.isLoggedIn) {
+            this.props.navigation.navigate('HomeConnectedWithPot');
+        } else {
+            this.props.navigation.navigate('HomeConnectedWithoutPot');
+        }
+    }
+
+    componentDidUpdate() {
+        if (this.props.isLoggedIn) {
+            this.props.navigation.navigate('HomeConnectedWithPot');
+        } else {
+            this.props.navigation.navigate('HomeConnectedWithoutPot');
+        }
     }
 
     render() {
         return (
             <View>
-                {this.state.infosPots.length > 0 && this.props.navigation.navigate('HomeConnectedWithPot')}
-                {this.state.infosPots.length < 1 && this.props.navigation.navigate('HomeConnectedWithoutPot')}
             </View>
         );
     }

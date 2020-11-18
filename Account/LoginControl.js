@@ -1,10 +1,8 @@
 import React from "react";
-import HomeNotConnected from "../Components/Home/HomeNotConnected";
 import { connect } from "react-redux";
 import {
     View,
 } from "react-native";
-import HomeConnected from "../Components/Home/HomeConnected";
 
 class LoginControl extends React.Component {
     constructor(props) {
@@ -15,13 +13,27 @@ class LoginControl extends React.Component {
         };
     }
 
+
+    componentDidUpdate() {
+        if (this.props.isLoggedIn) {
+            this.props.navigation.navigate('HomeConnected');
+        } else {
+            this.props.navigation.navigate('HomeNotConnected');
+        }
+    }
+
+    componentDidMount() {
+        if (this.props.isLoggedIn) {
+            this.props.navigation.navigate('HomeConnected');
+        } else {
+            this.props.navigation.navigate('HomeNotConnected');
+        }
+    }
+
     render() {
         return (
             <View>
-                {this.props.isLoggedIn && this.props.navigation.navigate('HomeConnected')}
-                {!this.props.isLoggedIn && this.props.navigation.navigate('HomeNotConnected')}
             </View>
-
         )
     }
 }
