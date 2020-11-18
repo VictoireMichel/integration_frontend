@@ -24,10 +24,10 @@ class SignIn extends React.Component {
             alert('Champ(s) incomplet(s) !')
         } else if (reg.test(text) === false) {
             alert('Adresse email non valide');
-            this.setState({email: text})
+            this.setState({ email: text })
             return false;
         } else if (this.state.email.length > 0 & this.state.password.length > 0 & reg.test(text) === true) {
-            this.setState({email: text})
+            this.setState({ email: text })
             console.log("Email format is correct");
 
             fetch("https://pi2-ephec.herokuapp.com/users/signin", {
@@ -41,15 +41,15 @@ class SignIn extends React.Component {
                 })
             }).then((response) => response.json())
                 .then((json) => {
-                    if(json === 'email/password incorrect') {
+                    if (json === 'email/password incorrect') {
                         console.log("NOK");
                         alert(json)
                     }
-                    else{
+                    else {
                         console.log("OK");
-                        this.setState({userId: json[0].id})
+                        this.setState({ userId: json[0].id })
                         this._changeGlobalState();
-                        this.props.navigation.navigate("Acceuil")
+                        this.props.navigation.navigate("Accueil")
                         //alert("Connexion réussi !");
                     }
                 })
@@ -59,12 +59,12 @@ class SignIn extends React.Component {
         }
     }
 
-    _changeGlobalState(){
-        const action = {type:"SET_ID", value: this.state.userId}
-        const action2 = {type:"LOGIN", value: true}
+    _changeGlobalState() {
+        const action = { type: "SET_ID", value: this.state.userId }
+        const action2 = { type: "LOGIN", value: true }
         this.props.dispatch(action)
         this.props.dispatch(action2)
-       // console.log(this.props)
+        // console.log(this.props)
     }
 
     componentDidUpdate() {
@@ -114,7 +114,7 @@ class SignIn extends React.Component {
                     </View>
 
                     <View style={styles.main_container}>
-                        <TouchableOpacity style={styles.loginBtn} onPress={() => { { this.validate(this.state.email)}}}>
+                        <TouchableOpacity style={styles.loginBtn} onPress={() => { { this.validate(this.state.email) } }}>
                             <Text style={styles.loginText}>Se connecter</Text>
                         </TouchableOpacity>
                     </View>

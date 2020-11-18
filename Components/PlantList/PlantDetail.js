@@ -12,6 +12,8 @@ import { getPlantsByIDFromApi } from "../../GetDataFromApi/GetDataFromApi";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import LinearGradient from "react-native-linear-gradient";
+import { connect } from "react-redux";
+
 
 class PlantDetail extends React.Component {
   constructor(props) {
@@ -301,24 +303,32 @@ class PlantDetail extends React.Component {
   }
 
   _displayAddPotButton() {
+    console.log(this.props.isLoggedIn)
+    console.log('--------------------')
     return (
-      <TouchableOpacity
-        style={{
-          width: 130,
-          height: 30,
-          backgroundColor: "#373b44",
-          borderRadius: 15,
-          elevation: 8,
-          margin: 3,
-          alignItems: "center",
-          justifyContent: "center",
-          alignSelf: "flex-end",
-        }}
-        onPress={() => {
-          this.props.navigation.navigate("addPotForm", this.state.idPlant);
-        }}>
-        <Text style={{ fontSize: 14, color: "#f1f1f1" }}>+ Ajouter au pot</Text>
-      </TouchableOpacity>
+      <View>
+
+        {this.props.isLoggedIn ? (
+          <TouchableOpacity
+            style={{
+              width: 130,
+              height: 30,
+              backgroundColor: "#373b44",
+              borderRadius: 15,
+              elevation: 8,
+              margin: 3,
+              alignItems: "center",
+              justifyContent: "center",
+              alignSelf: "flex-end",
+            }}
+            onPress={() => {
+              this.props.navigation.navigate("addPotForm", this.state.idPlant);
+            }}>
+            <Text style={{ fontSize: 14, color: "#f1f1f1" }}>+ Ajouter au pot</Text>
+          </TouchableOpacity>
+        ) : (null)}
+
+      </View>
     );
   }
 
@@ -406,4 +416,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PlantDetail;
+const mapStateToProps = (state) => {
+  return {
+    id: state.storeUserId.id,
+    isLoggedIn: state.isLogged.isLoggedIn
+  }
+}
+
+export default connect(mapStateToProps)(PlantDetail)

@@ -8,16 +8,16 @@ import {
   ActivityIndicator,
   ScrollView,
 } from "react-native";
-import Svg, {Ellipse} from "react-native-svg";
-import {FontAwesomeIcon} from "@fortawesome/react-native-fontawesome";
-import {faSun, faTint} from "@fortawesome/free-solid-svg-icons";
+import Svg, { Ellipse } from "react-native-svg";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faSun, faTint } from "@fortawesome/free-solid-svg-icons";
 import ProgressCircle from "react-native-progress-circle";
 import {
   getDataByIDFromApi,
   getPlantsByIDFromApi,
   getPotsByIDFromApi, getPotsByUserIDFromApi,
 } from "../../GetDataFromApi/GetDataFromApi";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
 
 class HomeConnectedWithPot extends React.Component {
@@ -62,18 +62,18 @@ class HomeConnectedWithPot extends React.Component {
    * Fonction qui récupère et affiche la durée de vie de la plante
    */
   _displayDayCount() {
-      return (
-        <ProgressCircle
-          style={styles.ball}
-          percent={this.state.infosPots.dayCount} // ici => données de la plante qu'on devra récupérer
-          radius={31}
-          borderWidth={4}
-          color="#A2A2A2"
-          shadowColor="#E6E6E6"
-          bgColor="#FFFFFF">
-          <Text style={styles.age}>{this.state.infosPots.dayCount + " jours"}</Text>
-        </ProgressCircle>
-      );
+    return (
+      <ProgressCircle
+        style={styles.ball}
+        percent={this.state.infosPots.dayCount} // ici => données de la plante qu'on devra récupérer
+        radius={31}
+        borderWidth={4}
+        color="#A2A2A2"
+        shadowColor="#E6E6E6"
+        bgColor="#FFFFFF">
+        <Text style={styles.age}>{this.state.infosPots.dayCount + " jours"}</Text>
+      </ProgressCircle>
+    );
   }
 
   /**
@@ -154,46 +154,46 @@ class HomeConnectedWithPot extends React.Component {
             <ActivityIndicator size="large" color="#005B00" />
           </View>
         ) : (
-          <View style={styles.container}>
-            <View>
-              <Svg style={styles.ball1}>
-                <Ellipse
-                  fill="rgba(230, 230, 230,1)"
-                  cx={68}
-                  cy={68}
-                  rx={68}
-                  ry={68}
-                />
-              </Svg>
-              {this._displayName()}
-              <View style={styles.line} />
-              {this._displayPic()}
+            <View style={styles.container}>
+              <View>
+                <Svg style={styles.ball1}>
+                  <Ellipse
+                    fill="rgba(230, 230, 230,1)"
+                    cx={68}
+                    cy={68}
+                    rx={68}
+                    ry={68}
+                  />
+                </Svg>
+                {this._displayName()}
+                <View style={styles.line} />
+                {this._displayPic()}
+              </View>
+              <View style={styles.container2}>
+                <View style={styles.container3}>{this._displayDataHum()}</View>
+                <View style={styles.container3}>{this._displayDayCount()}</View>
+                <View style={styles.container3}>{this._displayDataLum()}</View>
+              </View>
             </View>
-            <View style={styles.container2}>
-              <View style={styles.container3}>{this._displayDataHum()}</View>
-              <View style={styles.container3}>{this._displayDayCount()}</View>
-              <View style={styles.container3}>{this._displayDataLum()}</View>
-            </View>
-          </View>
-        )}
+          )}
         {this.state.isLoading ? (
           <View style={styles.loading_container}>
             <ActivityIndicator size="large" color="#005B00" />
           </View>
         ) : (
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => {
-              console.log(" testclik ");
-              this.props.navigation.navigate("Details", {
-                itemId: this.state.infosPots.id,
-              });
-            }}>
-            <View style={styles.text_container}>
-              <Text style={styles.text}>Plus d'infos</Text>
-            </View>
-          </TouchableOpacity>
-        )}
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => {
+                console.log(" testclik ");
+                this.props.navigation.navigate("Details", {
+                  itemId: this.state.infosPots.id,
+                });
+              }}>
+              <View style={styles.text_container}>
+                <Text style={styles.text}>Plus d'infos</Text>
+              </View>
+            </TouchableOpacity>
+          )}
       </View>
     );
   }
@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
     width: 300,
     borderRadius: 20,
     shadowColor: "#1E3927",
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     // android
     elevation: 8,
@@ -285,7 +285,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 16,
     shadowColor: "#1E3927",
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     // android
     elevation: 8,
