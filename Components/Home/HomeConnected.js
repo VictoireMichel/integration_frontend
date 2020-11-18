@@ -1,23 +1,11 @@
 import React from "react";
 import {
-    StyleSheet,
-    Text,
     View,
-    Image,
-    TouchableOpacity,
-    ActivityIndicator,
-    ScrollView,
 } from "react-native";
-import Svg, {Ellipse} from "react-native-svg";
-import {FontAwesomeIcon} from "@fortawesome/react-native-fontawesome";
-import {faSun, faTint} from "@fortawesome/free-solid-svg-icons";
-import ProgressCircle from "react-native-progress-circle";
 import {
-    getDataByIDFromApi,
-    getPlantsByIDFromApi,
-    getPotsByIDFromApi, getPotsByUserIDFromApi,
+    getPotsByUserIDFromApi,
 } from "../../GetDataFromApi/GetDataFromApi";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import HomeConnectedWithPot from "./HomeConnectedWithPot";
 import HomeConnectedWithoutPot from "./HomeConnectedWithoutPot";
 
@@ -37,7 +25,7 @@ class HomeConnected extends React.Component {
     }
 
     componentDidMount() {
-        getPotsByUserIDFromApi(this.props.id).then(data =>  {
+        getPotsByUserIDFromApi(this.props.id).then(data => {
             this.setState({
                 infosPots: data,
                 isLoading: false,
@@ -49,8 +37,8 @@ class HomeConnected extends React.Component {
     render() {
         return (
             <View>
-                {this.state.infosPots.length > 0 && <HomeConnectedWithPot/>}
-                {this.state.infosPots.length < 1 && <HomeConnectedWithoutPot/>}
+                {this.state.infosPots.length > 0 && this.props.navigation.navigate('HomeConnectedWithPot')}
+                {this.state.infosPots.length < 1 && this.props.navigation.navigate('HomeConnectedWithoutPot')}
             </View>
         );
     }

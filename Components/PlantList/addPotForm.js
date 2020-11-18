@@ -1,13 +1,13 @@
 import React from 'react';
-import {StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity} from 'react-native';
-import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity } from 'react-native';
+import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
 import { postPotDatatoApi } from "../../SendDataToAPI/postDataToApi"
 import { updateLearningMode } from "../../SendDataToAPI/updateLearningMode"
 import { connect } from 'react-redux'
 
-class addPotForm extends React.Component{
+class addPotForm extends React.Component {
 
-    constructor (props) {
+    constructor(props) {
         super(props);
         this.state = {
             idPlant: null,
@@ -20,10 +20,10 @@ class addPotForm extends React.Component{
         };
     }
 
-    componentDidMount () {
+    componentDidMount() {
         console.log(this.props.id);
         this.setState({
-            idPlant : this.props.route.params,
+            idPlant: this.props.route.params,
             userId: this.props.id
         });
     }
@@ -31,8 +31,8 @@ class addPotForm extends React.Component{
 
     render() {
         const radio_props = [
-            {label: 'Mode apprentissage', value: 0 },
-            {label: 'Mode automatique', value: 1 }
+            { label: 'Mode apprentissage', value: 0 },
+            { label: 'Mode automatique', value: 1 }
         ];
 
         return (
@@ -44,13 +44,13 @@ class addPotForm extends React.Component{
                     </View>
 
 
-                        <TextInput
-                            name="potName"
-                            placeholder="Nom du pot"
-                            style={styles.inputText}
-                            onChangeText={potName => this.setState({potName})}
-                            value={this.state.potName}
-                        />
+                    <TextInput
+                        name="potName"
+                        placeholder="Nom du pot"
+                        style={styles.inputText}
+                        onChangeText={potName => this.setState({ potName })}
+                        value={this.state.potName}
+                    />
 
 
                     <View style={styles.main_container}>
@@ -59,22 +59,26 @@ class addPotForm extends React.Component{
 
                     <View style={styles.main_container}>
                         <RadioForm
-                            labelStyle={{fontSize: 18}}
+                            labelStyle={{ fontSize: 18 }}
                             radio_props={radio_props}
                             initial={0}
-                            onPress={(value) => {this.setState({
-                                learningMode: value
+                            onPress={(value) => {
+                                this.setState({
+                                    learningMode: value
                                 }
-                            )}}
+                                )
+                            }}
                         />
                     </View>
 
                     <View style={styles.main_container}>
-                        <TouchableOpacity style={styles.validateBtn} onPress={() => {postPotDatatoApi(this.state.potName,this.state.needWater,
-                            this.state.dayCount,this.state.idPlant,this.state.userId),
-                            updateLearningMode(this.state.userId, this.state.learningMode),
-                            this.props.navigation.goBack(), this.props.navigation.goBack(),
-                            this.props.navigation.navigate('Accueil', {plantId: this.state.idPlant})}}>
+                        <TouchableOpacity style={styles.validateBtn} onPress={() => {
+                            postPotDatatoApi(this.state.potName, this.state.needWater,
+                                this.state.dayCount, this.state.idPlant, this.state.userId),
+                                updateLearningMode(this.state.userId, this.state.learningMode),
+                                this.props.navigation.goBack(), this.props.navigation.goBack(),
+                                this.props.navigation.navigate('Accueil', { plantId: this.state.idPlant })
+                        }}>
                             <Text style={styles.text_button}>Valider</Text>
                         </TouchableOpacity>
                     </View>
@@ -103,7 +107,7 @@ const styles = StyleSheet.create({
         marginLeft: 'auto',
 
         elevation: 5,
-        borderRadius:10,
+        borderRadius: 10,
     },
     potName_text: {
         fontSize: 17,
@@ -131,17 +135,17 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginRight: 'auto',
         marginLeft: 'auto',
-        backgroundColor:'#588B43',
+        backgroundColor: '#588B43',
 
         // its for android
         elevation: 5,
-        position:'relative',
-        borderRadius:10,
+        position: 'relative',
+        borderRadius: 10,
     },
-    mode_text:{
-        fontSize:18
+    mode_text: {
+        fontSize: 18
     },
-    button:{
+    button: {
         flexDirection: 'row',
         justifyContent: 'center',
         marginTop: 15
@@ -150,14 +154,14 @@ const styles = StyleSheet.create({
         color: "white",
         fontSize: 18
     },
-    validateBtn:{
-        width:270,
-        backgroundColor:'#588B43',
-        borderRadius:25,
-        height:50,
-        alignItems:"center",
-        justifyContent:"center",
-        marginBottom:30
+    validateBtn: {
+        width: 270,
+        backgroundColor: '#588B43',
+        borderRadius: 25,
+        height: 50,
+        alignItems: "center",
+        justifyContent: "center",
+        marginBottom: 30
     }
 })
 
