@@ -2,8 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity } from 'react-native';
 import CheckBox from '@react-native-community/checkbox'
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faKey, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faKey, faEnvelope,faArrowLeft, faUser } from '@fortawesome/free-solid-svg-icons';
 import CustomHeader from "../Navigation/Header/CustomHeader";
+import LinearGradient from 'react-native-linear-gradient'
 import { connect } from 'react-redux'
 
 class SignIn extends React.Component {
@@ -64,7 +65,7 @@ class SignIn extends React.Component {
         const action2 = {type:"LOGIN", value: true}
         this.props.dispatch(action)
         this.props.dispatch(action2)
-       // console.log(this.props)
+        // console.log(this.props)
     }
 
     componentDidUpdate() {
@@ -72,77 +73,83 @@ class SignIn extends React.Component {
         //console.log(this.props.isLoggedIn)
     }
 
-
     render() {
 
         return (
-            <ScrollView>
+            <LinearGradient
+                colors={['#588B43', '#999966']}//#999966 373b44 5a3f37
+                style={styles.linearGradient}
+            >
 
-                <CustomHeader nav={this.props.navigation} />
+                <TouchableOpacity style={styles.stepBack_container} onPress={() => { this.props.navigation.openDrawer() }}>
+                    <FontAwesomeIcon icon={faArrowLeft} style={{ color: 'white' }} />
+                </TouchableOpacity>
 
                 <View style={styles.main_container}>
+
+
                     <View><Text style={styles.title_Screen}>Connexion</Text></View>
 
                     <View style={styles.inputView}>
-                        <View style={styles.icon_inputText}><FontAwesomeIcon icon={faEnvelope} /></View>
+                        <View style={styles.iconTextInput}><FontAwesomeIcon icon={faEnvelope} /></View>
                         <TextInput
                             placeholder="Email"
-                            style={styles.inputText}
                             value={this.state.email}
                             onChangeText={(text => this.setState({ email: text }))}
-                        >
+                            ref={input => { this.emailTextInput = input }}
+                            style={styles.inputText}
+                        />
+                        </View>
 
-                        </TextInput>
-                    </View>
-
-                    <View style={styles.inputView}>
-                        <View style={styles.icon_inputText}><FontAwesomeIcon icon={faKey} /></View>
+                        <View style={styles.inputView}>
+                        <View style={styles.iconTextInput}><FontAwesomeIcon icon={faKey} /></View>
                         <TextInput
                             secureTextEntry={true}
                             placeholder="Password"
                             style={styles.inputText}
                             value={this.state.password}
+                            ref={input => { this.passwordtextInput = input }}
                             onChangeText={(text => this.setState({ password: text }))}
+                        />
+                    </View>
+
+
+                    <View>
+                        <TouchableOpacity style={styles.loginBtn} onPress={() => { { this.validate(this.state.email)};
+                            {this.emailTextInput.clear()};
+                            {this.passwordtextInput.clear()}}}
                         >
-
-                        </TextInput>
-                    </View>
-
-                    <View style={styles.main_container}>
-                        <CheckBox style={styles.checkbox} />
-                        <Text style={styles.checkBoxText}>Remember me</Text>
-                    </View>
-
-                    <View style={styles.main_container}>
-                        <TouchableOpacity style={styles.loginBtn} onPress={() => { { this.validate(this.state.email)}}}>
                             <Text style={styles.loginText}>Se connecter</Text>
                         </TouchableOpacity>
                     </View>
 
-                    <View style={styles.main_container}>
-                        <Text>Pas encore de compte ?</Text>
+                    <View style={styles.info_container}>
+                        <Text style={{ color: 'white' }}>Pas encore de compte ?</Text>
                         <TouchableOpacity onPress={() => { this.props.navigation.navigate('Enregistrement') }}>
                             <Text style={styles.redirect_signin_text}>Enregistrez-vous</Text>
                         </TouchableOpacity>
                     </View>
 
                 </View>
-            </ScrollView>
+            </LinearGradient>
+
+
         )
     }
 }
 
 const styles = StyleSheet.create({
+    linearGradient: {
+        height: '100%'
+    },
     main_container: {
-        paddingTop: 35,
-        flex: 1,
-        justifyContent: 'center',
         alignItems: 'center'
     },
     title_Screen: {
+        marginTop: 80,
         fontSize: 35,
-        color: 'green',
-        paddingBottom: 15
+        color: 'white',
+        marginBottom: 25
     },
     inputView: {
         height: 37,
@@ -160,6 +167,7 @@ const styles = StyleSheet.create({
         position: 'relative'
     },
     inputText: {
+        width: 270,
         padding: 10,
     },
     iconTextInput: {
@@ -167,7 +175,7 @@ const styles = StyleSheet.create({
     },
     redirect_signin_text: {
         color: 'green',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     },
     checkbox: {
         alignSelf: "center",
@@ -177,7 +185,7 @@ const styles = StyleSheet.create({
     },
     loginBtn: {
         width: 270,
-        backgroundColor: '#588B43',
+        backgroundColor: '#577B43',
         borderRadius: 25,
         height: 50,
         alignItems: "center",
@@ -188,6 +196,14 @@ const styles = StyleSheet.create({
     loginText: {
         color: 'white',
         fontSize: 20
+    },
+    info_container: {
+        alignItems: 'center',
+        marginTop: 15
+    },
+    stepBack_container: {
+        marginLeft: 25,
+        marginTop: 25
     }
 })
 
