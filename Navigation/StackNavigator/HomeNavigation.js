@@ -13,15 +13,15 @@ import SignUpStep3 from "../../Account/SignUpStep3";
 import HomeConnectedWithoutPot from "../../Components/Home/HomeConnectedWithoutPot";
 import HomeNotConnected from "../../Components/Home/HomeNotConnected";
 
+import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
+
 
 const Stack = createStackNavigator();
 
-
-
-function HomeNavigation ({ navigation, route }) {
+function HomeNavigation({ navigation, route }) {
   useEffect(() => {
-    if (route.state !== undefined) {
-      if (route.state.index > 0) {
+    if (getFocusedRouteNameFromRoute(route) !== null) {
+      if (getFocusedRouteNameFromRoute(route) === 'Details') {
         navigation.setOptions({ tabBarVisible: false });
       } else {
         navigation.setOptions({ tabBarVisible: true });
@@ -33,11 +33,10 @@ function HomeNavigation ({ navigation, route }) {
     <Stack.Navigator>
       <Stack.Screen name="Home" component={ControlNav} options={{ headerShown: false }}/>
         <Stack.Screen name="HomeConnectedWithPot" component={HomeConnectedWithPot} options={{ headerShown: false }} />
-        <Stack.Screen name="Details" component={MyPlantInfo} options={{ headerShown: false }} />
+        <Stack.Screen name="Details" component={MyPlantInfo} options={{ headerShown: false, tabBarVisible: false }} />
         <Stack.Screen name="HomeConnectedWithoutPot" component={HomeConnectedWithoutPot} options={{ headerShown: false }} />
         <Stack.Screen name="List" component={MyPlants} options={{ headerShown: false }}/>
         <Stack.Screen name="HomeNotConnected" component={HomeNotConnected} options={{ headerShown: false }} />
-
     </Stack.Navigator>
   );
 }
