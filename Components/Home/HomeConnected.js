@@ -33,7 +33,7 @@ class HomeConnected extends React.Component {
             console.log(data[0]);
         });
 
-        if (this.props.isLoggedIn) {
+        if (this.state.infosPots.length > 0) {
             this.props.navigation.navigate('HomeConnectedWithPot');
         } else {
             this.props.navigation.navigate('HomeConnectedWithoutPot');
@@ -41,7 +41,14 @@ class HomeConnected extends React.Component {
     }
 
     componentDidUpdate() {
-        if (this.props.isLoggedIn) {
+        if (this.state.infosPots.length > 0) {
+            this.props.navigation.navigate('HomeConnectedWithPot');
+        } else {
+            this.props.navigation.navigate('HomeConnectedWithoutPot');
+        }
+    }
+    componentWillUnmount() {
+        if (this.state.infosPots.length > 0) {
             this.props.navigation.navigate('HomeConnectedWithPot');
         } else {
             this.props.navigation.navigate('HomeConnectedWithoutPot');
