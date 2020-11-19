@@ -19,7 +19,7 @@ export default function DrawerContent(props) {
         <Text style={styles.text} onPress={() => {
           props.navigation.navigate("Accueil");
         }}>
-          Acceuil
+          Accueil
         </Text>
 
 
