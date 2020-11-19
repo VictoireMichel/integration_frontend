@@ -7,7 +7,7 @@ class SignUpStep3 extends React.Component {
 
     render() {
         return (
-            <LinearGradient colors={['#588B43', '#999966']} style={styles.linearGradient}>
+            <LinearGradient colors={['#588B43', '#373b44']} style={styles.linearGradient}>
 
                 <View style={styles.container_one}>
                     <Text style={{ color: '#f1f1f1', fontSize: 32, fontFamily: "Cochin" }}>Bienvenue sur eGrow</Text>

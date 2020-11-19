@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity } from 'react-native';
 import CheckBox from '@react-native-community/checkbox'
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faKey, faEnvelope,faArrowLeft, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faKey, faEnvelope, faArrowLeft, faUser } from '@fortawesome/free-solid-svg-icons';
 import CustomHeader from "../Navigation/Header/CustomHeader";
 import LinearGradient from 'react-native-linear-gradient'
 import { connect } from 'react-redux'
@@ -25,10 +25,10 @@ class SignIn extends React.Component {
             alert('Champ(s) incomplet(s) !')
         } else if (reg.test(text) === false) {
             alert('Adresse email non valide');
-            this.setState({email: text})
+            this.setState({ email: text })
             return false;
         } else if (this.state.email.length > 0 & this.state.password.length > 0 & reg.test(text) === true) {
-            this.setState({email: text})
+            this.setState({ email: text })
             console.log("Email format is correct");
 
             fetch("https://pi2-ephec.herokuapp.com/users/signin", {
@@ -42,13 +42,13 @@ class SignIn extends React.Component {
                 })
             }).then((response) => response.json())
                 .then((json) => {
-                    if(json === 'email/password incorrect') {
+                    if (json === 'email/password incorrect') {
                         console.log("NOK");
                         alert(json)
                     }
-                    else{
+                    else {
                         console.log("OK");
-                        this.setState({userId: json[0].id})
+                        this.setState({ userId: json[0].id })
                         this._changeGlobalState();
                         this.props.navigation.navigate("Accueil")
                         //alert("Connexion réussi !");
@@ -60,9 +60,9 @@ class SignIn extends React.Component {
         }
     }
 
-    _changeGlobalState(){
-        const action = {type:"SET_ID", value: this.state.userId}
-        const action2 = {type:"LOGIN", value: true}
+    _changeGlobalState() {
+        const action = { type: "SET_ID", value: this.state.userId }
+        const action2 = { type: "LOGIN", value: true }
         this.props.dispatch(action)
         this.props.dispatch(action2)
         // console.log(this.props)
@@ -77,7 +77,7 @@ class SignIn extends React.Component {
 
         return (
             <LinearGradient
-                colors={['#588B43', '#999966']}//#999966 373b44 5a3f37
+                colors={['#588B43', '#373b44']}//#999966 373b44 5a3f37
                 style={styles.linearGradient}
             >
 
@@ -99,9 +99,9 @@ class SignIn extends React.Component {
                             ref={input => { this.emailTextInput = input }}
                             style={styles.inputText}
                         />
-                        </View>
+                    </View>
 
-                        <View style={styles.inputView}>
+                    <View style={styles.inputView}>
                         <View style={styles.iconTextInput}><FontAwesomeIcon icon={faKey} /></View>
                         <TextInput
                             secureTextEntry={true}
@@ -115,9 +115,11 @@ class SignIn extends React.Component {
 
 
                     <View>
-                        <TouchableOpacity style={styles.loginBtn} onPress={() => { { this.validate(this.state.email)};
-                            {this.emailTextInput.clear()};
-                            {this.passwordtextInput.clear()}}}
+                        <TouchableOpacity style={styles.loginBtn} onPress={() => {
+                            { this.validate(this.state.email) };
+                            { this.emailTextInput.clear() };
+                            { this.passwordtextInput.clear() }
+                        }}
                         >
                             <Text style={styles.loginText}>Se connecter</Text>
                         </TouchableOpacity>
