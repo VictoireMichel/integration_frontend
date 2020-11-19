@@ -1,6 +1,6 @@
 import React from "react";
-import {StyleSheet, Text, View, TouchableOpacity, Image} from "react-native";
-import Svg, {Ellipse} from "react-native-svg";
+import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
+import Svg, { Ellipse } from "react-native-svg";
 
 class HomeNotConnected extends React.Component {
   render() {
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     width: 300,
     borderRadius: 20,
     shadowColor: "#1E3927",
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     // android
     elevation: 8,
@@ -105,5 +105,6 @@ const styles = StyleSheet.create({
     marginRight: "auto",
   },
 });
+
 
 export default HomeNotConnected;

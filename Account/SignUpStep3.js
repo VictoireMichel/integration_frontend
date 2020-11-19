@@ -15,7 +15,7 @@ class SignUpStep3 extends React.Component {
 
                 <View style={styles.container_two}>
                     <Text style={{ color: '#f1f1f1', fontSize: 18 }}>Merci
-                        <Text style={{ color: '#f1f1f1', fontWeight: 'bold', fontSize: 18 }}> {this.props.route.params.firstName}</Text>
+                        <Text style={{ color: '#f1f1f1', fontWeight: 'bold', fontSize: 18 }}> {this.props.route.params.firstName} </Text>
                     pour votre inscription</Text>
                     <Text style={{ color: '#f1f1f1', marginTop: 10, fontSize: 18 }}>Votre compte a bien été créé</Text>
                 </View>
