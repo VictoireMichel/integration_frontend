@@ -9,7 +9,7 @@ import {
   Text,
   Image,
 } from "react-native";
-import {getPlantsFromApi} from "../../GetDataFromApi/GetDataFromApi";
+import { getPlantsFromApi } from "../../GetDataFromApi/GetDataFromApi";
 
 class PlantsList extends React.Component {
   constructor(props) {
@@ -24,7 +24,7 @@ class PlantsList extends React.Component {
    * C'est dans cette fonction que ce fait l'appel à l'API
    */
   componentDidMount() {
-    this.setState({isLoading: true}); // Lancemenent du chargement
+    this.setState({ isLoading: true }); // Lancemenent du chargement
     getPlantsFromApi().then((data) => {
       this.setState({
         plantsListApi: data,
@@ -44,7 +44,7 @@ class PlantsList extends React.Component {
           <TouchableOpacity
             style={styles.listItem_container}
             onPress={() => {
-              this.props.navigation.navigate("Details", {itemId: item.id});
+              this.props.navigation.navigate("Details", { itemId: item.id });
             }}
             key={item.id}>
             <View style={styles.image_container}>
@@ -74,10 +74,10 @@ class PlantsList extends React.Component {
             <ActivityIndicator size="large" color="#0000ff" />
           </View>
         ) : (
-          <ScrollView style={styles.scrollView_container}>
-            {this._loadListItems()}
-          </ScrollView>
-        )}
+            <ScrollView style={styles.scrollView_container}>
+              {this._loadListItems()}
+            </ScrollView>
+          )}
       </View>
     );
   }
@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     textAlign: "center",
     fontSize: 18,
+    paddingTop: 6,
 
     backgroundColor: "#F8F8F8",
     elevation: 5,
@@ -127,7 +128,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     backgroundColor: "#F8F8F8",
     shadowColor: "#000",
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     // its for android
     elevation: 5,
