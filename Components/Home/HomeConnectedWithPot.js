@@ -138,7 +138,7 @@ class HomeConnectedWithPot extends React.Component {
           resizeMode="cover"
           style={styles.pic}
           source={{
-            uri: "http://51.77.203.95:3000/files/" + plant[0].picturePath,
+            uri: "https://pi2-ephec.herokuapp.com/files/" + plant[0].picturePath,
           }}
         />
       );
@@ -187,6 +187,9 @@ class HomeConnectedWithPot extends React.Component {
                 console.log(" testclik ");
                 this.props.navigation.navigate("Details", {
                   itemId: this.state.infosPots.id,
+                  infosPots: this.state.infosPots,
+                  infosData: this.state.infosData,
+                  infosPlant: this.state.infosPlant
                 });
               }}>
               <View style={styles.text_container}>

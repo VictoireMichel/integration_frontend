@@ -29,8 +29,7 @@ class HomeConnected extends React.Component {
             this.setState({
                 infosPots: data,
                 isLoading: false,
-            })
-            console.log(data[0]);
+            });
         });
 
         if (this.state.infosPots.length > 0) {
