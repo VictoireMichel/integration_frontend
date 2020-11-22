@@ -1,7 +1,7 @@
 import * as React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import MyPlants from "../../Components/PlantList/MyPlants";
-import MyPlantInfo from "../../Components/MyPlantInfo";
+import MyPlantInfo from "../../Components/potDetails/MyPlantInfo";
 import { useEffect } from "react";
 import LoginControl from "../../Account/LoginControl";
 import HomeConnectedWithPot from "../../Components/Home/HomeConnectedWithPot";

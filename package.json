@@ -26,6 +26,7 @@
     "react-native-reanimated": "^1.13.1",
     "react-native-safe-area-context": "^3.1.8",
     "react-native-screens": "^2.13.0",
+    "react-native-simple-dialogs": "^1.4.0",
     "react-native-simple-radio-button": "^2.7.4",
     "react-native-splash-screen": "^3.2.0",
     "react-redux": "^7.2.2",
@@ -42,7 +43,9 @@
     "eslint": "6.8.0",
     "jest": "25.5.4",
     "metro-react-native-babel-preset": "0.59.0",
+    "react-native-confirm-dialog": "^0.1.0",
     "react-native-input-validator": "^1.0.10",
+    "react-native-progress": "^4.1.2",
     "react-native-progress-circle": "^2.1.0",
     "react-native-svg": "^12.1.0",
     "react-test-renderer": "16.13.1"
