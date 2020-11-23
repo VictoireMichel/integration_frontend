@@ -5,9 +5,20 @@ import { faQuestionCircle, faUser } from "@fortawesome/free-solid-svg-icons";
 import ToggleSwitch from "toggle-switch-react-native";
 import store from "../redux/store";
 import { logOut } from "../GetDataFromApi/GetDataFromApi"
+import AsyncStorage from '@react-native-community/async-storage';
+
+const clearAll = async () => {
+  try {
+    await AsyncStorage.clear()
+  } catch(e) {
+    // clear error
+  }
+
+  console.log('Done.')
+}
+
 
 export default function DrawerContent(props) {
-
 
 
   return (
@@ -18,6 +29,8 @@ export default function DrawerContent(props) {
       <View style={styles.text_container}>
         <Text style={styles.text} onPress={() => {
           props.navigation.navigate("Accueil");
+          getUserId();
+          console.log(store.getState().storeUserId.id + "YEAAAHh" + store.getState().isLogged.isLoggedIn);
         }}>
           Accueil
         </Text>
@@ -26,6 +39,7 @@ export default function DrawerContent(props) {
         {store.getState().isLogged.isLoggedIn ? (<Text key='1' style={styles.text} onPress={() => {
           store.dispatch({ type: "SET_ID", value: null });
           store.dispatch({ type: "LOGIN", value: false });
+          clearAll();
           logOut();
           props.navigation.navigate("Accueil"); // Déconnexion
         }}>
