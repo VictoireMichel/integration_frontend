@@ -82,7 +82,7 @@ class SignUpStep2 extends React.Component {
   render() {
     return (
       <LinearGradient
-        colors={['#588B43', '#999966']}//#999966 373b44 5a3f37
+        colors={['#588B43', '#373b44']}//#999966 373b44 5a3f37
         style={styles.linearGradient}
       >
         <TouchableOpacity style={styles.stepBack_container} onPress={() => { this.props.navigation.goBack() }}>

@@ -8,8 +8,6 @@ import SignUpStep2 from "../Account/SignUpStep2";
 import SignUpStep3 from '../Account/SignUpStep3';
 import DrawerContent from "./DrawerContent";
 import { createStackNavigator } from "@react-navigation/stack";
-import HomeConnectedWithPot from "../Components/Home/HomeConnectedWithPot";
-import HomeNavigation from "./StackNavigator/HomeNavigation";
 
 
 const Drawer = createDrawerNavigator();
@@ -18,7 +16,7 @@ function MyDrawer() {
   return (
     <NavigationContainer>
       <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
-        <Drawer.Screen name="Acceuil" component={Navigation5} />
+        <Drawer.Screen name="Accueil" component={Navigation5} />
         <Drawer.Screen name="Connexion" component={SignIn} />
         <Drawer.Screen name="Enregistrement" component={SignUpNavigation} />
 

@@ -1,19 +1,8 @@
-import HomeConnectedWithPot from "../Components/Home/HomeConnectedWithPot";
 import React from "react";
-import HomeNotConnected from "../Components/Home/HomeNotConnected";
-import {connect} from "react-redux";
-import {getPotsByUserIDFromApi, getPotsFromApi} from "../GetDataFromApi/GetDataFromApi";
-import HomeConnectedWithoutPot from "../Components/Home/HomeConnectedWithoutPot";
+import { connect } from "react-redux";
 import {
-    StyleSheet,
-    Text,
     View,
-    Image,
-    TouchableOpacity,
-    ActivityIndicator,
-    ScrollView,
 } from "react-native";
-import HomeConnected from "../Components/Home/HomeConnected";
 
 class LoginControl extends React.Component {
     constructor(props) {
@@ -24,13 +13,27 @@ class LoginControl extends React.Component {
         };
     }
 
-    render() {
-        return(
-            <View>
-                {this.props.isLoggedIn && <HomeConnected/>}
-                {!this.props.isLoggedIn && <HomeNotConnected/>}
-            </View>
 
+    componentDidUpdate() {
+        if (this.props.isLoggedIn) {
+            this.props.navigation.navigate('HomeConnected');
+        } else {
+            this.props.navigation.navigate('HomeNotConnected');
+        }
+    }
+
+    componentDidMount() {
+        if (this.props.isLoggedIn) {
+            this.props.navigation.navigate('HomeConnected');
+        } else {
+            this.props.navigation.navigate('HomeNotConnected');
+        }
+    }
+
+    render() {
+        return (
+            <View>
+            </View>
         )
     }
 }
