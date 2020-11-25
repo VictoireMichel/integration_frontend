@@ -13,7 +13,7 @@ class addPotForm extends React.Component {
         this.state = {
             idPlant: null,
             potName: null,
-            needWater: 0,
+            needWater: false,
             dayCount: 0,
             learningMode: 0,
             userId: null

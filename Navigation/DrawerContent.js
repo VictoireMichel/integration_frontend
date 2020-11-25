@@ -6,7 +6,7 @@ import ToggleSwitch from "toggle-switch-react-native";
 import store from "../redux/store";
 import { logOut } from "../GetDataFromApi/GetDataFromApi"
 import AsyncStorage from '@react-native-community/async-storage';
-
+import { getPotsByUserIDFromApi } from '../GetDataFromApi/GetDataFromApi';
 const clearAll = async () => {
   try {
     await AsyncStorage.clear()
@@ -15,6 +15,12 @@ const clearAll = async () => {
   }
 
   console.log('Done.')
+}
+
+const infoPot = () => {
+  getPotsByUserIDFromApi(store.getState().storeUserId.id).then((data) => {
+    console.log(data)
+  })
 }
 
 
@@ -29,8 +35,8 @@ export default function DrawerContent(props) {
       <View style={styles.text_container}>
         <Text style={styles.text} onPress={() => {
           props.navigation.navigate("Accueil");
-          getUserId();
           console.log(store.getState().storeUserId.id + "YEAAAHh" + store.getState().isLogged.isLoggedIn);
+          infoPot();
         }}>
           Accueil
         </Text>
