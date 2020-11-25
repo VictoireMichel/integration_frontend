@@ -35,7 +35,7 @@ export default function DrawerContent(props) {
       <View style={styles.text_container}>
         <Text style={styles.text} onPress={() => {
           props.navigation.navigate("Accueil");
-          console.log(store.getState().storeUserId.id + "YEAAAHh" + store.getState().isLogged.isLoggedIn);
+          console.log("id: " + store.getState().storeUserId.id + ", isLogged?: " + store.getState().isLogged.isLoggedIn);
           infoPot();
         }}>
           Accueil
