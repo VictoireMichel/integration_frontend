@@ -50,7 +50,7 @@ export default function DrawerContent(props) {
             isOn={true}
             onColor="#588B43"
             offColor="grey"
-            label="Mode Sombre"
+            label="Mode"
             labelStyle={{ color: "black", fontWeight: "900", fontSize: 16 }}
             size="medium"
             onToggle={isOn => console.log("changed to : ", isOn)}
