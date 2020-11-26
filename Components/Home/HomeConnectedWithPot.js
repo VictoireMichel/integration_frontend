@@ -15,7 +15,7 @@ import ProgressCircle from "react-native-progress-circle";
 import {
   getDataByIDFromApi,
   getPlantsByIDFromApi,
-  getPotsByIDFromApi, getPotsByUserIDFromApi,
+  getPotsByUserIDFromApi,
 } from "../../GetDataFromApi/GetDataFromApi";
 import { connect } from "react-redux";
 

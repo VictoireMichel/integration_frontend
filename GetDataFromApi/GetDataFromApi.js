@@ -28,19 +28,6 @@ export function getPlantsByIDFromApi(id) {
 
 /*
  *
- * Cette fonction permet de récupérer le temps de vie d'une plante via le paramètre ID
- * reponse.json() étant la donnée
- *
- * */
-export function getPotsByIDFromApi(id) {
-  const url = "https://pi2-ephec.herokuapp.com/pots/one?id=" + id;
-  return fetch(url)
-    .then((response) => response.json())
-    .catch((error) => console.log(error));
-}
-
-/*
- *
  * Cette fonction permet de supprimer le pot via le paramètre ID
  * reponse.json() étant la donnée
  *
