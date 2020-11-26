@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import {
   Alert,
   Modal,
@@ -7,7 +7,7 @@ import {
   TouchableHighlight,
   View,
 } from "react-native";
-import {delPotsByIDFromApi} from "../../GetDataFromApi/GetDataFromApi";
+import { delPotsByIDFromApi } from "../../GetDataFromApi/GetDataFromApi";
 
 class ConfirmDialog extends Component {
   state = {
@@ -15,11 +15,27 @@ class ConfirmDialog extends Component {
   };
 
   setModalVisible = (visible) => {
-    this.setState({modalVisible: visible});
+    this.setState({ modalVisible: visible });
   };
 
+  _deletePotsByIDFromAPI(idPot) {
+    delPotsByIDFromApi(idPot)
+      .then(() => {
+        this.setModalVisible(!modalVisible);
+        this.props.navigation.navigate(
+          "HomeConnectedWithoutPot",
+        );
+      })
+      .catch((error) => {
+        console.log("errorDeletePot ", error);
+      });
+
+    console.log(this.props.navigation.goBack())
+
+  }
+
   render() {
-    const {modalVisible} = this.state;
+    const { modalVisible } = this.state;
     return (
       <View style={styles.centeredView}>
         <Modal
@@ -38,16 +54,7 @@ class ConfirmDialog extends Component {
                 <TouchableHighlight
                   style={styles.yesNoButton}
                   onPress={() => {
-                    delPotsByIDFromApi(this.props.idPot)
-                      .then(() => {
-                        this.setModalVisible(!modalVisible);
-                        this.props.navigation.navigate(
-                          "HomeConnectedWithoutPot",
-                        );
-                      })
-                      .catch((error) => {
-                        console.log("errorDeletePot ", error);
-                      });
+                    this._deletePotsByIDFromAPI(this.props.idPot)
                   }}>
                   <Text style={styles.textStyle}>Oui</Text>
                 </TouchableHighlight>

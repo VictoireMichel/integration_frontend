@@ -1,5 +1,5 @@
 import React from "react";
-import {Text, View, StyleSheet, Button, Image, ScrollView} from "react-native";
+import { Text, View, StyleSheet, Button, Image, ScrollView } from "react-native";
 import ItemInfo from "./ItemInfo";
 import ConfirmDialog from "./ConfirmDialog";
 
@@ -72,7 +72,7 @@ class MyPlantInfo extends React.Component {
                 "Rusticité : " + this.state.infosPlant.temperatureMin + "°C"
               }
             />
-            <ConfirmDialog idPot={this.state.infosPot.id} />
+            <ConfirmDialog idPot={this.state.infosPot.id} navigation={this.props.navigation} />
           </ScrollView>
         </View>
       </View>
