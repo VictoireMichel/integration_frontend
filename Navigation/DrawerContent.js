@@ -7,7 +7,7 @@ import store from "../redux/store";
 import { logOut } from "../GetDataFromApi/GetDataFromApi"
 import AsyncStorage from '@react-native-community/async-storage';
 import { getPotsByUserIDFromApi } from '../GetDataFromApi/GetDataFromApi';
-
+import { updateLearningMode } from '../SendDataToAPI/updateLearningMode'
 export default function DrawerContent(props) {
 
 const clearAll = async () => {
@@ -24,6 +24,9 @@ const infoPot = () => {
     console.log(data)
   })
 }
+
+const [isSwitchedEnabled, setSwitch] = React.useState(false)
+
   return (
     <View style={styles.slide} forceInset={{top: "always"}}>
       <View style={styles.header}>
@@ -76,15 +79,16 @@ const infoPot = () => {
       </View>
       <View style={styles.end}>
         <View style={styles.switch}>
+          {store.getState().isLogged.isLoggedIn ? (
           <ToggleSwitch
-            isOn={true}
+            isOn={isSwitchedEnabled}
             onColor="#588B43"
             offColor="grey"
             label="Mode"
             labelStyle={{color: "black", fontWeight: "900", fontSize: 16}}
             size="medium"
-            onToggle={(isOn) => console.log("changed to : ", isOn)}
-          />
+            onToggle={(isOn) => {setSwitch(isOn), updateLearningMode(store.getState().storeUserId.id,isOn)}}
+          />):(null)}
         </View>
         <View style={styles.help_container}>
           <Text style={styles.help_text}>
