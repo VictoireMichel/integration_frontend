@@ -4,7 +4,28 @@ import {FontAwesomeIcon} from "@fortawesome/react-native-fontawesome";
 import {faQuestionCircle, faUser} from "@fortawesome/free-solid-svg-icons";
 import ToggleSwitch from "toggle-switch-react-native";
 import store from "../redux/store";
-import {logOut} from "../GetDataFromApi/GetDataFromApi";
+import { logOut } from "../GetDataFromApi/GetDataFromApi"
+import AsyncStorage from '@react-native-community/async-storage';
+import { getPotsByUserIDFromApi } from '../GetDataFromApi/GetDataFromApi';
+
+export default function DrawerContent(props) {
+
+
+const clearAll = async () => {
+  try {
+    await AsyncStorage.clear()
+  } catch(e) {
+    console.log(e)
+  }
+  console.log('Done.')
+}
+
+const infoPot = () => {
+  getPotsByUserIDFromApi(store.getState().storeUserId.id).then((data) => {
+    console.log(data)
+  })
+}
+
 
 export default function DrawerContent(props) {
   return (
@@ -17,6 +38,8 @@ export default function DrawerContent(props) {
           style={styles.text}
           onPress={() => {
             props.navigation.navigate("Accueil");
+			console.log("id: " + store.getState().storeUserId.id + ", isLogged?: " + store.getState().isLogged.isLoggedIn);
+			infoPot();
           }}>
           Accueil
         </Text>
@@ -28,6 +51,7 @@ export default function DrawerContent(props) {
             onPress={() => {
               store.dispatch({type: "SET_ID", value: null});
               store.dispatch({type: "LOGIN", value: false});
+			  clearAll();
               logOut();
               props.navigation.navigate("Accueil"); // Déconnexion
             }}>

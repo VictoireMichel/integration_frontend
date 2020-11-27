@@ -13,6 +13,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import LinearGradient from "react-native-linear-gradient";
 import { connect } from "react-redux";
+import store from "../../redux/store";
+const loggedIn = store.getState().isLogged.isLoggedIn;
 
 
 class PlantDetail extends React.Component {
@@ -324,12 +326,12 @@ class PlantDetail extends React.Component {
   }
 
   _displayAddPotButton() {
-    console.log(this.props.isLoggedIn)
+    console.log(this.state.idPlant)
     console.log('--------------------')
     return (
       <View>
 
-        {this.props.isLoggedIn ? (
+        {store.getState().isLogged.isLoggedIn ? (
           <TouchableOpacity
             style={{
               width: 130,
