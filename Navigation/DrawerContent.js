@@ -7,13 +7,13 @@ import store from "../redux/store";
 import { logOut } from "../GetDataFromApi/GetDataFromApi"
 import AsyncStorage from '@react-native-community/async-storage';
 import { getPotsByUserIDFromApi } from '../GetDataFromApi/GetDataFromApi';
+
 const clearAll = async () => {
   try {
     await AsyncStorage.clear()
   } catch(e) {
-    // clear error
+    console.log(e)
   }
-
   console.log('Done.')
 }
 

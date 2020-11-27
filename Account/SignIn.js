@@ -1,9 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity } from 'react-native';
-import CheckBox from '@react-native-community/checkbox'
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faKey, faEnvelope, faArrowLeft, faUser } from '@fortawesome/free-solid-svg-icons';
-import CustomHeader from "../Navigation/Header/CustomHeader";
 import LinearGradient from 'react-native-linear-gradient'
 import { connect } from 'react-redux'
 import store from "../redux/store";

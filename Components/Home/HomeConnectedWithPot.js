@@ -147,7 +147,6 @@ class HomeConnectedWithPot extends React.Component {
 
   render() {
     return (
-
       <View style={styles.background}>
         {this.state.isLoading ? (
           <View style={styles.loading_container}>
