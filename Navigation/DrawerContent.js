@@ -10,7 +10,6 @@ import { getPotsByUserIDFromApi } from '../GetDataFromApi/GetDataFromApi';
 
 export default function DrawerContent(props) {
 
-
 const clearAll = async () => {
   try {
     await AsyncStorage.clear()
@@ -25,9 +24,6 @@ const infoPot = () => {
     console.log(data)
   })
 }
-
-
-export default function DrawerContent(props) {
   return (
     <View style={styles.slide} forceInset={{top: "always"}}>
       <View style={styles.header}>
