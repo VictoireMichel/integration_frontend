@@ -6,10 +6,6 @@ import { render, fireEvent, waitFor } from '@testing-library/react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import HomeNotConnected from "../Components/Home/HomeNotConnected";
 
-jest.mock('@fortawesome/react-native-fontawesome', () => ({
-    FontAwesomeIcon: ''
-}));
-
 Enzyme.configure({ adapter: new Adapter() });
 
 it('renders correctly', () => {
