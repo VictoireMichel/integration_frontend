@@ -8,18 +8,16 @@ export function postPotDatatoApi (name, needWater, dayCount,plantId, userId) {
             Accept: 'application/json',
             'Content-Type': 'application/json'
         },
-        body: {
+        body: JSON.stringify({
             name: name,
             needWater: needWater,
             dayCount: dayCount,
             plantId: plantId,
             userId: userId,
-        }
+        })
     }).then((response) => response.json())
-      .then((json) => {
+        .then((json) => {
             console.log(json);
-            return json;
-            
         })
         .catch((error) => {
             console.error(error);

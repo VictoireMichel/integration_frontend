@@ -4,7 +4,6 @@ import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'reac
 import { postPotDatatoApi } from "../../SendDataToAPI/postDataToApi"
 import { updateLearningMode } from "../../SendDataToAPI/updateLearningMode"
 import { connect } from 'react-redux'
-import store from "../../redux/store";
 
 class addPotForm extends React.Component {
 
@@ -13,7 +12,7 @@ class addPotForm extends React.Component {
         this.state = {
             idPlant: null,
             potName: null,
-            needWater: false,
+            needWater: 0,
             dayCount: 0,
             learningMode: 0,
             userId: null
@@ -22,10 +21,10 @@ class addPotForm extends React.Component {
     }
 
     componentDidMount() {
-        console.log(store.getState().storeUserId.id);
+        console.log(this.props.id);
         this.setState({
             idPlant: this.props.route.params,
-            userId: store.getState().storeUserId.id
+            userId: this.props.id
         });
     }
 

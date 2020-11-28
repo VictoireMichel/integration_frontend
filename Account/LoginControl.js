@@ -3,13 +3,10 @@ import { connect } from "react-redux";
 import {
     View,
 } from "react-native";
-import store from "../redux/store";
-import AsyncStorage from '@react-native-community/async-storage';
 
 class LoginControl extends React.Component {
     constructor(props) {
         super(props);
-        this.getData();
         this.state = {
             isLoading: true,
             infosPots: [],
@@ -18,27 +15,15 @@ class LoginControl extends React.Component {
 
 
     componentDidUpdate() {
-        if (store.getState().isLogged.isLoggedIn) {
+        if (this.props.isLoggedIn) {
             this.props.navigation.navigate('HomeConnected');
         } else {
             this.props.navigation.navigate('HomeNotConnected');
         }
     }
 
-    getData = async () => {
-        try {
-            const values = await AsyncStorage.multiGet(['userID', 'login']);
-            if(values !== null){
-                store.dispatch({ type: "SET_ID", value: JSON.parse(values[0][1])});
-                store.dispatch({ type: "LOGIN", value: JSON.parse(values[1][1])});
-            }
-        } catch (error) {
-            alert(error);
-        }
-    }
-
     componentDidMount() {
-        if (store.getState().isLogged.isLoggedIn) {
+        if (this.props.isLoggedIn) {
             this.props.navigation.navigate('HomeConnected');
         } else {
             this.props.navigation.navigate('HomeNotConnected');

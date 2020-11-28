@@ -8,7 +8,7 @@ import {
 import { connect } from "react-redux";
 import HomeConnectedWithPot from "./HomeConnectedWithPot";
 import HomeConnectedWithoutPot from "./HomeConnectedWithoutPot";
-import store from "../../redux/store";
+
 
 class HomeConnected extends React.Component {
     constructor(props) {
@@ -25,7 +25,7 @@ class HomeConnected extends React.Component {
     }
 
     componentDidMount() {
-        getPotsByUserIDFromApi(store.getState().storeUserId.id).then(data => {
+        getPotsByUserIDFromApi(this.props.id).then(data => {
             this.setState({
                 infosPots: data,
                 isLoading: false,

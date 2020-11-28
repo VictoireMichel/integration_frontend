@@ -1,4 +1,3 @@
-
 const initialState = { id: null }
 
 function storeUserId(state = initialState, action) {
