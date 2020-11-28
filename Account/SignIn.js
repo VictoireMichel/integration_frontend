@@ -1,12 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity } from 'react-native';
-import CheckBox from '@react-native-community/checkbox'
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faKey, faEnvelope, faArrowLeft, faUser } from '@fortawesome/free-solid-svg-icons';
-import CustomHeader from "../Navigation/Header/CustomHeader";
 import LinearGradient from 'react-native-linear-gradient'
 import { connect } from 'react-redux'
-
+import store from "../redux/store";
+import AsyncStorage from '@react-native-community/async-storage'
 class SignIn extends React.Component {
 
     constructor(props) {
@@ -50,8 +49,9 @@ class SignIn extends React.Component {
                         console.log("OK");
                         this.setState({ userId: json[0].id })
                         this._changeGlobalState();
+                        this.storeData();
                         this.props.navigation.navigate("Accueil")
-                        //alert("Connexion réussi !");
+
                     }
                 })
                 .catch((error) => {
@@ -66,6 +66,14 @@ class SignIn extends React.Component {
         this.props.dispatch(action)
         this.props.dispatch(action2)
         // console.log(this.props)
+    }
+
+    storeData = async () => {
+        try {
+            await AsyncStorage.multiSet([['userID', JSON.stringify(store.getState().storeUserId.id)], ['login', JSON.stringify(store.getState().isLogged.isLoggedIn)]]);
+        } catch (e) {
+            alert(e);
+        }
     }
 
     componentDidUpdate() {
@@ -93,6 +101,7 @@ class SignIn extends React.Component {
                     <View style={styles.inputView}>
                         <View style={styles.iconTextInput}><FontAwesomeIcon icon={faEnvelope} /></View>
                         <TextInput
+                            //caretHidden={true}
                             placeholder="Email"
                             value={this.state.email}
                             onChangeText={(text => this.setState({ email: text }))}
