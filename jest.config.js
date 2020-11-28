@@ -2,6 +2,7 @@ module.exports = {
 
     preset: "react-native",
     collectCoverage: true,
+    //coverageReporters : ["html"],
     transformIgnorePatterns: [
         "node_modules/(?!(jest-)?react-native|react-navigation)"
     ],
