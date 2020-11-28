@@ -27,6 +27,7 @@ class HomeConnectedWithoutPot extends React.Component {
           <View style={styles.container2}>
             <View style={styles.container3}>
               <ProgressCircle
+                  testID={"circle"}
                 style={styles.ball}
                 percent={0}
                 radius={31}
@@ -39,6 +40,7 @@ class HomeConnectedWithoutPot extends React.Component {
             </View>
             <View style={styles.container3}>
               <ProgressCircle
+                  testID={"circle"}
                 style={styles.ball}
                 percent={0}
                 radius={31}
@@ -51,6 +53,7 @@ class HomeConnectedWithoutPot extends React.Component {
             </View>
             <View style={styles.container3}>
               <ProgressCircle
+                  testID={"circle"}
                 style={styles.ball}
                 percent={0}
                 radius={31}
@@ -64,6 +67,7 @@ class HomeConnectedWithoutPot extends React.Component {
           </View>
         </View>
         <TouchableOpacity
+            testID={"List"}
           style={styles.button}
           onPress={() => {
             this.props.navigation.navigate("List");

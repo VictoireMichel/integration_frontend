@@ -18,9 +18,13 @@
     "@react-native-community/picker": "^1.8.1",
     "@react-navigation/bottom-tabs": "^5.10.6",
     "@react-navigation/stack": "^5.12.3",
+    "@testing-library/react-native": "^7.1.0",
+    "enzyme-adapter-react-15": "^1.4.2",
     "native-base": "^2.13.14",
     "react": "16.13.1",
     "react-native": "0.63.3",
+    "react-native-device-info": "^7.1.0",
+    "react-native-device-info-mock": "0.0.2",
     "react-native-gesture-handler": "^1.8.0",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-reanimated": "^1.13.1",
@@ -29,6 +33,7 @@
     "react-native-simple-dialogs": "^1.4.0",
     "react-native-simple-radio-button": "^2.7.4",
     "react-native-splash-screen": "^3.2.0",
+    "react-native-test-utils": "^1.4.0",
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
     "toggle-switch-react-native": "^2.3.0"
@@ -40,9 +45,14 @@
     "@react-navigation/drawer": "^5.10.6",
     "@react-navigation/native": "^5.8.6",
     "babel-jest": "25.5.1",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.5",
     "eslint": "6.8.0",
-    "jest": "25.5.4",
+    "jest": "^25.5.4",
+    "jest-environment-enzyme": "^7.1.2",
+    "jest-enzyme": "^7.1.2",
     "metro-react-native-babel-preset": "0.59.0",
+    "react-dom": "^17.0.1",
     "react-native-confirm-dialog": "^0.1.0",
     "react-native-input-validator": "^1.0.10",
     "react-native-progress": "^4.1.2",
@@ -51,6 +61,11 @@
     "react-test-renderer": "16.13.1"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "setupTestFrameworkScriptFile": "jest-enzyme",
+    "testEnvironment": "enzyme",
+    "testEnvironmentOptions": {
+      "enzymeAdapter": "react16"
+    }
   }
 }
