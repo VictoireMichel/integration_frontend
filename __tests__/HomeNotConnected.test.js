@@ -8,6 +8,12 @@ import HomeNotConnected from "../Components/Home/HomeNotConnected";
 
 Enzyme.configure({ adapter: new Adapter() });
 
-it('renders correctly', () => {
-    renderer.create(<HomeNotConnected />);
-});
+
+describe("HomeNotConnected", () => {
+
+    it('renders correctly', () => {
+        renderer.create(<HomeNotConnected />);
+    });
+
+})
+
