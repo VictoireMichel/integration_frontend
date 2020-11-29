@@ -277,7 +277,7 @@ class PlantDetail extends React.Component {
             <Image
               style={styles.image}
               source={{
-                uri: "http://51.77.203.95:3000/files/" + plant[0].picturePath,
+                uri: "https://pi2-ephec.herokuapp.com/files/" + plant[0].picturePath,
               }}
             />
           </View>

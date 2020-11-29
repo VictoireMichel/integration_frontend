@@ -66,7 +66,8 @@ class HomeConnectedWithoutPot extends React.Component {
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
-            this.props.navigation.navigate("Liste");
+            this.props.navigation.goBack();
+            this.props.navigation.navigate("List");
             console.log("nav test");
           }}>
           <View style={styles.text_container}>

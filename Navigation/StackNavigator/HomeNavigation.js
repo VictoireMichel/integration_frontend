@@ -29,7 +29,6 @@ function HomeNavigation({ navigation, route }) {
     <Stack.Navigator>
       <Stack.Screen name="Home" component={HomeConnectedOrNotNav} options={{ headerShown: false }} />
       <Stack.Screen name="Details" component={MyPlantInfo} />
-      <Stack.Screen name="List" component={MyPlants} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 }
