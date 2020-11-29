@@ -38,6 +38,9 @@ class HomeConnectedWithPot extends React.Component {
    * Fonction récupérant les données du pot de la base de données
    */
   componentDidMount() {
+
+    console.log(this.state)
+
     getPotsByUserIDFromApi(store.getState().storeUserId.id).then((data) => {
       this.setState({
         infosPots: data[0],

@@ -67,7 +67,6 @@ class HomeConnectedWithoutPot extends React.Component {
           testID={"List"}
           style={styles.button}
           onPress={() => {
-            this.props.navigation.goBack();
             this.props.navigation.navigate("List");
             console.log("nav test");
           }}>
