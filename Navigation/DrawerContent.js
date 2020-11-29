@@ -17,7 +17,7 @@ export default function DrawerContent(props) {
       </View>
       <View style={styles.text_container}>
         <Text style={styles.text} onPress={() => {
-          props.navigation.navigate("Accueil");
+          props.navigation.navigate("HomeAccueil");
         }}>
           Accueil
         </Text>
@@ -27,7 +27,7 @@ export default function DrawerContent(props) {
           store.dispatch({ type: "SET_ID", value: null });
           store.dispatch({ type: "LOGIN", value: false });
           logOut();
-          props.navigation.navigate("Accueil"); // Déconnexion
+          props.navigation.navigate("HomeAccueil"); // Déconnexion
         }}>
           Deconnexion
         </Text>) : ([<Text key='2' style={styles.text} onPress={() => {
@@ -36,7 +36,7 @@ export default function DrawerContent(props) {
           Se connecter
         </Text>,
         <Text key='3' style={styles.text} onPress={() => {
-          props.navigation.navigate("Enregistrement");
+          props.navigation.navigate("SignUpStep1");
         }}>
           S'inscrire
           </Text>

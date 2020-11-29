@@ -50,7 +50,7 @@ class SignIn extends React.Component {
                         console.log("OK");
                         this.setState({ userId: json[0].id })
                         this._changeGlobalState();
-                        this.props.navigation.navigate("Accueil")
+                        this.props.navigation.navigate("HomeAccueil")
                         //alert("Connexion réussi !");
                     }
                 })
@@ -127,7 +127,7 @@ class SignIn extends React.Component {
 
                     <View style={styles.info_container}>
                         <Text style={{ color: 'white' }}>Pas encore de compte ?</Text>
-                        <TouchableOpacity onPress={() => { this.props.navigation.navigate('Enregistrement') }}>
+                        <TouchableOpacity onPress={() => { this.props.navigation.navigate('SignUpStep1') }}>
                             <Text style={styles.redirect_signin_text}>Enregistrez-vous</Text>
                         </TouchableOpacity>
                     </View>

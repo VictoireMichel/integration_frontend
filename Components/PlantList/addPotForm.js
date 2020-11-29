@@ -77,7 +77,7 @@ class addPotForm extends React.Component {
                                 this.state.dayCount, this.state.idPlant, this.state.userId),
                                 updateLearningMode(this.state.userId, this.state.learningMode),
                                 this.props.navigation.goBack(), this.props.navigation.goBack(),
-                                this.props.navigation.navigate('Accueil', { plantId: this.state.idPlant })
+                                this.props.navigation.navigate('HomeConnectedWithPot', { plantId: this.state.idPlant })
                         }}>
                             <Text style={styles.text_button}>Valider</Text>
                         </TouchableOpacity>
