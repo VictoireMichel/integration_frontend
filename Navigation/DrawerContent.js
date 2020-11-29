@@ -36,7 +36,7 @@ export default function DrawerContent(props) {
           Se connecter
         </Text>,
         <Text key='3' style={styles.text} onPress={() => {
-          props.navigation.navigate("SignUpStep1");
+          props.navigation.navigate("Enregistrement");
         }}>
           S'inscrire
           </Text>
