@@ -15,10 +15,10 @@ import ProgressCircle from "react-native-progress-circle";
 import {
   getDataByIDFromApi,
   getPlantsByIDFromApi,
-  getPotsByIDFromApi, getPotsByUserIDFromApi,
+  getPotsByUserIDFromApi,
 } from "../../GetDataFromApi/GetDataFromApi";
 import { connect } from "react-redux";
-
+import store from "../../redux/store";
 
 class HomeConnectedWithPot extends React.Component {
   constructor(props) {
@@ -38,7 +38,7 @@ class HomeConnectedWithPot extends React.Component {
    * Fonction récupérant les données du pot de la base de données
    */
   componentDidMount() {
-    getPotsByUserIDFromApi(this.props.id).then((data) => {
+    getPotsByUserIDFromApi(store.getState().storeUserId.id).then((data) => {
       this.setState({
         infosPots: data[0],
         isLoading: false,

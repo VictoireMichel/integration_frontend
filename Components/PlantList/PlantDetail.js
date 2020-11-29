@@ -13,7 +13,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import LinearGradient from "react-native-linear-gradient";
 import { connect } from "react-redux";
-
+import store from "../../redux/store";
+const loggedIn = store.getState().isLogged.isLoggedIn;
 
 class PlantDetail extends React.Component {
   constructor(props) {
@@ -220,19 +221,40 @@ class PlantDetail extends React.Component {
     const plant = this.state.plant;
     if (plant.length > 0) {
       return (
-        <View
-          style={{
-            flex: 1,
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-          }}>
-          <Text style={{ fontSize: 18, color: "#f1f1f1", fontFamily: "serif" }}>
-            Luminosité demandée
-          </Text>
-          <Text style={{ fontSize: 14, color: "#f1f1f1", fontFamily: "serif" }}>
-            {plant[0].luminosity}
-          </Text>
+        <View style={{ flex: 1, flexDirection: "row" }}>
+          <View
+            style={{
+              flex: 1,
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}>
+            <Image
+              style={{ width: 60, height: 60 }}
+              source={require("../../Picture/soleil.png")}
+            />
+          </View>
+
+          <View style={{ flex: 1, flexDirection: "column", marginRight: 18 }}>
+            <View
+              style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+              <Text style={{ fontSize: 18, color: "#f1f1f1", fontFamily: "serif" }}>Exposition</Text>
+            </View>
+            <View
+              style={{
+                flex: 1,
+                alignItems: "center",
+                justifyContent: "flex-start",
+              }}>
+              <ScrollView style={{ marginBottom: 5 }}>
+                <Text style={{ fontSize: 14, color: "#f1f1f1", fontFamily: "serif" }}>
+                  {(plant[0].luminosity === 0) ? (<Text>Ombre</Text>) : (plant[0].luminosity === 1) ?
+                    (<Text>Mi-ombre</Text>) :
+                    (<Text>Soleil</Text>)}
+                </Text>
+              </ScrollView>
+            </View>
+          </View>
         </View>
       );
     }
@@ -303,12 +325,12 @@ class PlantDetail extends React.Component {
   }
 
   _displayAddPotButton() {
-    console.log(this.props.isLoggedIn)
+      console.log(this.state.idPlant)
     console.log('--------------------')
     return (
       <View>
 
-        {this.props.isLoggedIn ? (
+          {store.getState().isLogged.isLoggedIn ? (
           <TouchableOpacity
             style={{
               width: 130,

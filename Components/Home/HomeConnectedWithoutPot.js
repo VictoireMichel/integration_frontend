@@ -64,6 +64,7 @@ class HomeConnectedWithoutPot extends React.Component {
           </View>
         </View>
         <TouchableOpacity
+          testID={"List"}
           style={styles.button}
           onPress={() => {
             this.props.navigation.goBack();
@@ -195,4 +196,3 @@ const styles = StyleSheet.create({
 });
 
 export default HomeConnectedWithoutPot;
-
