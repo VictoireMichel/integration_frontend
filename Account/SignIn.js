@@ -51,7 +51,8 @@ class SignIn extends React.Component {
                         this.setState({ userId: json[0].id })
                         this._changeGlobalState();
                         this.storeData();
-                        this.props.navigation.navigate("Accueil")
+                        this.props.navigation.navigate("HomeAccueil")
+                        //alert("Connexion réussi !");
                     }
                 })
                 .catch((error) => {
