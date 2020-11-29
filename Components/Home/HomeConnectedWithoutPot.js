@@ -1,8 +1,8 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
-import Svg, { Ellipse } from "react-native-svg";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faSun, faTint } from "@fortawesome/free-solid-svg-icons";
+import {StyleSheet, Text, View, TouchableOpacity, Image} from "react-native";
+import Svg, {Ellipse} from "react-native-svg";
+import {FontAwesomeIcon} from "@fortawesome/react-native-fontawesome";
+import {faSun, faTint} from "@fortawesome/free-solid-svg-icons";
 import ProgressCircle from "react-native-progress-circle";
 
 class HomeConnectedWithoutPot extends React.Component {
@@ -67,7 +67,7 @@ class HomeConnectedWithoutPot extends React.Component {
             testID={"List"}
           style={styles.button}
           onPress={() => {
-            this.props.navigation.navigate("Liste");
+            this.props.navigation.navigate("List");
             console.log("nav test");
           }}>
           <View style={styles.text_container}>
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     width: 300,
     borderRadius: 20,
     shadowColor: "#1E3927",
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.2,
     // android
     elevation: 8,
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 16,
     shadowColor: "#1E3927",
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.2,
     // android
     elevation: 8,
@@ -195,4 +195,3 @@ const styles = StyleSheet.create({
 });
 
 export default HomeConnectedWithoutPot;
-
