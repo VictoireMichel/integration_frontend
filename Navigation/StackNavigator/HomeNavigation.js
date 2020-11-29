@@ -47,6 +47,7 @@ function HomeConnectedNav() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="HomeConnected" component={HomeConnected} options={{ headerShown: false }} />
+      <Stack.Screen name="HomeConnectedSwitch" component={HomeConnected} options={{ headerShown: false }} />
       <Stack.Screen name="HomeConnectedWithPot" component={HomeConnectedWithPot} options={{ headerShown: false }} />
       <Stack.Screen name="HomeConnectedWithoutPot" component={HomeConnectedWithoutPot} options={{ headerShown: false }} />
     </Stack.Navigator>

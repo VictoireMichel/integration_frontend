@@ -23,7 +23,7 @@ function Navigation5({ navigation }) { // 2nd param : route
         showLabel: false, // On masque les titres
         showIcon: true // On informe le TabNavigator qu'on souhaite afficher les icônes définies
       }}>
-        <BottomTab.Screen name="Acceuil" component={HomeNavigation}
+        <BottomTab.Screen name="Accueil" component={HomeNavigation}
           options={{
             tabBarIcon: () => {
               return <FontAwesomeIcon icon={faSeedling} />;

@@ -32,11 +32,13 @@ class HomeConnected extends React.Component {
             });
         });
 
+        /*
         if (this.state.infosPots.length > 0) {
             this.props.navigation.navigate('HomeConnectedWithPot');
         } else {
             this.props.navigation.navigate('HomeConnectedWithoutPot');
         }
+        */
     }
 
     componentDidUpdate() {
@@ -45,6 +47,7 @@ class HomeConnected extends React.Component {
         } else {
             this.props.navigation.navigate('HomeConnectedWithoutPot');
         }
+
     }
     componentWillUnmount() {
         if (this.state.infosPots.length > 0) {

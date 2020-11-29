@@ -68,7 +68,6 @@ class HomeConnectedWithoutPot extends React.Component {
           style={styles.button}
           onPress={() => {
             this.props.navigation.navigate("List");
-            console.log("nav test");
           }}>
           <View style={styles.text_container}>
             <Text style={styles.text}>Ajouter une plante</Text>

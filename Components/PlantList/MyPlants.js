@@ -40,8 +40,6 @@ class PlantsList extends React.Component {
   _loadListItems = () => {
     if (this.state.plantsListApi.length > 0) {
       return this.state.plantsListApi.map((item) => {
-        console.log(item.picturePath)
-
         return (
           <TouchableOpacity
             style={styles.listItem_container}
