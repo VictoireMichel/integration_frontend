@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Linking } from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faQuestionCircle, faUser } from "@fortawesome/free-solid-svg-icons";
 import ToggleSwitch from "toggle-switch-react-native";
@@ -85,14 +85,18 @@ export default function DrawerContent(props) {
               isOn={isSwitchedEnabled}
               onColor="#588B43"
               offColor="grey"
-              label="Mode"
+              label="Mode automatique"
               labelStyle={{ color: "black", fontWeight: "900", fontSize: 16 }}
               size="medium"
               onToggle={(isOn) => { setSwitch(isOn), updateLearningMode(store.getState().storeUserId.id, isOn) }}
             />) : (null)}
         </View>
         <View style={styles.help_container}>
-          <Text style={styles.help_text}>
+          <Text
+                onPress={() => {
+                  Linking.openURL("https://github.com/VictoireMichel/integration_frontend");
+                }}
+                style={styles.help_text}>
             <FontAwesomeIcon
               style={styles.help_icon}
               icon={faQuestionCircle}
