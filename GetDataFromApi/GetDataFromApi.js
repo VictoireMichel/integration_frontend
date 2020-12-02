@@ -1,4 +1,5 @@
 import React from "react";
+import {inputWithoutAccents} from "../Components/PlantList/FilterApi";
 
 /*
  *
@@ -91,4 +92,19 @@ export function logOut(){
       .catch((error) => {
         console.error(error);
       });
+}
+
+/*
+*
+* Cette fonction permet de récupérer les infos de n'importe quelle plante, desciption, mois sur base de l'input en paramètre
+* reponse.json() étant la donnée
+*
+* */
+export function getInformationPlantsFromApi(input) {
+  inputWithoutAccents(input);
+  console.log(input);
+  const url = 'https://pi2-ephec.herokuapp.com/filter/search?input=' + input;
+  return fetch(url)
+      .then((response) => response.json())
+      .catch((error) => console.log(error));
 }

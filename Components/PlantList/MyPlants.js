@@ -1,4 +1,5 @@
 import React from "react";
+import { SearchBar } from 'react-native-elements';
 import {
   StyleSheet,
   View,
@@ -9,7 +10,7 @@ import {
   Text,
   Image,
 } from "react-native";
-import { getPlantsFromApi } from "../../GetDataFromApi/GetDataFromApi";
+import {getInformationPlantsFromApi, getPlantsFromApi} from "../../GetDataFromApi/GetDataFromApi";
 
 class PlantsList extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class PlantsList extends React.Component {
     this.state = {
       isLoading: false,
       plantsListApi: [],
+      search: '',
     };
   }
 
@@ -64,11 +66,27 @@ class PlantsList extends React.Component {
     }
   };
 
+  _displaySearchBar(){
+
+
+    return (
+        <SearchBar
+            placeholder="Rechercher..."
+            onChangeText={getInformationPlantsFromApi(this.state.search).then((data) => {
+              this.setState({
+                search: data,
+              })
+            })}
+            value={this.state.search}
+        />
+    )
+  }
+
+
   render() {
     return (
       <View>
-        <TextInput placeholder="Rechercher..." style={styles.Search} />
-
+        {this._displaySearchBar()}
         {this.state.isLoading ? (
           <View style={styles.loading_container}>
             <ActivityIndicator size="large" color="#0000ff" />

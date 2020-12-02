@@ -1,4 +1,4 @@
-import { SearchBar } from 'react-native-elements';
+
 import React from "react";
 
 class Search extends React.Component {
@@ -6,7 +6,7 @@ class Search extends React.Component {
         search: '',
     };
 
-    updateSearch = (search) => {
+    getInformation = (search) => {
         this.setState({ search });
     };
 
