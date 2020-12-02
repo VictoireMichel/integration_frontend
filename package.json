@@ -20,6 +20,7 @@
     "@react-navigation/stack": "^5.12.3",
     "@testing-library/react-native": "^7.1.0",
     "enzyme-adapter-react-15": "^1.4.2",
+    "isomorphic-fetch": "^3.0.0",
     "native-base": "^2.13.14",
     "react": "16.13.1",
     "react-native": "0.63.3",
