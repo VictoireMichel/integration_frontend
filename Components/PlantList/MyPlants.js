@@ -25,7 +25,6 @@ class PlantsList extends React.Component {
   /**
    * C'est dans cette fonction que ce fait l'appel à l'API
    */
-
   componentDidMount() {
     this.setState({ isLoading: true }); // Lancemenent du chargement
     getPlantsFromApi().then((data) => {
@@ -46,15 +45,12 @@ class PlantsList extends React.Component {
         this.setState({
           plantsListApi: data,
         })
-
-      }).catch((error)  => {});
-      console.log(this.state.plantsListApi + " list");
+      })
     }
   }
 
   _displaySearchBar(){
     const { search } = this.state;
-    console.log(this.state.search + " search display")
     return (
         <SearchBar
             placeholder="Rechercher..."
@@ -99,7 +95,6 @@ class PlantsList extends React.Component {
   };
 
   render() {
-    console.log(this.state.plantsListApi + " list");
     return (
       <View>
         <View style={styles.search_container}>
