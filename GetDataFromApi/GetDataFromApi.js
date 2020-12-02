@@ -101,7 +101,7 @@ export function logOut(){
 *
 * */
 export function getInformationPlantsFromApi(input) {
-  inputWithoutAccents(input);
+  //inputWithoutAccents(input);
   console.log(input);
   const url = 'https://pi2-ephec.herokuapp.com/filter/search?input=' + input;
   return fetch(url)

@@ -25,6 +25,7 @@ class PlantsList extends React.Component {
   /**
    * C'est dans cette fonction que ce fait l'appel à l'API
    */
+
   componentDidMount() {
     this.setState({ isLoading: true }); // Lancemenent du chargement
     getPlantsFromApi().then((data) => {
@@ -33,6 +34,37 @@ class PlantsList extends React.Component {
         isLoading: false, // Arrêt du chargement
       });
     });
+  }
+
+  updateSearch = (search) => {
+    this.setState({ search });
+  };
+
+  _loadSearch(){
+    if(this.state.search.length > 0){
+      getInformationPlantsFromApi(this.state.search).then((data) => {
+        this.setState({
+          plantsListApi: data,
+        })
+
+      }).catch((error)  => {});
+      console.log(this.state.plantsListApi + " list");
+    }
+  }
+
+  _displaySearchBar(){
+    const { search } = this.state;
+    console.log(this.state.search + " search display")
+    return (
+        <SearchBar
+            placeholder="Rechercher..."
+            onChangeText={this.updateSearch}
+            value={search}
+            onSubmitEditing={() => {this._loadSearch()}}
+            containerStyle={[styles.search_bar, {backgroundColor: "white"}]}
+            inputContainerStyle={[{backgroundColor: "white"}]}
+        />
+    )
   }
 
   /**
@@ -66,27 +98,13 @@ class PlantsList extends React.Component {
     }
   };
 
-  _displaySearchBar(){
-
-
-    return (
-        <SearchBar
-            placeholder="Rechercher..."
-            onChangeText={getInformationPlantsFromApi(this.state.search).then((data) => {
-              this.setState({
-                search: data,
-              })
-            })}
-            value={this.state.search}
-        />
-    )
-  }
-
-
   render() {
+    console.log(this.state.plantsListApi + " list");
     return (
       <View>
-        {this._displaySearchBar()}
+        <View style={styles.search_container}>
+          {this._displaySearchBar()}
+        </View>
         {this.state.isLoading ? (
           <View style={styles.loading_container}>
             <ActivityIndicator size="large" color="#0000ff" />
@@ -171,6 +189,15 @@ const styles = StyleSheet.create({
     color: "#121212",
     fontSize: 18,
   },
+  search_bar:{
+    margin: 10,
+    borderBottomColor: "transparent",
+    borderTopColor: "transparent",
+    borderRadius: 10,
+  },
+  search_container:{
+    paddingTop: 5,
+  }
 });
 
 export default PlantsList;
