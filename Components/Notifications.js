@@ -1,46 +1,46 @@
 import React from "react";
-import {StyleSheet, Text, View} from "react-native";
+import {Text, View, StyleSheet, Button, Image, ScrollView} from "react-native";
+import ItemInfo from "./ItemInfo";
+import ConfirmDialog from "./ConfirmDialog";
 
-class PotDetail extends React.Component {
+class Notification extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      idPot: null,
-      idPlant: null,
-      userId: null,
-      isLoading: true,
-      infosPots: [],
-      infosData: [],
-      infosPlant: [],
-    };
+      this.state = {
+        infosPot: this.props.route.params.infosPots,
+        infosData: this.props.route.params.infosData[0],
+        infosPlant: this.props.route.params.infosPlant[0],
+      };
   }
 
   componentDidMount() {
 
-    console.log(this.state)
+    componentDidMount()
+    {
+      console.log(this.state.infosPot.id);
+    }
 
-    getPotsByUserIDFromApi(store.getState().storeUserId.id).then((data) => {
-      this.setState({
-        infosPots: data[0],
-        isLoading: false,
-      });
-      getPlantsByIDFromApi(this.state.infosPots.plantId).then((data) => {
-        this.setState({
-          infosPlant: data,
-          isLoading: false,
-        });
-      });
-      getDataByIDFromApi(1).then((data) => { // this.state.infosPots.id
-        this.setState({
-          infosData: data,
-          isLoading: false,
-        });
-      });
-    }).catch(error => console.log('erreur getPotByUserIdFromApi', error));
+    _luminosityNotification()
+    {
+      if (this.state.infosData.dataLuminosity != (this.state.infosPlant.luminosity * 25 + 25)) {
+        PushNotification.localNotification({
+          title: "Luminosité,
+          message: "Le seuil de luminosité de votre plante est trop bas, pensez à la mettre à la lumière"
+        })
+      }
+    }
+
+    _humidityNotification()
+    {
+      if (this.state.infosData.dataHumidity < this.state.infosPlant.humidity) {
+        PushNotification.localNotification({
+          title: "Humidité",
+          message: "Le seuil d'humidité de votre plante est trop bas, pensez à l'arroser"
+        })
+      }
+    }
   }
 }
-
-
 
 class Notifications extends React.Component {
   render() {
@@ -64,12 +64,5 @@ const styles = StyleSheet.create({
     color: "red",
   },
 });
-
-const mapStateToProps = (state) => {
-  return {
-    id: state.storeUserId.id,
-    isLoggedIn: state.isLogged.isLoggedIn
-  }
-}
 
 export default Notifications;
