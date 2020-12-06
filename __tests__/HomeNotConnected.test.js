@@ -15,5 +15,5 @@ describe("HomeNotConnected", () => {
         renderer.create(<HomeNotConnected />);
     });
 
-})
+});
 

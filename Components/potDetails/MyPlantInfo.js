@@ -82,7 +82,7 @@ class MyPlantInfo extends React.Component {
 
 export default MyPlantInfo;
 
-function dateFormat(theDate) {
+exports.dateFormat = function(theDate) {
   const annee = theDate.substring(0, 4);
   const mois = theDate.substring(5, 7);
   const jour = theDate.substring(8, 10);
@@ -102,7 +102,7 @@ function dateFormat(theDate) {
     "/" +
     annee
   );
-}
+};
 
 const styles = {
   container: {
