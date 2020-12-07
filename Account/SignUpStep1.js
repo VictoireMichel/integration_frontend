@@ -12,6 +12,7 @@ class SignUpStep1 extends React.Component {
     this.state = {
       name: '',
       firstName: '',
+      testBot: '',
       active: true
     }
   }
@@ -54,14 +55,25 @@ class SignUpStep1 extends React.Component {
             </TextInput>
           </View>
 
+          <View style={styles.inputNotVisible}>
+            <TextInput
+              placeholder=""
+              value={this.state.testBot}
+              onChangeText={(text => this.setState({ testBot: text }))}
+              style={styles.inputText}>
+            </TextInput>
+          </View>
+
 
           <View>
             <TouchableOpacity style={styles.step_button} onPress={() => {
-              this.props.navigation.navigate('SignUpStep2',
-                {
-                  name: this.state.name,
-                  firstName: this.state.firstName
-                });
+              this.state.testBot === '' ?
+                (this.props.navigation.navigate('SignUpStep2',
+                  {
+                    name: this.state.name,
+                    firstName: this.state.firstName
+                  })) : (alert('Alerte bot'))
+
             }}>
               <Text style={styles.stepText}>Suivant</Text>
             </TouchableOpacity>
@@ -146,6 +158,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     elevation: 5,
     position: 'relative'
+  },
+  inputNotVisible: {
+    height: 0,
+    width: 0
   },
   inputText: {
     padding: 10,
