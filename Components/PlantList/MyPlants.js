@@ -64,7 +64,7 @@ class PlantsList extends React.Component {
   }
 
   /**
-   * Cette fonction parcours la liste de film précédement remplie en appelant
+   * Cette fonction parcours la liste de plantes précédement remplie en appelant
    * le componsant "PlantItem"
    */
   _loadListItems = () => {
