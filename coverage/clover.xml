@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1607254779018" clover="3.2.0">
-  <project timestamp="1607254779019" name="All files">
-    <metrics statements="41" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="27" coveredmethods="9" elements="68" coveredelements="23" complexity="0" loc="41" ncloc="41" packages="3" files="4" classes="4"/>
+<coverage generated="1607526463158" clover="3.2.0">
+  <project timestamp="1607526463158" name="All files">
+    <metrics statements="41" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="27" coveredmethods="11" elements="68" coveredelements="29" complexity="0" loc="41" ncloc="41" packages="3" files="4" classes="4"/>
     <package name="Components.Home">
       <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-      <file name="HomeConnectedWithoutPot.js" path="C:\Users\Victoire\Desktop\Cours\BAC 3\GIT\integration_frontend\Components\Home\HomeConnectedWithoutPot.js">
+      <file name="HomeConnectedWithoutPot.js" path="C:\Users\vic91\Documents\GitHub\integration_frontend\Components\Home\HomeConnectedWithoutPot.js">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="10" count="2" type="stmt"/>
         <line num="70" count="1" type="stmt"/>
         <line num="81" count="1" type="stmt"/>
       </file>
-      <file name="HomeNotConnected.js" path="C:\Users\Victoire\Desktop\Cours\BAC 3\GIT\integration_frontend\Components\Home\HomeNotConnected.js">
+      <file name="HomeNotConnected.js" path="C:\Users\vic91\Documents\GitHub\integration_frontend\Components\Home\HomeNotConnected.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="7" count="1" type="stmt"/>
         <line num="30" count="1" type="stmt"/>
@@ -18,7 +18,7 @@
     </package>
     <package name="Components.PlantList">
       <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="FilterApi.js" path="C:\Users\Victoire\Desktop\Cours\BAC 3\GIT\integration_frontend\Components\PlantList\FilterApi.js">
+      <file name="FilterApi.js" path="C:\Users\vic91\Documents\GitHub\integration_frontend\Components\PlantList\FilterApi.js">
         <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="8" count="0" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
@@ -26,9 +26,9 @@
       </file>
     </package>
     <package name="GetDataFromApi">
-      <metrics statements="33" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="22" coveredmethods="6"/>
-      <file name="GetDataFromApi.js" path="C:\Users\Victoire\Desktop\Cours\BAC 3\GIT\integration_frontend\GetDataFromApi\GetDataFromApi.js">
-        <metrics statements="33" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="22" coveredmethods="6"/>
+      <metrics statements="33" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="22" coveredmethods="8"/>
+      <file name="GetDataFromApi.js" path="C:\Users\vic91\Documents\GitHub\integration_frontend\GetDataFromApi\GetDataFromApi.js">
+        <metrics statements="33" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="22" coveredmethods="8"/>
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
@@ -57,10 +57,10 @@
         <line num="88" count="0" type="stmt"/>
         <line num="90" count="0" type="stmt"/>
         <line num="93" count="0" type="stmt"/>
-        <line num="105" count="0" type="stmt"/>
-        <line num="106" count="0" type="stmt"/>
-        <line num="107" count="0" type="stmt"/>
-        <line num="108" count="0" type="stmt"/>
+        <line num="105" count="5" type="stmt"/>
+        <line num="106" count="5" type="stmt"/>
+        <line num="107" count="5" type="stmt"/>
+        <line num="108" count="4" type="stmt"/>
         <line num="109" count="0" type="stmt"/>
       </file>
     </package>

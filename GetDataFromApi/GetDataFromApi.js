@@ -97,7 +97,7 @@ export function logOut(){
 /*
 *
 * Cette fonction permet de récupérer les infos de n'importe quelle plante, desciption, mois sur base de l'input en paramètre
-* reponse.json() étant la donnée
+* reponse.json() étant les données
 *
 * */
 export function getInformationPlantsFromApi(input) {

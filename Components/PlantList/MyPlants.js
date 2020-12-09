@@ -53,7 +53,7 @@ class PlantsList extends React.Component {
     const { search } = this.state;
     return (
         <SearchBar
-            placeholder="Rechercher..."
+            placeholder="Rechercher une plante..."
             onChangeText={this.updateSearch}
             value={search}
             onSubmitEditing={() => {this._loadSearch()}}
