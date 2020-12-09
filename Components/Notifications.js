@@ -22,35 +22,41 @@ class Notification extends React.Component {
 
     _luminosityNotification()
     {
-      if (this.state.infosData.dataLuminosity != (this.state.infosPlant.luminosity * 25 + 25)) {
-        PushNotification.localNotification({
-          title: "Luminosité,
-          message: "Le seuil de luminosité de votre plante est trop bas, pensez à la mettre à la lumière"
-        })
+      if (this.state.infosData.dataLuminosity != 1) {
+        return <Text style={styles.notif}>Votre plante à besoin de lumière !</Text>;
       }
     }
 
     _humidityNotification()
     {
       if (this.state.infosData.dataHumidity < this.state.infosPlant.humidity) {
-        PushNotification.localNotification({
-          title: "Humidité",
-          message: "Le seuil d'humidité de votre plante est trop bas, pensez à l'arroser"
-        })
+        return <Text style={styles.notif}>Votre plante à besoin d'eau !</Text>;
       }
     }
   }
-}
 
-class Notifications extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.text_menu}>Mes notifications</Text>
-      </View>
+        <View style={styles.container}>
+          <View style={styles.title}>
+            <Text style={styles.title}>Mes notifications</Text>
+          </View>
+          <View style={styles.notif}>
+            <text style={styles.notif}>
+              {this._luminosityNotification}
+            </text>
+            <text style={styles.notif}>
+              {this._humidityNotification}
+            </text>
+          </View>
+        </View>
+
+
     );
   }
 }
+}
+
 
 const styles = StyleSheet.create({
   container: {
@@ -59,10 +65,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  text_menu: {
+  title: {
+    flex:2,
     fontSize: 25,
-    color: "red",
+    color: "black",
   },
+  notif: {
+    flex:4,
+    fontSize: 20,
+    color: "red",
+  }
 });
 
 export default Notifications;
