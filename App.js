@@ -4,7 +4,7 @@ import SplashScreen from "react-native-splash-screen";
 import {useEffect} from "react";
 import {Provider} from 'react-redux'
 import Store from "./redux/store"
-import PushNotificationIOS from "@react-native-community/push-notification-ios";
+//import PushNotificationIOS from "@react-native-community/push-notification-ios";
 
 export default function App() {
   useEffect(() => {
@@ -18,8 +18,7 @@ export default function App() {
   );
 }
 
-PushNotification.configure({
-    },
+/*PushNotification.configure({
     onNotification: function (notification) {
         console.log("NOTIFICATION:", notification);
         notification.finish(PushNotificationIOS.FetchResult.NoData);
@@ -37,4 +36,4 @@ PushNotification.configure({
     },
     popInitialNotification: true,
     requestPermissions: true,
-});
+});*/
