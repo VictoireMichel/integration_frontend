@@ -1,17 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1606827497912" clover="3.2.0">
-  <project timestamp="1606827497913" name="All files">
-    <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3" elements="8" coveredelements="8" complexity="0" loc="5" ncloc="5" packages="1" files="2" classes="2"/>
-    <file name="HomeConnectedWithoutPot.js" path="C:\Users\victo\Desktop\Cours\BAC 3\GIT\eGrow\Components\Home\HomeConnectedWithoutPot.js">
-      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-      <line num="10" count="2" type="stmt"/>
-      <line num="70" count="1" type="stmt"/>
-      <line num="81" count="1" type="stmt"/>
-    </file>
-    <file name="HomeNotConnected.js" path="C:\Users\victo\Desktop\Cours\BAC 3\GIT\eGrow\Components\Home\HomeNotConnected.js">
-      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <line num="7" count="1" type="stmt"/>
-      <line num="30" count="1" type="stmt"/>
-    </file>
+<coverage generated="1607526463158" clover="3.2.0">
+  <project timestamp="1607526463158" name="All files">
+    <metrics statements="41" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="27" coveredmethods="11" elements="68" coveredelements="29" complexity="0" loc="41" ncloc="41" packages="3" files="4" classes="4"/>
+    <package name="Components.Home">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <file name="HomeConnectedWithoutPot.js" path="C:\Users\vic91\Documents\GitHub\integration_frontend\Components\Home\HomeConnectedWithoutPot.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
+        <line num="81" count="1" type="stmt"/>
+      </file>
+      <file name="HomeNotConnected.js" path="C:\Users\vic91\Documents\GitHub\integration_frontend\Components\Home\HomeNotConnected.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="Components.PlantList">
+      <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <file name="FilterApi.js" path="C:\Users\vic91\Documents\GitHub\integration_frontend\Components\PlantList\FilterApi.js">
+        <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="GetDataFromApi">
+      <metrics statements="33" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="22" coveredmethods="8"/>
+      <file name="GetDataFromApi.js" path="C:\Users\vic91\Documents\GitHub\integration_frontend\GetDataFromApi\GetDataFromApi.js">
+        <metrics statements="33" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="22" coveredmethods="8"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="54" count="1" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="68" count="0" type="stmt"/>
+        <line num="69" count="0" type="stmt"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="81" count="0" type="stmt"/>
+        <line num="82" count="0" type="stmt"/>
+        <line num="88" count="0" type="stmt"/>
+        <line num="90" count="0" type="stmt"/>
+        <line num="93" count="0" type="stmt"/>
+        <line num="105" count="5" type="stmt"/>
+        <line num="106" count="5" type="stmt"/>
+        <line num="107" count="5" type="stmt"/>
+        <line num="108" count="4" type="stmt"/>
+        <line num="109" count="0" type="stmt"/>
+      </file>
+    </package>
   </project>
 </coverage>

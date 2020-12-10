@@ -1,4 +1,5 @@
 import React from "react";
+import { SearchBar } from 'react-native-elements';
 import {
   StyleSheet,
   View,
@@ -9,7 +10,7 @@ import {
   Text,
   Image,
 } from "react-native";
-import { getPlantsFromApi } from "../../GetDataFromApi/GetDataFromApi";
+import {getInformationPlantsFromApi, getPlantsFromApi} from "../../GetDataFromApi/GetDataFromApi";
 
 class PlantsList extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class PlantsList extends React.Component {
     this.state = {
       isLoading: false,
       plantsListApi: [],
+      search: '',
     };
   }
 
@@ -33,8 +35,36 @@ class PlantsList extends React.Component {
     });
   }
 
+  updateSearch = (search) => {
+    this.setState({ search });
+  };
+
+  _loadSearch(){
+    if(this.state.search.length > 0){
+      getInformationPlantsFromApi(this.state.search).then((data) => {
+        this.setState({
+          plantsListApi: data,
+        })
+      })
+    }
+  }
+
+  _displaySearchBar(){
+    const { search } = this.state;
+    return (
+        <SearchBar
+            placeholder="Rechercher une plante..."
+            onChangeText={this.updateSearch}
+            value={search}
+            onSubmitEditing={() => {this._loadSearch()}}
+            containerStyle={[styles.search_bar, {backgroundColor: "white"}]}
+            inputContainerStyle={[{backgroundColor: "white"}]}
+        />
+    )
+  }
+
   /**
-   * Cette fonction parcours la liste de film précédement remplie en appelant
+   * Cette fonction parcours la liste de plantes précédement remplie en appelant
    * le componsant "PlantItem"
    */
   _loadListItems = () => {
@@ -67,8 +97,9 @@ class PlantsList extends React.Component {
   render() {
     return (
       <View>
-        <TextInput placeholder="Rechercher..." style={styles.Search} />
-
+        <View style={styles.search_container}>
+          {this._displaySearchBar()}
+        </View>
         {this.state.isLoading ? (
           <View style={styles.loading_container}>
             <ActivityIndicator size="large" color="#0000ff" />
@@ -153,6 +184,15 @@ const styles = StyleSheet.create({
     color: "#121212",
     fontSize: 18,
   },
+  search_bar:{
+    margin: 10,
+    borderBottomColor: "transparent",
+    borderTopColor: "transparent",
+    borderRadius: 10,
+  },
+  search_container:{
+    paddingTop: 5,
+  }
 });
 
 export default PlantsList;

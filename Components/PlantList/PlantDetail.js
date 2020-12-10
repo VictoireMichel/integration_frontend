@@ -354,63 +354,72 @@ class PlantDetail extends React.Component {
     );
   }
 
-  render() {
-    return (
-      <View style={{ flex: 1, flexDirection: "column" }}>
-        <LinearGradient
-          colors={["#588B43", "#373b44"]}
-          style={{
-            flex: 14,
-            borderBottomLeftRadius: 30,
-            borderBottomRightRadius: 30,
-            elevation: 8,
-          }}>
-          <View style={{ flexDirection: "row" }}>
-            <View style={{ flex: 1 }}>{this._displayArrowGoBack()}</View>
+    render() {
+        return (
+            <View style={{ flex: 1, flexDirection: "column" }}>
+                {this.state.isLoading ? (
+                    <View style={styles.loading_container}>
+                        <ActivityIndicator size="large" color="#0000ff" />
+                    </View>
+                ) : (
+                    [
+                        <LinearGradient
+                            key="4"
+                            colors={["#588B43", "#373b44"]}
+                            style={{
+                                flex: 14,
+                                borderBottomLeftRadius: 30,
+                                borderBottomRightRadius: 30,
+                                elevation: 8,
+                            }}>
+                            <View style={{ flexDirection: "row" }}>
+                                <View style={{ flex: 1 }}>{this._displayArrowGoBack()}</View>
 
-            <View style={{ flex: 1, marginRight: 30 }}>
-              {this._displayAddPotButton()}
-            </View>
-          </View>
+                                <View style={{ flex: 1, marginRight: 30 }}>
+                                    {this._displayAddPotButton()}
+                                </View>
+                            </View>
 
-          <View style={{ flex: 1, flexDirection: "column" }}>
-            <View
-              style={{
-                flex: 1,
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "center",
-              }}>
-              {this._displayNamePlant()}
-              {this._displayPicturePlant()}
-            </View>
-            <View style={{ flex: 3, paddingBottom: 12 }}>
-              <ScrollView>
-                {this._displayDescriptionDetail()}
-                {this._displayEntretienDetail()}
-              </ScrollView>
-            </View>
-          </View>
-        </LinearGradient>
+                            <View style={{ flex: 1, flexDirection: "column" }}>
+                                <View
+                                    style={{
+                                        flex: 1,
+                                        flexDirection: "row",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                    }}>
+                                    {this._displayNamePlant()}
+                                    {this._displayPicturePlant()}
+                                </View>
+                                <View style={{ flex: 3, paddingBottom: 12 }}>
+                                    <ScrollView>
+                                        {this._displayDescriptionDetail()}
+                                        {this._displayEntretienDetail()}
+                                    </ScrollView>
+                                </View>
+                            </View>
+                        </LinearGradient>,
 
-        <View style={{ flex: 4 }}>
-          <View style={{ height: 120, marginTop: 10 }}>
-            <ScrollView horizontal>
-              <View style={styles.itemScrollView}>
-                {this._displayCroissanceDetail()}
-              </View>
-              <View style={styles.itemScrollView}>
-                {this._displaySolDetail()}
-              </View>
-              <View style={styles.itemScrollView}>
-                {this._displayLuminositeDetail()}
-              </View>
-            </ScrollView>
-          </View>
-        </View>
-      </View>
-    );
-  }
+                        <View style={{ flex: 4 }} key="5">
+                            <View style={{ height: 120, marginTop: 10 }}>
+                                <ScrollView horizontal>
+                                    <View style={styles.itemScrollView}>
+                                        {this._displayCroissanceDetail()}
+                                    </View>
+                                    <View style={styles.itemScrollView}>
+                                        {this._displaySolDetail()}
+                                    </View>
+                                    <View style={styles.itemScrollView}>
+                                        {this._displayLuminositeDetail()}
+                                    </View>
+                                </ScrollView>
+                            </View>
+                        </View>
+                    ]
+                )}
+            </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({

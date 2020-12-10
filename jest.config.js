@@ -4,7 +4,8 @@ module.exports = {
     collectCoverage: true,
     //coverageReporters : ["html"],
     transformIgnorePatterns: [
-        "node_modules/(?!(jest-)?react-native|react-navigation)"
+        "node_modules/(?!(jest-)?react-native|react-navigation)",
+        "./Components/potDetails/"
     ],
     moduleNameMapper: {
         "^image![a-zA-Z0-9$_-]+$": "GlobalImageStub",

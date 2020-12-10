@@ -13,10 +13,6 @@ class MyPlantInfo extends React.Component {
     };
   }
 
-  componentDidMount() {
-    console.log(this.state.infosPot.id);
-  }
-
   render() {
     return (
       <View style={styles.container}>
@@ -80,8 +76,6 @@ class MyPlantInfo extends React.Component {
   }
 }
 
-export default MyPlantInfo;
-
 function dateFormat(theDate) {
   const annee = theDate.substring(0, 4);
   const mois = theDate.substring(5, 7);
@@ -90,19 +84,21 @@ function dateFormat(theDate) {
   const minutes = theDate.substring(14, 16);
   const secondes = theDate.substring(17, 19);
   return (
-    heure +
-    ":" +
-    minutes +
-    ":" +
-    secondes +
-    " " +
-    jour +
-    "/" +
-    mois +
-    "/" +
-    annee
+      heure +
+      ":" +
+      minutes +
+      ":" +
+      secondes +
+      " " +
+      jour +
+      "/" +
+      mois +
+      "/" +
+      annee
   );
-}
+};
+
+export default MyPlantInfo;
 
 const styles = {
   container: {

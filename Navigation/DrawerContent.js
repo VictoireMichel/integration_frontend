@@ -94,7 +94,7 @@ export default function DrawerContent(props) {
         <View style={styles.help_container}>
           <Text
                 onPress={() => {
-                  Linking.openURL("https://github.com/VictoireMichel/integration_frontend");
+                  Linking.openURL("https://egrow-ufw9xg.turbo360-vertex.com/");
                 }}
                 style={styles.help_text}>
             <FontAwesomeIcon
