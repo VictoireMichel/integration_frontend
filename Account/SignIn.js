@@ -18,6 +18,12 @@ class SignIn extends React.Component {
         }
     }
 
+    /**
+     * Cette fonction permet de vérifier la validité de l'email et de se connecter.
+     * Une alerte s'affichera si les champs sont vides, l'email n'est pas valide ou n'existe pas, le mot de passe est incorrect.
+     * Si tous les champs sont valides et l'utilisateur existe en base de données, alors l'utilisateur sera redirigé vers l'accueil.
+     *
+     */
     validate = (text) => {
         let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
@@ -60,25 +66,35 @@ class SignIn extends React.Component {
         }
     }
 
+    /**
+     *
+     *Fonction permettant de changer les valeurs des reducers du store.
+     *
+     * Ici on affecte au reducer userId l'id de l'utilisateur récupéré depuis la requête API faite dans la fonction validate.
+     * On affecte à true isLoggedIn.
+     *
+     * @private
+     */
     _changeGlobalState() {
         const action = { type: "SET_ID", value: this.state.userId }
         const action2 = { type: "LOGIN", value: true }
         this.props.dispatch(action)
         this.props.dispatch(action2)
-        // console.log(this.props)
     }
 
+    /**
+     *
+     * Fonction permettant de persister les données venant du store, ainsi lorsqu'on quitte l'application
+     * et qu'on l'a réouvre on reste bien connecté.
+     *
+     * @returns {Promise<void>}
+     */
     storeData = async () => {
         try {
             await AsyncStorage.multiSet([['userID', JSON.stringify(store.getState().storeUserId.id)], ['login', JSON.stringify(store.getState().isLogged.isLoggedIn)]]);
         } catch (e) {
             alert(e);
         }
-    }
-
-    componentDidUpdate() {
-        //console.log(this.props.id)
-        //console.log(this.props.isLoggedIn)
     }
 
     render() {
