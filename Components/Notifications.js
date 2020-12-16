@@ -146,7 +146,7 @@ const styles = {
   title: {
     flex: 2,
     color: "gray",
-    textAlign: "left",
+    textAlign: "center",
     textAlignVertical: "center",
     fontSize: 35,
     marginLeft: "3%",
