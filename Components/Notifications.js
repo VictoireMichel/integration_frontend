@@ -72,7 +72,7 @@ class Notifications extends React.Component {
   }
 
   _NotificationLuminosite() {
-    if (this.state.infosData[0].dataLuminosity < 2) {
+    if (this.state.infosData[0].dataLuminosity < 1) {
       return (
         <View>
           <Text style={styles.headInfos}>
