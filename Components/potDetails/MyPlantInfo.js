@@ -65,7 +65,7 @@ class MyPlantInfo extends React.Component {
               color="brown"
               icon="faThermometerThreeQuarters"
               dataWanted={
-                "Rusticité : " + this.state.infosPlant.temperatureMin + "°C"
+                "minimum : " + this.state.infosPlant.temperatureMin + "°C"
               }
             />
             <ConfirmDialog idPot={this.state.infosPot.id} />
