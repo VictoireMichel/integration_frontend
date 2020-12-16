@@ -1,5 +1,6 @@
 import React from "react";
-import {StyleSheet, Text, View, Image, TouchableOpacity, ActivityIndicator, ScrollView,
+import {
+  StyleSheet, Text, View, Image, TouchableOpacity, ActivityIndicator, ScrollView,
 } from "react-native";
 import Svg, { Ellipse } from "react-native-svg";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
@@ -32,9 +33,6 @@ class Notifications extends React.Component {
   }
 
   componentDidMount() {
-
-
-
     getPotsByUserIDFromApi(store.getState().storeUserId.id).then((data) => {
       this.setState({
         infosPots: data[0],
@@ -55,47 +53,43 @@ class Notifications extends React.Component {
     }).catch(error => console.log('erreur getPotByUserIdFromApi', error));
   }
 
-  _NotificationHumidit(){
-    if (this.state.infosData[0].dataHumidity < 70 ){
-      return ("Votre plante à besoin d'eau !")
+  _NotificationHumidit() {
+    if (this.state.infosData[0].dataHumidity < 70) {
+      return <Text>Votre plante à besoin d'eau !</Text>
+    } else {
+      return null
     }
   }
 
   _NotificationLuminosite() {
     if (this.state.infosData[0].dataLuminosity < 2) {
-      return ("Votre plante à besoin de lumière !")
+      return <Text>Votre plante à besoin de lumière !</Text>
     }
   }
 
-
   render() {
-    if (!this.state.isLoadingInfoPlant){
-      console.log("----------------------")
-      console.log(this.state.infosPlant)
-    }
-
     return (
-        <View style={styles.container}>
-          <View style={styles.titleContainer}>
-            <Text style={styles.title}>Mes Notifications</Text>
-          </View>
-          <View style={styles.itemContainer}>
-            <ScrollView>
-              {this.state.isLoadingInfoData ?(<View><Text>Loading...</Text></View>):
-                  (<View><Notifdisplay
-                      notif={this._NotificationHumidit()}
-                  ></Notifdisplay>
-                    <Notifdisplay
-                        notif={this._NotificationLuminosite()}
-                    ></Notifdisplay></View>)}
-            </ScrollView>
-          </View>
+      <View style={styles.container}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>Mes Notifications</Text>
         </View>
+        <View style={styles.itemContainer}>
+          <ScrollView>
+            {this.state.isLoadingInfoData ? (<View><Text>Loading...</Text></View>) :
+              (<View><Notifdisplay
+                notif={this._NotificationHumidit()}
+              ></Notifdisplay>
+                <Notifdisplay
+                  notif={this._NotificationLuminosite()}
+                ></Notifdisplay></View>
+              )}
+          </ScrollView>
+        </View>
+      </View>
     );
   }
 }
 
-export default Notifications;
 
 const styles = {
   container: {
@@ -157,10 +151,4 @@ const styles = {
     alignSelf: "center",
   },
 };
-
-const mapStateToProps = (state) => {
-  return {
-    id: state.storeUserId.id,
-    isLoggedIn: state.isLogged.isLoggedIn
-  }
-}
+export default Notifications
