@@ -33,6 +33,9 @@ class Notifications extends React.Component {
   }
 
   componentDidMount() {
+
+
+
     getPotsByUserIDFromApi(store.getState().storeUserId.id).then((data) => {
       this.setState({
         infosPots: data[0],
@@ -53,21 +56,42 @@ class Notifications extends React.Component {
     }).catch(error => console.log('erreur getPotByUserIdFromApi', error));
   }
 
-  _NotificationHumidit() {
+
+
+  _NotificationHumidite() {
     if (this.state.infosData[0].dataHumidity < 70) {
-      return <Text>Votre plante à besoin d'eau !</Text>
-    } else {
-      return null
+      return (
+        <View>
+          <Text style={styles.headInfos}>
+            {dateFormat(this.state.infosData[0].timeStamp)}
+          </Text>
+          <Notifdisplay notif="Votre plante a besoin d'eau !"></Notifdisplay>
+        </View>
+      );
     }
   }
 
   _NotificationLuminosite() {
     if (this.state.infosData[0].dataLuminosity < 2) {
-      return <Text>Votre plante à besoin de lumière !</Text>
+      return (
+        <View>
+          <Text style={styles.headInfos}>
+            {dateFormat(this.state.infosData[0].timeStamp)}
+          </Text>
+          <Notifdisplay notif="Votre plante a besoin de lumière !">
+          </Notifdisplay>
+        </View>
+      );
     }
   }
 
+
   render() {
+    if (!this.state.isLoadingInfoPlant) {
+      console.log("----------------------")
+      console.log(this.state.infosPlant)
+    }
+
     return (
       <View style={styles.container}>
         <View style={styles.titleContainer}>
@@ -76,13 +100,10 @@ class Notifications extends React.Component {
         <View style={styles.itemContainer}>
           <ScrollView>
             {this.state.isLoadingInfoData ? (<View><Text>Loading...</Text></View>) :
-              (<View><Notifdisplay
-                notif={this._NotificationHumidit()}
-              ></Notifdisplay>
-                <Notifdisplay
-                  notif={this._NotificationLuminosite()}
-                ></Notifdisplay></View>
-              )}
+              (<View>
+                {this._NotificationHumidite()}
+                {this._NotificationLuminosite()}
+              </View>)}
           </ScrollView>
         </View>
       </View>
@@ -90,6 +111,29 @@ class Notifications extends React.Component {
   }
 }
 
+export default Notifications;
+
+function dateFormat(theDate) {
+  const annee = theDate.substring(0, 4);
+  const mois = theDate.substring(5, 7);
+  const jour = theDate.substring(8, 10);
+  const heure = theDate.substring(11, 13);
+  const minutes = theDate.substring(14, 16);
+  const secondes = theDate.substring(17, 19);
+  return (
+    heure +
+    ":" +
+    minutes +
+    ":" +
+    secondes +
+    " " +
+    jour +
+    "/" +
+    mois +
+    "/" +
+    annee
+  );
+}
 
 const styles = {
   container: {
@@ -151,4 +195,3 @@ const styles = {
     alignSelf: "center",
   },
 };
-export default Notifications
